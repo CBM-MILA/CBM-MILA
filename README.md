@@ -1,16 +1,20 @@
-## Hi there 👋
+# 🔴⚪ CBM Mila · شباب ميلة
 
-<!--
-**CBM-MILA/CBM-MILA** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+المنصة الرسمية المخصصة لمتابعة نادي **شباب ميلة (CBM)** لموسم 2026/2027 (رابطة ما بين الجهات - شرق).
 
-Here are some ideas to get you started:
+---
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+### 🌐 رابط المنصة المباشر:
+👉 **[زيارة المنصة الرسمية](https://cbm-mila.github.io/CBM-MILA/)**
+
+---
+
+### 📋 مميزات المنصة:
+* ⚽ **المباريات والنتائج:** متابعة مواعيد اللقاءات، الملاعب، والتوقيت بدقة.
+* 📊 **جدول الترتيب:** عرض الترتيب الرسمي، النقاط، وفارق الأهداف.
+* 👕 **قائمة اللاعبين:** تفاصيل التشكيلة، أرقام القمصان، وهدافي الفريق.
+* 📅 **تنبيهات المباريات:** إضافة مواعيد اللقاءات مباشرة إلى تقويم Google.
+* 🌓 **تجربة تطبيق متكاملة:** دعم الوضعين الليلي والنهاري والعمل بدون إنترنت (PWA).
+
+---
+*تطوير لدعم وتشجيع نادي شباب ميلة 🔴⚪*
