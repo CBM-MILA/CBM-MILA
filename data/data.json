@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "lastUpdated": "2026-10-04T13:00:00+01:00",
+  "lastUpdated": "2026-10-05T18:00:00+01:00",
   "sourceUrls": {
     "club": "https://www.lirf.dz/ar/club/733",
     "ranking": "https://www.lirf.dz/ar/ranking",
@@ -1992,20 +1992,6 @@
     },
     {
       "position": 8,
-      "clubId": "733",
-      "played": 2,
-      "wins": 1,
-      "draws": 0,
-      "losses": 1,
-      "goalsFor": 3,
-      "goalsAgainst": 4,
-      "goalDifference": -1,
-      "points": 3,
-      "adjustedPoints": 3,
-      "official": true
-    },
-    {
-      "position": 9,
       "clubId": "884",
       "played": 2,
       "wins": 1,
@@ -2019,8 +2005,22 @@
       "official": true
     },
     {
+      "position": 9,
+      "clubId": "733",
+      "played": 2,
+      "wins": 1,
+      "draws": 0,
+      "losses": 1,
+      "goalsFor": 3,
+      "goalsAgainst": 4,
+      "goalDifference": -1,
+      "points": 3,
+      "adjustedPoints": 3,
+      "official": true
+    },
+    {
       "position": 10,
-      "clubId": "937",
+      "clubId": "736",
       "played": 2,
       "wins": 0,
       "draws": 2,
@@ -2034,7 +2034,7 @@
     },
     {
       "position": 11,
-      "clubId": "736",
+      "clubId": "937",
       "played": 2,
       "wins": 0,
       "draws": 2,
