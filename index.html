@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#080808">
 <link rel="manifest" href="./manifest.webmanifest">
+<script defer src="./config.js"></script>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="CBM Mila">
@@ -272,11 +273,19 @@ addEventListener('keydown',e=>{if(e.key==='Escape'){closeM();cmClose()}if(e.key=
 document.addEventListener('visibilitychange',()=>{if(!document.hidden)upd()});
 window.addEventListener('hashchange',()=>{closeM();render();scrollTo(0,0)});
 /* supporter card */
-/* >>> ضع هنا رابط Google Apps Script (ينتهي بـ /exec) بين علامتي الاقتباس <<< */
-const REG_URL='https://script.google.com/macros/s/AKfycbznRLxP55SP_MrRMrod1IkOO2zrIars5IK_1cbnezFtgho7xdrBG0VoQJAB5bKYFfWG/exec';
-const REG_ON=()=>/^https:\/\/script\.google\.com\/macros\/s\/.+\/exec$/.test(REG_URL);
+/* رابط السجل يُقرأ من ملف config.js (لا تعدّل هذا الملف بعد الآن) */
+const regUrl=()=>String(window.CBM_REG_URL||'');
+const REG_SET=()=>/^https:\/\/script\.google\.com\/.+/.test(regUrl());
+const REG_ON=()=>/^https:\/\/script\.google\.com\/.+\/exec$/.test(regUrl());
+const cerr=e=>t('cnet')+' ['+((e&&e.code)||'E1')+']';
 const devId=()=>{try{let d=localStorage.getItem('CBM_DEV');if(!d){d=Math.random().toString(36).slice(2,10)+Date.now().toString(36);localStorage.setItem('CBM_DEV',d)}return d}catch(e){return''}};
-async function regCall(o){const c=new AbortController(),to=setTimeout(()=>c.abort(),25000);try{const r=await fetch(REG_URL,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(o),signal:c.signal});return await r.json()}finally{clearTimeout(to)}}
+async function regCall(o){const body=JSON.stringify(o),U=regUrl(),base={mode:'cors',credentials:'omit',redirect:'follow'};
+const T=[['POST',sg=>fetch(U,{...base,method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body,signal:sg})],['GET',sg=>fetch(U+'?q='+encodeURIComponent(body),{...base,method:'GET',signal:sg})]];let code='E1';
+for(const[m,f]of T){const c=new AbortController(),to=setTimeout(()=>c.abort(),20000);
+try{const r=await f(c.signal),tx=await r.text();let j;try{j=JSON.parse(tx)}catch(e){code='E2';console.error('[CBM registry] '+m+': الرد ليس JSON (غالبًا النشر ليس Anyone أو الرابط/النسخة خاطئة). HTTP',r.status,r.headers.get('content-type'),tx.slice(0,160));continue}
+if(j&&j.ok===false&&j.code==='error'){const x=new Error(j.msg||'server');x.code='E3';console.error('[CBM registry] '+m+': خطأ داخل Google Script:',j.msg);throw x}
+return j}catch(err){if(err&&err.code==='E3')throw err;if(code!=='E2')code='E1';console.error('[CBM registry] '+m+': فشل الاتصال/CORS:',err&&err.message||err,'| تأكد: Who has access = Anyone، والرابط ينتهي بـ /exec، والإنترنت يعمل')}finally{clearTimeout(to)}}
+const x=new Error(code);x.code=code;throw x}
 const CK='CBM_MILA_CARD_V1';
 const getCard=()=>{try{const c=JSON.parse(localStorage.getItem(CK)||'null');return c&&c.name&&c.no?c:null}catch(e){return null}};
 const IMG={},li=u=>IMG[u]||(IMG[u]=new Promise((ok,no)=>{const i=new Image();i.onload=()=>ok(i);i.onerror=()=>{delete IMG[u];no()};i.src=u}));
@@ -292,18 +301,19 @@ put(c,k.name,775,429,420,40,18);put(c,'N° #'+k.no,776,556,400,38,18);
 put(c,dt,575,708,135,24,13);put(c,'Mila · ميلة',825,708,130,24,13);put(c,'مناصر وفي · VIP',1087,708,148,22,14);return cv}
 const cmOpen=h=>{$('cmb').innerHTML=h;$('cm').classList.add('open')},cmClose=()=>$('cm').classList.remove('open');
 function cardBox(){const c=getCard();return c?`<div class="glass" style="padding:14px;margin-bottom:14px"><div style="font-weight:900">🔴⚪ ${t('cmy')}</div><small style="color:var(--mu);font-weight:700">${esc(c.name)} · N° #${esc(c.no)}</small><div class="btns"><button class="btn p" data-cview>${t('cview')}</button></div></div>`:`<button class="ccta" data-cnew><span style="font-size:30px">🎫</span><span>${t('ccta')}<small>${t('cphd2')}</small></span></button>`}
-function cardForm(){cmOpen(`<h3>${t('ccta')}</h3><small style="color:var(--mu);font-weight:700">${t('cphd')}</small><input id="cin" dir="auto" maxlength="40" autocomplete="name" placeholder="${t('cname')}"><p class="cerr" id="cerr"></p><small style="display:block;margin-top:8px;color:var(--mu)">${t('cpriv')}</small><div class="btns"><button class="btn p" id="c-go">${t('cgo')}</button><button class="btn" data-cclose>✕</button></div>${REG_ON()?`<div class="btns" style="margin-top:8px"><button class="btn" data-crest style="font-size:12px">${t('crest')}</button></div>`:''}`);setTimeout(()=>{const i=$('cin');i&&i.focus()},60)}
+function cardForm(){cmOpen(`<h3>${t('ccta')}</h3><small style="color:var(--mu);font-weight:700">${t('cphd')}</small><input id="cin" dir="auto" maxlength="40" autocomplete="name" placeholder="${t('cname')}"><p class="cerr" id="cerr"></p><small style="display:block;margin-top:8px;color:var(--mu)">${t('cpriv')}</small><div class="btns"><button class="btn p" id="c-go">${t('cgo')}</button><button class="btn" data-cclose>✕</button></div>${REG_SET()?`<div class="btns" style="margin-top:8px"><button class="btn" data-crest style="font-size:12px">${t('crest')}</button></div>`:''}`);setTimeout(()=>{const i=$('cin');i&&i.focus()},60)}
 function cardRestore(){cmOpen(`<h3>${t('crest')}</h3><small style="color:var(--mu);font-weight:700">${t('crsh')}</small><input id="cin" dir="auto" maxlength="40" placeholder="${t('cname')}"><input id="cno" dir="ltr" inputmode="numeric" maxlength="10" placeholder="N° #0024"><p class="cerr" id="cerr"></p><div class="btns"><button class="btn p" id="c-rg">${t('crsg')}</button><button class="btn" data-cclose>✕</button></div>`)}
 function cardSave(k){try{localStorage.setItem(CK,JSON.stringify(k))}catch(e){}render();cardShow(k)}
 async function cardIssue(){const i=$('cin'),v=i.value.replace(/\s+/g,' ').trim(),er=$('cerr'),go=$('c-go');er.textContent='';i.classList.remove('er');
 if(v.length<2){i.classList.add('er');i.focus();return}
-if(!REG_ON()){let r;try{r=crypto.getRandomValues(new Uint32Array(1))[0]}catch(e){r=Math.floor(Math.random()*4e9)}return cardSave({name:v,no:String(r%9999+1).padStart(4,'0'),d:new Date().toISOString()})}
+if(!REG_SET()){let r;try{r=crypto.getRandomValues(new Uint32Array(1))[0]}catch(e){r=Math.floor(Math.random()*4e9)}return cardSave({name:v,no:String(r%9999+1).padStart(4,'0'),d:new Date().toISOString()})}
+if(!REG_ON()){er.textContent=t('cnet')+' [E0]';console.error('[CBM registry] E0: رابط السجل يجب أن ينتهي بـ /exec، الحالي:',regUrl());return}
 go.disabled=true;go.textContent='…';
-try{const r=await regCall({v:1,a:'register',name:v,dev:devId(),lang:S.lang});if(r&&r.ok)return cardSave({name:r.name||v,no:r.no,d:r.d});er.textContent=t(r&&r.code==='exists'?'cdup':'cnet')}catch(e){er.textContent=t('cnet')}
+try{const r=await regCall({v:1,a:'register',name:v,dev:devId(),lang:S.lang});if(r&&r.ok)return cardSave({name:r.name||v,no:r.no,d:r.d});er.textContent=r&&r.code==='exists'?t('cdup'):cerr(r&&{code:r&&r.code||'E3'})}catch(e){er.textContent=cerr(e)}
 go.disabled=false;go.textContent=t('cgo')}
 async function cardRestoreGo(){const v=$('cin').value.replace(/\s+/g,' ').trim(),no=$('cno').value.replace(/\D/g,''),er=$('cerr'),go=$('c-rg');er.textContent='';
 if(v.length<2||!no){er.textContent=t('crsf');return}go.disabled=true;
-try{const r=await regCall({v:1,a:'restore',name:v,no:no.padStart(4,'0')});if(r&&r.ok)return cardSave({name:r.name,no:r.no,d:r.d});er.textContent=t('crsf')}catch(e){er.textContent=t('cnet')}go.disabled=false}
+try{const r=await regCall({v:1,a:'restore',name:v,no:no.padStart(4,'0')});if(r&&r.ok)return cardSave({name:r.name,no:r.no,d:r.d});er.textContent=t('crsf')}catch(e){er.textContent=cerr(e)}go.disabled=false}
 let cUrl='';
 async function cardShow(k){if(!k)return;cmOpen('<div class="empty">…</div>');
 try{const cv=await drawCard(k),b=await new Promise(r=>cv.toBlob(r,'image/png'));if(cUrl)URL.revokeObjectURL(cUrl);cUrl=URL.createObjectURL(b);
