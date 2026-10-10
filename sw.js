@@ -1,5 +1,5 @@
 // CBM Mila service worker. غيّر رقم النسخة V عند الحاجة لإجبار الأجهزة على تنظيف التخزين القديم
-const V='v12',SHELL_C='cbm-shell-'+V,DATA_C='cbm-data-'+V;
+const V='v13',SHELL_C='cbm-shell-'+V,DATA_C='cbm-data-'+V;
 const SHELL=['./','./index.html','./manifest.webmanifest','./icon-192.png','./icon-512.png','./apple-touch-icon.png','./card-template.jpg','./qr.png','./config.js'];
 // التثبيت لا يفشل أبدًا حتى لو غاب أحد الملفات
 self.addEventListener('install',e=>e.waitUntil(caches.open(SHELL_C).then(c=>Promise.all(SHELL.map(u=>c.add(u).catch(()=>{})))).then(()=>self.skipWaiting())));
