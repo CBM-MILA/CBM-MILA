@@ -1,0 +1,2286 @@
+{
+  "schemaVersion": 3,
+  "lastUpdated": "2026-10-11T12:00:00+01:00",
+  "sourceUrls": {
+    "club": "https://www.lirf.dz/ar/club/733",
+    "ranking": "https://www.lirf.dz/ar/ranking",
+    "player": "https://www.lirf.dz/ar/player/{id}",
+    "match": "https://www.lirf.dz/ar/match/{id}",
+    "calendar": "https://www.lirf.dz/ar/calendar"
+  },
+  "sourceMeta": {
+    "seasonId": "6",
+    "seasonName": "2026/2027",
+    "competitionId": "4275",
+    "competitionAr": "شرق",
+    "competitionLatin": "Ligue Inter-Régions Group East",
+    "timezone": "Africa/Algiers",
+    "palette": {
+      "primary": "#e30613",
+      "white": "#FFFFFF",
+      "black": "#000000"
+    },
+    "relegationPlaces": 0
+  },
+  "club": {
+    "id": "733",
+    "name": {
+      "ar": "شباب ميلة",
+      "latin": "CBM Mila"
+    },
+    "short": "CBM",
+    "city": "Mila",
+    "country": "Algeria",
+    "logo": "https://www.lirf.dz/clubs-logos/733-1656234689.png",
+    "stadium": {
+      "name": "—",
+      "ar": "لا يوجد ملعب مرتبط رسميًا بملف النادي على LIRF",
+      "source": "LIRF club profile — no associated stadium"
+    }
+  },
+  "staff": [
+    {
+      "id": "staff-1",
+      "name": {
+        "ar": "بلعريبي سعيد",
+        "latin": "سعيد بلعريبي",
+        "en": "سعيد بلعريبي"
+      },
+      "role": {
+        "ar": "مدرب أكابر",
+        "en": "Head coach"
+      },
+      "nationality": "الجزائر",
+      "photoUrl": "https://www.lirf.dz/person-image/155316-1669552530.jpg"
+    },
+    {
+      "id": "staff-2",
+      "name": {
+        "ar": "قياس محمد",
+        "latin": "قياس محمد",
+        "en": "قياس محمد"
+      },
+      "role": {
+        "ar": "1er Entr. Adjoint Séniors",
+        "en": "Assistant coach"
+      },
+      "nationality": "الجزائر",
+      "photoUrl": "https://www.lirf.dz/person-image/612169-1772740180.jpg"
+    },
+    {
+      "id": "staff-3",
+      "name": {
+        "ar": "يحياوي الوليد",
+        "latin": "يحياوي الوليد",
+        "en": "يحياوي الوليد"
+      },
+      "role": {
+        "ar": "مدرب حراس أكابر",
+        "en": "Goalkeeper coach"
+      },
+      "nationality": "الجزائر",
+      "photoUrl": "https://www.lirf.dz/person-image/59277-1664706356.jpg"
+    },
+    {
+      "id": "staff-4",
+      "name": {
+        "ar": "مسعي أسامة",
+        "latin": "مسعي أسامة",
+        "en": "مسعي أسامة"
+      },
+      "role": {
+        "ar": "محضر بدني أكابر",
+        "en": "Fitness coach"
+      },
+      "nationality": "الجزائر",
+      "photoUrl": "https://www.lirf.dz/person-image/498704-1738235237.jpg"
+    }
+  ],
+  "players": [
+    {
+      "id": "43091",
+      "shirt": 1,
+      "name": {
+        "ar": "حميدي محمد بهاء الدين",
+        "latin": "حميدي محمد بهاء الدين",
+        "en": "حميدي محمد بهاء الدين"
+      },
+      "position": "GK",
+      "birthDate": "2001-07-05",
+      "approxAge": null,
+      "nationality": "الجزائر",
+      "photoUrl": "https://www.lirf.dz/licence-photo/photo-pro-870947-1789843107.png",
+      "sourceUrl": "https://www.lirf.dz/ar/player/43091",
+      "lastFetchedAt": null
+    },
+    {
+      "id": "62230",
+      "shirt": 30,
+      "name": {
+        "ar": "شابونية حسام",
+        "latin": "شابونية حسام",
+        "en": "شابونية حسام"
+      },
+      "position": "GK",
+      "birthDate": "1997-01-21",
+      "approxAge": null,
+      "nationality": "الجزائر",
+      "photoUrl": "https://www.lirf.dz/licence-photo/photo-pro-870975-1789845765.png",
+      "sourceUrl": "https://www.lirf.dz/ar/player/62230",
+      "lastFetchedAt": null
+    },
+    {
+      "id": "129241",
+      "shirt": 16,
+      "name": {
+        "ar": "مقيرد عمر",
+        "latin": "مقيرد عمر",
+        "en": "مقيرد عمر"
+      },
+      "position": "GK",
+      "birthDate": "2006-09-06",
+      "approxAge": null,
+      "nationality": "الجزائر",
+      "photoUrl": "https://www.lirf.dz/licence-photo/photo-pro-871473-1789845435.png",
+      "sourceUrl": "https://www.lirf.dz/ar/player/129241",
+      "lastFetchedAt": null
+    },
+    {
+      "id": "72760",
+      "shirt": 2,
+      "name": {
+        "ar": "فقراوي بلقاسم",
+        "latin": "فقراوي بلقاسم",
+        "en": "فقراوي بلقاسم"
+      },
+      "position": "DEF",
+      "birthDate": null,
+      "approxAge": 22,
+      "nationality": "الجزائر",
+      "photoUrl": "https://www.lirf.dz/licence-photo/photo-pro-870950-1789843145.png",
+      "sourceUrl": "https://www.lirf.dz/ar/player/72760",
+      "lastFetchedAt": null
+    },
+    {
+      "id": "42007",
+      "shirt": 3,
+      "name": {
+        "ar": "زكور اسامة",
+        "latin": "زكور اسامة",
+        "en": "زكور اسامة"
+      },
+      "position": "DEF",
+      "birthDate": null,
+      "approxAge": 30,
+      "nationality": "الجزائر",
+      "photoUrl": "https://www.lirf.dz/licence-photo/photo-pro-873472-1789845963.png",
+      "sourceUrl": "https://www.lirf.dz/ar/player/42007",
+      "lastFetchedAt": null
+    },
+    {
+      "id": "36975",
+      "shirt": 4,
+      "name": {
+        "ar": "قلبوزة بلقاسم",
+        "latin": "قلبوزة بلقاسم",
+        "en": "قلبوزة بلقاسم"
+      },
+      "position": "DEF",
+      "birthDate": "1996-05-14",
+      "approxAge": null,
+      "nationality": "الجزائر",
+      "photoUrl": "https://www.lirf.dz/licence-photo/photo-pro-870953-1789845132.png",
+      "sourceUrl": "https://www.lirf.dz/ar/player/36975",
+      "lastFetchedAt": null
+    },
+    {
+      "id": "46519",
+      "shirt": 5,
+      "name": {
+        "ar": "بولدياب بلال",
+        "latin": "بولدياب بلال",
+        "en": "بولدياب بلال"
+      },
+      "position": "DEF",
+      "birthDate": null,
+      "approxAge": 37,
+      "nationality": "الجزائر",
+      "photoUrl": "https://www.lirf.dz/licence-photo/photo-pro-870955-1789845155.png",
+      "sourceUrl": "https://www.lirf.dz/ar/player/46519",
+      "lastFetchedAt": null
+    },
+    {
+      "id": "58378",
+      "shirt": 20,
+      "name": {
+        "ar": "بن يحي سراج الدين",
+        "latin": "بن يحي سراج الدين",
+        "en": "بن يحي سراج الدين"
+      },
+      "position": "DEF",
+      "birthDate": "2005-08-15",
+      "approxAge": null,
+      "nationality": "الجزائر",
+      "photoUrl": "https://www.lirf.dz/licence-photo/photo-pro-870969-1789845542.png",
+      "sourceUrl": "https://www.lirf.dz/ar/player/58378",
+      "lastFetchedAt": null
+    },
+    {
+      "id": "44171",
+      "shirt": 22,
+      "name": {
+        "ar": "بن لعريبي سليمان",
+        "latin": "بن لعريبي سليمان",
+        "en": "بن لعريبي سليمان"
+      },
+      "position": "DEF",
+      "birthDate": "1993-10-30",
+      "approxAge": null,
+      "nationality": "الجزائر",
+      "photoUrl": "https://www.lirf.dz/licence-photo/photo-pro-870971-1789845612.png",
+      "sourceUrl": "https://www.lirf.dz/ar/player/44171",
+      "lastFetchedAt": null
+    },
+    {
+      "id": "47553",
+      "shirt": 24,
+      "name": {
+        "ar": "بودابة برهان",
+        "latin": "بودابة برهان",
+        "en": "بودابة برهان"
+      },
+      "position": "DEF",
+      "birthDate": null,
+      "approxAge": 28,
+      "nationality": "الجزائر",
+      "photoUrl": "https://www.lirf.dz/licence-photo/photo-pro-870972-1789845640.png",
+      "sourceUrl": "https://www.lirf.dz/ar/player/47553",
+      "lastFetchedAt": null
+    },
+    {
+      "id": "42302",
+      "shirt": 6,
+      "name": {
+        "ar": "عابد واسيم",
+        "latin": "عابد واسيم",
+        "en": "عابد واسيم"
+      },
+      "position": "MID",
+      "birthDate": "2001-06-03",
+      "approxAge": null,
+      "nationality": "الجزائر",
+      "photoUrl": "https://www.lirf.dz/licence-photo/photo-pro-873470-1789846014.png",
+      "sourceUrl": "https://www.lirf.dz/ar/player/42302",
+      "lastFetchedAt": null
+    },
+    {
+      "id": "40940",
+      "shirt": 8,
+      "name": {
+        "ar": "سياب يوسف إسلام",
+        "latin": "سياب يوسف إسلام",
+        "en": "سياب يوسف إسلام"
+      },
+      "position": "MID",
+      "birthDate": null,
+      "approxAge": 32,
+      "nationality": "الجزائر",
+      "photoUrl": "https://www.lirf.dz/licence-photo/photo-pro-870961-1789845276.png",
+      "sourceUrl": "https://www.lirf.dz/ar/player/40940",
+      "lastFetchedAt": null
+    },
+    {
+      "id": "377274",
+      "shirt": 10,
+      "name": {
+        "ar": "عقبي بن حدوش حسن",
+        "latin": "عقبي بن حدوش حسن",
+        "en": "عقبي بن حدوش حسن"
+      },
+      "position": "MID",
+      "birthDate": "1989-08-17",
+      "approxAge": null,
+      "nationality": "الجزائر",
+      "photoUrl": null,
+      "sourceUrl": "https://www.lirf.dz/ar/player/377274",
+      "lastFetchedAt": null
+    },
+    {
+      "id": "52968",
+      "shirt": 14,
+      "name": {
+        "ar": "عتامنة محمد عصام",
+        "latin": "عتامنة محمد عصام",
+        "en": "عتامنة محمد عصام"
+      },
+      "position": "MID",
+      "birthDate": "1995-06-08",
+      "approxAge": null,
+      "nationality": "الجزائر",
+      "photoUrl": "https://www.lirf.dz/licence-photo/photo-pro-870963-1789845335.png",
+      "sourceUrl": "https://www.lirf.dz/ar/player/52968",
+      "lastFetchedAt": null
+    },
+    {
+      "id": "69852",
+      "shirt": 15,
+      "name": {
+        "ar": "قيرة إسماعيل",
+        "latin": "قيرة إسماعيل",
+        "en": "قيرة إسماعيل"
+      },
+      "position": "MID",
+      "birthDate": "1994-07-12",
+      "approxAge": null,
+      "nationality": "الجزائر",
+      "photoUrl": "https://www.lirf.dz/licence-photo/photo-pro-870965-1789845401.png",
+      "sourceUrl": "https://www.lirf.dz/ar/player/69852",
+      "lastFetchedAt": null
+    },
+    {
+      "id": "14596",
+      "shirt": 19,
+      "name": {
+        "ar": "قدور عبد المالك",
+        "latin": "قدور عبد المالك",
+        "en": "قدور عبد المالك"
+      },
+      "position": "MID",
+      "birthDate": null,
+      "approxAge": 21,
+      "nationality": "الجزائر",
+      "photoUrl": "https://www.lirf.dz/licence-photo/photo-pro-870968-1789845520.png",
+      "sourceUrl": "https://www.lirf.dz/ar/player/14596",
+      "lastFetchedAt": null
+    },
+    {
+      "id": "48886",
+      "shirt": 25,
+      "name": {
+        "ar": "مبرك محمد تاج الدين",
+        "latin": "مبرك محمد تاج الدين",
+        "en": "مبرك محمد تاج الدين"
+      },
+      "position": "MID",
+      "birthDate": null,
+      "approxAge": 34,
+      "nationality": "الجزائر",
+      "photoUrl": "https://www.lirf.dz/licence-photo/photo-pro-870973-1789845664.png",
+      "sourceUrl": "https://www.lirf.dz/ar/player/48886",
+      "lastFetchedAt": null
+    },
+    {
+      "id": "130839",
+      "shirt": 26,
+      "name": {
+        "ar": "بوقصبة وسيم",
+        "latin": "بوقصبة وسيم",
+        "en": "بوقصبة وسيم"
+      },
+      "position": "MID",
+      "birthDate": "2005-09-04",
+      "approxAge": null,
+      "nationality": "الجزائر",
+      "photoUrl": "https://www.lirf.dz/licence-photo/photo-pro-870974-1789845706.png",
+      "sourceUrl": "https://www.lirf.dz/ar/player/130839",
+      "lastFetchedAt": null
+    },
+    {
+      "id": "51430",
+      "shirt": 27,
+      "name": {
+        "ar": "شريبط ابراهيم",
+        "latin": "شريبط ابراهيم",
+        "en": "شريبط ابراهيم"
+      },
+      "position": "MID",
+      "birthDate": null,
+      "approxAge": 32,
+      "nationality": "الجزائر",
+      "photoUrl": "https://www.lirf.dz/licence-photo/photo-pro-871467-1789845737.png",
+      "sourceUrl": "https://www.lirf.dz/ar/player/51430",
+      "lastFetchedAt": null
+    },
+    {
+      "id": "129258",
+      "shirt": 28,
+      "name": {
+        "ar": "جزار عبد العالي",
+        "latin": "جزار عبد العالي",
+        "en": "جزار عبد العالي"
+      },
+      "position": "MID",
+      "birthDate": "2006-08-17",
+      "approxAge": null,
+      "nationality": "الجزائر",
+      "photoUrl": null,
+      "sourceUrl": "https://www.lirf.dz/ar/player/129258",
+      "lastFetchedAt": null
+    },
+    {
+      "id": "52586",
+      "shirt": 7,
+      "name": {
+        "ar": "بن الطيب رامي",
+        "latin": "بن الطيب رامي",
+        "en": "بن الطيب رامي"
+      },
+      "position": "FW",
+      "birthDate": "2004-04-11",
+      "approxAge": null,
+      "nationality": "الجزائر",
+      "photoUrl": "https://www.lirf.dz/licence-photo/photo-pro-870959-1789845210.png",
+      "sourceUrl": "https://www.lirf.dz/ar/player/52586",
+      "lastFetchedAt": null
+    },
+    {
+      "id": "40725",
+      "shirt": 9,
+      "name": {
+        "ar": "BENSEGHIER HAMZA",
+        "latin": "HAMZA BENSEGHIER",
+        "en": "HAMZA BENSEGHIER"
+      },
+      "position": "FW",
+      "birthDate": "2002-02-23",
+      "approxAge": 24,
+      "nationality": "الجزائر",
+      "photoUrl": "https://www.lirf.dz/licence-photo/photo-pro-870962-1789845311.png",
+      "sourceUrl": "https://www.lirf.dz/ar/player/40725",
+      "lastFetchedAt": "2026-10-04T00:00:00+01:00"
+    },
+    {
+      "id": "51990",
+      "shirt": 11,
+      "name": {
+        "ar": "خابية صلاح الدين",
+        "latin": "خابية صلاح الدين",
+        "en": "خابية صلاح الدين"
+      },
+      "position": "FW",
+      "birthDate": null,
+      "approxAge": 33,
+      "nationality": "الجزائر",
+      "photoUrl": "https://www.lirf.dz/licence-photo/photo-pro-870964-1789845365.png",
+      "sourceUrl": "https://www.lirf.dz/ar/player/51990",
+      "lastFetchedAt": null
+    },
+    {
+      "id": "49698",
+      "shirt": 17,
+      "name": {
+        "ar": "رملي ناجي",
+        "latin": "رملي ناجي",
+        "en": "رملي ناجي"
+      },
+      "position": "FW",
+      "birthDate": null,
+      "approxAge": 33,
+      "nationality": "الجزائر",
+      "photoUrl": "https://www.lirf.dz/licence-photo/photo-pro-870966-1789845457.png",
+      "sourceUrl": "https://www.lirf.dz/ar/player/49698",
+      "lastFetchedAt": null
+    },
+    {
+      "id": "43990",
+      "shirt": 18,
+      "name": {
+        "ar": "ماضي رابح",
+        "latin": "ماضي رابح",
+        "en": "ماضي رابح"
+      },
+      "position": "FW",
+      "birthDate": null,
+      "approxAge": 24,
+      "nationality": "الجزائر",
+      "photoUrl": "https://www.lirf.dz/licence-photo/photo-pro-870967-1789845497.png",
+      "sourceUrl": "https://www.lirf.dz/ar/player/43990",
+      "lastFetchedAt": null
+    },
+    {
+      "id": "58346",
+      "shirt": 21,
+      "name": {
+        "ar": "لعطيوي وسيم",
+        "latin": "لعطيوي وسيم",
+        "en": "لعطيوي وسيم"
+      },
+      "position": "FW",
+      "birthDate": "2000-04-03",
+      "approxAge": null,
+      "nationality": "الجزائر",
+      "photoUrl": "https://www.lirf.dz/licence-photo/photo-pro-870970-1789845579.png",
+      "sourceUrl": "https://www.lirf.dz/ar/player/58346",
+      "lastFetchedAt": null
+    },
+    {
+      "id": "51164",
+      "shirt": 23,
+      "name": {
+        "ar": "دغموش رابح",
+        "latin": "دغموش رابح",
+        "en": "دغموش رابح"
+      },
+      "position": "FW",
+      "birthDate": null,
+      "approxAge": 34,
+      "nationality": "الجزائر",
+      "photoUrl": "https://www.lirf.dz/licence-photo/photo-pro-874562-1789845991.png",
+      "sourceUrl": "https://www.lirf.dz/ar/player/51164",
+      "lastFetchedAt": null
+    }
+  ],
+  "opponents": [
+    {
+      "id": "651",
+      "name": {
+        "ar": "امل عين مليلة",
+        "latin": "ASM Ain M'lila",
+        "en": "ASM Ain M'lila"
+      },
+      "short": "ASM",
+      "logo": "https://www.lirf.dz/clubs-logos/651-1642066952.png"
+    },
+    {
+      "id": "728",
+      "name": {
+        "ar": "شباب عين فكرون",
+        "latin": "CRB Ain Fekroun",
+        "en": "CRB Ain Fekroun"
+      },
+      "short": "CRBAF",
+      "logo": "https://www.lirf.dz/clubs-logos/728-1656232557.png"
+    },
+    {
+      "id": "734",
+      "name": {
+        "ar": "شباب عين ياقوت",
+        "latin": "CRB Ain Yagout",
+        "en": "CRB Ain Yagout"
+      },
+      "short": "CRBAY",
+      "logo": "https://www.lirf.dz/clubs-logos/734-1656234945.png"
+    },
+    {
+      "id": "997",
+      "name": {
+        "ar": "شباب الميلية",
+        "latin": "CRBE Milia",
+        "en": "CRBE Milia"
+      },
+      "short": "CRBE",
+      "logo": "https://www.lirf.dz/clubs-logos/997-1663798648.png"
+    },
+    {
+      "id": "1036",
+      "name": {
+        "ar": "شباب الرياضي بلدية فرجيوة",
+        "latin": "CRB Ferdjioua",
+        "en": "CRB Ferdjioua"
+      },
+      "short": "CRBF",
+      "logo": "https://www.lirf.dz/clubs-logos/1036-1729464250.png"
+    },
+    {
+      "id": "727",
+      "name": {
+        "ar": "شباب قايس",
+        "latin": "CRB Kais",
+        "en": "CRB Kais"
+      },
+      "short": "CRBK",
+      "logo": "https://www.lirf.dz/clubs-logos/727-1656232290.png"
+    },
+    {
+      "id": "849",
+      "name": {
+        "ar": "النجم الرياضي فرفوس بئر العاتر",
+        "latin": "ESF Bir El Ater",
+        "en": "ESF Bir El Ater"
+      },
+      "short": "ESFBEA",
+      "logo": "https://www.lirf.dz/clubs-logos/849-1661335046.png"
+    },
+    {
+      "id": "736",
+      "name": {
+        "ar": "ترجي قالمة",
+        "latin": "ES Guelma",
+        "en": "ES Guelma"
+      },
+      "short": "ESG",
+      "logo": "https://www.lirf.dz/clubs-logos/736-1693664135.png"
+    },
+    {
+      "id": "937",
+      "name": {
+        "ar": "النادي الرياضي وفاق سوق اهراس",
+        "latin": "ES Souk Ahras",
+        "en": "ES Souk Ahras"
+      },
+      "short": "ESSA",
+      "logo": "https://www.lirf.dz/clubs-logos/937-1661430750.png"
+    },
+    {
+      "id": "891",
+      "name": {
+        "ar": "إتحاد سدراتة",
+        "latin": "IRB Sedrata",
+        "en": "IRB Sedrata"
+      },
+      "short": "IRBS",
+      "logo": "https://www.lirf.dz/clubs-logos/891-1661419194.png"
+    },
+    {
+      "id": "731",
+      "name": {
+        "ar": "شباب عين كرشة",
+        "latin": "JB Ain Kercha",
+        "en": "JB Ain Kercha"
+      },
+      "short": "JBAK",
+      "logo": "https://www.lirf.dz/clubs-logos/731-1656233831.png"
+    },
+    {
+      "id": "732",
+      "name": {
+        "ar": "نصر الفجوج",
+        "latin": "NASR El Fedjoudj",
+        "en": "NASR El Fedjoudj"
+      },
+      "short": "NASR",
+      "logo": "https://www.lirf.dz/clubs-logos/732-1660840984.png"
+    },
+    {
+      "id": "729",
+      "name": {
+        "ar": "نجم تازوقاغت",
+        "latin": "NRB Tazouguert",
+        "en": "NRB Tazouguert"
+      },
+      "short": "NRBT",
+      "logo": "https://www.lirf.dz/clubs-logos/729-1656233034.png"
+    },
+    {
+      "id": "884",
+      "name": {
+        "ar": "إتحاد بوخضرة",
+        "latin": "US Boukhadra",
+        "en": "US Boukhadra"
+      },
+      "short": "USB",
+      "logo": "https://www.lirf.dz/clubs-logos/884-1661417821.png"
+    },
+    {
+      "id": "823",
+      "name": {
+        "ar": "اتحاد الفوبور",
+        "latin": "USF Constantine",
+        "en": "USF Constantine"
+      },
+      "short": "USFC",
+      "logo": "https://www.lirf.dz/clubs-logos/823-1662314683.png"
+    }
+  ],
+  "matches": [
+    {
+      "id": "226403",
+      "round": 1,
+      "kickoff": "2026-09-26T16:00:00+01:00",
+      "venue": "Stade de Ferdjioua, Ferdjioua",
+      "home": "1036",
+      "away": "733",
+      "status": "finished",
+      "score": {
+        "home": 4,
+        "away": 0
+      },
+      "referees": [
+        "قويشيش عبد الكريم",
+        "LAZIZI",
+        "ZAIDI Redha"
+      ],
+      "events": [
+        {
+          "minute": 44,
+          "type": "goal",
+          "team": "1036",
+          "playerId": null,
+          "playerName": "خنطيط اسامة بشير"
+        },
+        {
+          "minute": 55,
+          "type": "goal",
+          "team": "1036",
+          "playerId": null,
+          "playerName": "خنطيط اسامة بشير"
+        },
+        {
+          "minute": 76,
+          "type": "goal",
+          "team": "1036",
+          "playerId": null,
+          "playerName": "زوقار ادريس"
+        },
+        {
+          "minute": 88,
+          "type": "goal",
+          "team": "1036",
+          "playerId": null,
+          "playerName": "زوقار ادريس"
+        },
+        {
+          "minute": 14,
+          "type": "yellow",
+          "team": "733",
+          "playerId": "72760",
+          "playerName": null
+        },
+        {
+          "minute": 42,
+          "type": "yellow",
+          "team": "733",
+          "playerId": "46519",
+          "playerName": null
+        },
+        {
+          "minute": 45,
+          "type": "sub-in",
+          "team": "733",
+          "playerId": "377274",
+          "playerName": null,
+          "relatedPlayerId": "48886",
+          "relatedPlayerName": null
+        },
+        {
+          "minute": 45,
+          "type": "sub-out",
+          "team": "733",
+          "playerId": "48886",
+          "playerName": null,
+          "relatedPlayerId": "377274",
+          "relatedPlayerName": null
+        },
+        {
+          "minute": 65,
+          "type": "sub-in",
+          "team": "733",
+          "playerId": "51990",
+          "playerName": null,
+          "relatedPlayerId": "72760",
+          "relatedPlayerName": null
+        },
+        {
+          "minute": 65,
+          "type": "sub-out",
+          "team": "733",
+          "playerId": "72760",
+          "playerName": null,
+          "relatedPlayerId": "51990",
+          "relatedPlayerName": null
+        },
+        {
+          "minute": 65,
+          "type": "sub-in",
+          "team": "733",
+          "playerId": "14596",
+          "playerName": null,
+          "relatedPlayerId": "40940",
+          "relatedPlayerName": null
+        },
+        {
+          "minute": 65,
+          "type": "sub-out",
+          "team": "733",
+          "playerId": "40940",
+          "playerName": null,
+          "relatedPlayerId": "14596",
+          "relatedPlayerName": null
+        },
+        {
+          "minute": 82,
+          "type": "sub-in",
+          "team": "733",
+          "playerId": "43990",
+          "playerName": null,
+          "relatedPlayerId": "49698",
+          "relatedPlayerName": null
+        },
+        {
+          "minute": 82,
+          "type": "sub-out",
+          "team": "733",
+          "playerId": "49698",
+          "playerName": null,
+          "relatedPlayerId": "43990",
+          "relatedPlayerName": null
+        }
+      ],
+      "lineups": {
+        "home": {
+          "starters": [],
+          "bench": [],
+          "coach": null
+        },
+        "away": {
+          "starters": [
+            {
+              "playerId": "43091"
+            },
+            {
+              "playerId": "72760"
+            },
+            {
+              "playerId": "42007"
+            },
+            {
+              "playerId": "46519"
+            },
+            {
+              "playerId": "58378"
+            },
+            {
+              "playerId": "44171"
+            },
+            {
+              "playerId": "40940"
+            },
+            {
+              "playerId": "48886"
+            },
+            {
+              "playerId": "51430"
+            },
+            {
+              "playerId": "40725"
+            },
+            {
+              "playerId": "49698"
+            }
+          ],
+          "bench": [
+            {
+              "playerId": "36975"
+            },
+            {
+              "playerId": "377274"
+            },
+            {
+              "playerId": "51990"
+            },
+            {
+              "playerId": "69852"
+            },
+            {
+              "playerId": "43990"
+            },
+            {
+              "playerId": "14596"
+            },
+            {
+              "playerId": "51164"
+            },
+            {
+              "playerId": "47553"
+            },
+            {
+              "playerId": "62230"
+            }
+          ],
+          "coach": null
+        }
+      },
+      "detailFetchedAt": "2026-10-04T00:00:00+01:00",
+      "lastDetailCheck": "2026-10-04T00:00:00+01:00"
+    },
+    {
+      "id": "226410",
+      "round": 2,
+      "kickoff": "2026-10-03T15:00:00+01:00",
+      "venue": "Stade Belkacem Belaid, Mila",
+      "home": "733",
+      "away": "734",
+      "status": "finished",
+      "score": {
+        "home": 3,
+        "away": 0
+      },
+      "referees": [
+        "غواس يونس",
+        "مري مبروك",
+        "TEBANI Abdelhak"
+      ],
+      "events": [
+        {
+          "minute": 25,
+          "type": "goal",
+          "team": "733",
+          "playerId": "40725",
+          "playerName": null
+        },
+        {
+          "minute": 57,
+          "type": "goal",
+          "team": "733",
+          "playerId": "49698",
+          "playerName": null
+        },
+        {
+          "minute": 67,
+          "type": "goal",
+          "team": "733",
+          "playerId": "43990",
+          "playerName": null
+        },
+        {
+          "minute": 45,
+          "type": "sub-in",
+          "team": "733",
+          "playerId": "43990",
+          "playerName": null,
+          "relatedPlayerId": "51990",
+          "relatedPlayerName": null
+        },
+        {
+          "minute": 45,
+          "type": "sub-out",
+          "team": "733",
+          "playerId": "51990",
+          "playerName": null,
+          "relatedPlayerId": "43990",
+          "relatedPlayerName": null
+        },
+        {
+          "minute": 45,
+          "type": "sub-in",
+          "team": "733",
+          "playerId": "47553",
+          "playerName": null,
+          "relatedPlayerId": "42007",
+          "relatedPlayerName": null
+        },
+        {
+          "minute": 45,
+          "type": "sub-out",
+          "team": "733",
+          "playerId": "42007",
+          "playerName": null,
+          "relatedPlayerId": "47553",
+          "relatedPlayerName": null
+        },
+        {
+          "minute": 76,
+          "type": "sub-in",
+          "team": "733",
+          "playerId": "51164",
+          "playerName": null,
+          "relatedPlayerId": "49698",
+          "relatedPlayerName": null
+        },
+        {
+          "minute": 76,
+          "type": "sub-out",
+          "team": "733",
+          "playerId": "49698",
+          "playerName": null,
+          "relatedPlayerId": "51164",
+          "relatedPlayerName": null
+        },
+        {
+          "minute": 78,
+          "type": "sub-in",
+          "team": "733",
+          "playerId": "51430",
+          "playerName": null,
+          "relatedPlayerId": "40725",
+          "relatedPlayerName": null
+        },
+        {
+          "minute": 78,
+          "type": "sub-out",
+          "team": "733",
+          "playerId": "40725",
+          "playerName": null,
+          "relatedPlayerId": "51430",
+          "relatedPlayerName": null
+        },
+        {
+          "minute": 85,
+          "type": "sub-in",
+          "team": "733",
+          "playerId": "14596",
+          "playerName": null,
+          "relatedPlayerId": "377274",
+          "relatedPlayerName": null
+        },
+        {
+          "minute": 85,
+          "type": "sub-out",
+          "team": "733",
+          "playerId": "377274",
+          "playerName": null,
+          "relatedPlayerId": "14596",
+          "relatedPlayerName": null
+        }
+      ],
+      "lineups": {
+        "home": {
+          "starters": [
+            {
+              "playerId": "43091"
+            },
+            {
+              "playerId": "42007"
+            },
+            {
+              "playerId": "36975"
+            },
+            {
+              "playerId": "46519"
+            },
+            {
+              "playerId": "58378"
+            },
+            {
+              "playerId": "377274"
+            },
+            {
+              "playerId": "48886"
+            },
+            {
+              "playerId": "40940"
+            },
+            {
+              "playerId": "40725"
+            },
+            {
+              "playerId": "51990"
+            },
+            {
+              "playerId": "49698"
+            }
+          ],
+          "bench": [
+            {
+              "playerId": "72760"
+            },
+            {
+              "playerId": "51164"
+            },
+            {
+              "playerId": "51430"
+            },
+            {
+              "playerId": "62230"
+            },
+            {
+              "playerId": "47553"
+            },
+            {
+              "playerId": "44171"
+            },
+            {
+              "playerId": "14596"
+            },
+            {
+              "playerId": "43990"
+            },
+            {
+              "playerId": "69852"
+            }
+          ],
+          "coach": "بلعريبي سعيد"
+        },
+        "away": {
+          "starters": [
+            {
+              "playerName": "بلقاسم بوزيدة شراف الدين"
+            },
+            {
+              "playerName": "سيليني محمد نوفل"
+            },
+            {
+              "playerName": "زكور أحمد"
+            },
+            {
+              "playerName": "صغير شمس الدين"
+            },
+            {
+              "playerName": "قارح مصعب رائد الأمة"
+            },
+            {
+              "playerName": "عليوة معاذ"
+            },
+            {
+              "playerName": "بن جدو محمد أنيس"
+            },
+            {
+              "playerName": "بالة رضا"
+            },
+            {
+              "playerName": "بن دحمان عيسى"
+            },
+            {
+              "playerName": "مغراوي عبد العزيز"
+            },
+            {
+              "playerName": "عقيب وائل"
+            }
+          ],
+          "bench": [
+            {
+              "playerName": "لخزوم عاصم تقي الدين"
+            },
+            {
+              "playerName": "لعماري إياد المأمون"
+            },
+            {
+              "playerName": "بروال منصف"
+            },
+            {
+              "playerName": "موفق طه معاذ"
+            },
+            {
+              "playerName": "سعدي محمد نضال"
+            },
+            {
+              "playerName": "أمزيان لخضر"
+            },
+            {
+              "playerName": "عليوة اشرف"
+            },
+            {
+              "playerName": "عواب أيوب"
+            },
+            {
+              "playerName": "مرزوق فراس"
+            }
+          ],
+          "coach": "وسار فاتح"
+        }
+      },
+      "detailFetchedAt": "2026-10-04T00:00:00+01:00",
+      "lastDetailCheck": "2026-10-04T00:00:00+01:00"
+    },
+    {
+      "id": "226417",
+      "round": 3,
+      "kickoff": "2026-10-10T15:00:00+01:00",
+      "venue": "Souidani Boujemaa stadium, Guelma",
+      "home": "736",
+      "away": "733",
+      "status": "finished",
+      "score": {
+        "home": 1,
+        "away": 0
+      },
+      "referees": [],
+      "events": [
+        {
+          "minute": 31,
+          "type": "yellow",
+          "team": "733",
+          "playerId": "58378",
+          "playerName": null
+        },
+        {
+          "minute": 38,
+          "type": "yellow",
+          "team": "733",
+          "playerId": "49698",
+          "playerName": null
+        },
+        {
+          "minute": 60,
+          "type": "goal",
+          "team": "736",
+          "playerId": null,
+          "playerName": "عبد الحفيظ حفاص"
+        },
+        {
+          "minute": 65,
+          "type": "sub-in",
+          "team": "733",
+          "playerId": "43990",
+          "playerName": null,
+          "relatedPlayerId": "51430",
+          "relatedPlayerName": null
+        },
+        {
+          "minute": 65,
+          "type": "sub-out",
+          "team": "733",
+          "playerId": "51430",
+          "playerName": null,
+          "relatedPlayerId": "43990",
+          "relatedPlayerName": null
+        },
+        {
+          "minute": 81,
+          "type": "sub-in",
+          "team": "733",
+          "playerId": "14596",
+          "playerName": null,
+          "relatedPlayerId": "40725",
+          "relatedPlayerName": null
+        },
+        {
+          "minute": 81,
+          "type": "sub-out",
+          "team": "733",
+          "playerId": "40725",
+          "playerName": null,
+          "relatedPlayerId": "14596",
+          "relatedPlayerName": null
+        },
+        {
+          "minute": 81,
+          "type": "sub-in",
+          "team": "733",
+          "playerId": "42007",
+          "playerName": null,
+          "relatedPlayerId": "58378",
+          "relatedPlayerName": null
+        },
+        {
+          "minute": 81,
+          "type": "sub-out",
+          "team": "733",
+          "playerId": "58378",
+          "playerName": null,
+          "relatedPlayerId": "42007",
+          "relatedPlayerName": null
+        },
+        {
+          "minute": 90,
+          "type": "sub-in",
+          "team": "733",
+          "playerId": "130839",
+          "playerName": null,
+          "relatedPlayerId": "40940",
+          "relatedPlayerName": null
+        },
+        {
+          "minute": 90,
+          "type": "sub-out",
+          "team": "733",
+          "playerId": "40940",
+          "playerName": null,
+          "relatedPlayerId": "130839",
+          "relatedPlayerName": null
+        },
+        {
+          "minute": 90,
+          "type": "yellow",
+          "team": "733",
+          "playerId": "47553",
+          "playerName": null
+        }
+      ],
+      "lineups": {
+        "home": {
+          "starters": [],
+          "bench": [],
+          "coach": null
+        },
+        "away": {
+          "starters": [
+            {
+              "playerId": "43091"
+            },
+            {
+              "playerId": "36975"
+            },
+            {
+              "playerId": "46519"
+            },
+            {
+              "playerId": "58378"
+            },
+            {
+              "playerId": "47553"
+            },
+            {
+              "playerId": "40940"
+            },
+            {
+              "playerId": "377274"
+            },
+            {
+              "playerId": "48886"
+            },
+            {
+              "playerId": "51430"
+            },
+            {
+              "playerId": "40725"
+            },
+            {
+              "playerId": "49698"
+            }
+          ],
+          "bench": [
+            {
+              "playerId": "42302"
+            },
+            {
+              "playerId": "69852"
+            },
+            {
+              "playerId": "43990"
+            },
+            {
+              "playerId": "14596"
+            },
+            {
+              "playerId": "58346"
+            },
+            {
+              "playerId": "44171"
+            },
+            {
+              "playerId": "130839"
+            },
+            {
+              "playerId": "62230"
+            },
+            {
+              "playerId": "42007"
+            }
+          ],
+          "coach": "بلعريبي سعيد"
+        }
+      },
+      "detailFetchedAt": null,
+      "lastDetailCheck": null
+    },
+    {
+      "id": "226424",
+      "round": 4,
+      "kickoff": null,
+      "venue": null,
+      "home": "733",
+      "away": "729",
+      "status": "scheduled",
+      "score": null,
+      "referees": [],
+      "events": [],
+      "lineups": {
+        "home": {
+          "starters": [],
+          "bench": [],
+          "coach": null
+        },
+        "away": {
+          "starters": [],
+          "bench": [],
+          "coach": null
+        }
+      },
+      "detailFetchedAt": null,
+      "lastDetailCheck": null
+    },
+    {
+      "id": "226431",
+      "round": 5,
+      "kickoff": null,
+      "venue": null,
+      "home": "891",
+      "away": "733",
+      "status": "scheduled",
+      "score": null,
+      "referees": [],
+      "events": [],
+      "lineups": {
+        "home": {
+          "starters": [],
+          "bench": [],
+          "coach": null
+        },
+        "away": {
+          "starters": [],
+          "bench": [],
+          "coach": null
+        }
+      },
+      "detailFetchedAt": null,
+      "lastDetailCheck": null
+    },
+    {
+      "id": "226438",
+      "round": 6,
+      "kickoff": null,
+      "venue": null,
+      "home": "733",
+      "away": "731",
+      "status": "scheduled",
+      "score": null,
+      "referees": [],
+      "events": [],
+      "lineups": {
+        "home": {
+          "starters": [],
+          "bench": [],
+          "coach": null
+        },
+        "away": {
+          "starters": [],
+          "bench": [],
+          "coach": null
+        }
+      },
+      "detailFetchedAt": null,
+      "lastDetailCheck": null
+    },
+    {
+      "id": "226445",
+      "round": 7,
+      "kickoff": null,
+      "venue": null,
+      "home": "823",
+      "away": "733",
+      "status": "scheduled",
+      "score": null,
+      "referees": [],
+      "events": [],
+      "lineups": {
+        "home": {
+          "starters": [],
+          "bench": [],
+          "coach": null
+        },
+        "away": {
+          "starters": [],
+          "bench": [],
+          "coach": null
+        }
+      },
+      "detailFetchedAt": null,
+      "lastDetailCheck": null
+    },
+    {
+      "id": "226452",
+      "round": 8,
+      "kickoff": null,
+      "venue": null,
+      "home": "733",
+      "away": "884",
+      "status": "scheduled",
+      "score": null,
+      "referees": [],
+      "events": [],
+      "lineups": {
+        "home": {
+          "starters": [],
+          "bench": [],
+          "coach": null
+        },
+        "away": {
+          "starters": [],
+          "bench": [],
+          "coach": null
+        }
+      },
+      "detailFetchedAt": null,
+      "lastDetailCheck": null
+    },
+    {
+      "id": "226461",
+      "round": 9,
+      "kickoff": null,
+      "venue": null,
+      "home": "733",
+      "away": "937",
+      "status": "scheduled",
+      "score": null,
+      "referees": [],
+      "events": [],
+      "lineups": {
+        "home": {
+          "starters": [],
+          "bench": [],
+          "coach": null
+        },
+        "away": {
+          "starters": [],
+          "bench": [],
+          "coach": null
+        }
+      },
+      "detailFetchedAt": null,
+      "lastDetailCheck": null
+    },
+    {
+      "id": "226470",
+      "round": 10,
+      "kickoff": null,
+      "venue": null,
+      "home": "732",
+      "away": "733",
+      "status": "scheduled",
+      "score": null,
+      "referees": [],
+      "events": [],
+      "lineups": {
+        "home": {
+          "starters": [],
+          "bench": [],
+          "coach": null
+        },
+        "away": {
+          "starters": [],
+          "bench": [],
+          "coach": null
+        }
+      },
+      "detailFetchedAt": null,
+      "lastDetailCheck": null
+    },
+    {
+      "id": "226479",
+      "round": 11,
+      "kickoff": null,
+      "venue": null,
+      "home": "733",
+      "away": "727",
+      "status": "scheduled",
+      "score": null,
+      "referees": [],
+      "events": [],
+      "lineups": {
+        "home": {
+          "starters": [],
+          "bench": [],
+          "coach": null
+        },
+        "away": {
+          "starters": [],
+          "bench": [],
+          "coach": null
+        }
+      },
+      "detailFetchedAt": null,
+      "lastDetailCheck": null
+    },
+    {
+      "id": "226488",
+      "round": 12,
+      "kickoff": null,
+      "venue": null,
+      "home": "651",
+      "away": "733",
+      "status": "scheduled",
+      "score": null,
+      "referees": [],
+      "events": [],
+      "lineups": {
+        "home": {
+          "starters": [],
+          "bench": [],
+          "coach": null
+        },
+        "away": {
+          "starters": [],
+          "bench": [],
+          "coach": null
+        }
+      },
+      "detailFetchedAt": null,
+      "lastDetailCheck": null
+    },
+    {
+      "id": "226497",
+      "round": 13,
+      "kickoff": null,
+      "venue": null,
+      "home": "733",
+      "away": "997",
+      "status": "scheduled",
+      "score": null,
+      "referees": [],
+      "events": [],
+      "lineups": {
+        "home": {
+          "starters": [],
+          "bench": [],
+          "coach": null
+        },
+        "away": {
+          "starters": [],
+          "bench": [],
+          "coach": null
+        }
+      },
+      "detailFetchedAt": null,
+      "lastDetailCheck": null
+    },
+    {
+      "id": "226506",
+      "round": 14,
+      "kickoff": null,
+      "venue": null,
+      "home": "728",
+      "away": "733",
+      "status": "scheduled",
+      "score": null,
+      "referees": [],
+      "events": [],
+      "lineups": {
+        "home": {
+          "starters": [],
+          "bench": [],
+          "coach": null
+        },
+        "away": {
+          "starters": [],
+          "bench": [],
+          "coach": null
+        }
+      },
+      "detailFetchedAt": null,
+      "lastDetailCheck": null
+    },
+    {
+      "id": "226515",
+      "round": 15,
+      "kickoff": null,
+      "venue": null,
+      "home": "733",
+      "away": "849",
+      "status": "scheduled",
+      "score": null,
+      "referees": [],
+      "events": [],
+      "lineups": {
+        "home": {
+          "starters": [],
+          "bench": [],
+          "coach": null
+        },
+        "away": {
+          "starters": [],
+          "bench": [],
+          "coach": null
+        }
+      },
+      "detailFetchedAt": null,
+      "lastDetailCheck": null
+    },
+    {
+      "id": "226523",
+      "round": 16,
+      "kickoff": null,
+      "venue": null,
+      "home": "733",
+      "away": "1036",
+      "status": "scheduled",
+      "score": null,
+      "referees": [],
+      "events": [],
+      "lineups": {
+        "home": {
+          "starters": [],
+          "bench": [],
+          "coach": null
+        },
+        "away": {
+          "starters": [],
+          "bench": [],
+          "coach": null
+        }
+      },
+      "detailFetchedAt": null,
+      "lastDetailCheck": null
+    },
+    {
+      "id": "226530",
+      "round": 17,
+      "kickoff": null,
+      "venue": null,
+      "home": "734",
+      "away": "733",
+      "status": "scheduled",
+      "score": null,
+      "referees": [],
+      "events": [],
+      "lineups": {
+        "home": {
+          "starters": [],
+          "bench": [],
+          "coach": null
+        },
+        "away": {
+          "starters": [],
+          "bench": [],
+          "coach": null
+        }
+      },
+      "detailFetchedAt": null,
+      "lastDetailCheck": null
+    },
+    {
+      "id": "226537",
+      "round": 18,
+      "kickoff": null,
+      "venue": null,
+      "home": "733",
+      "away": "736",
+      "status": "scheduled",
+      "score": null,
+      "referees": [],
+      "events": [],
+      "lineups": {
+        "home": {
+          "starters": [],
+          "bench": [],
+          "coach": null
+        },
+        "away": {
+          "starters": [],
+          "bench": [],
+          "coach": null
+        }
+      },
+      "detailFetchedAt": null,
+      "lastDetailCheck": null
+    },
+    {
+      "id": "226544",
+      "round": 19,
+      "kickoff": null,
+      "venue": null,
+      "home": "729",
+      "away": "733",
+      "status": "scheduled",
+      "score": null,
+      "referees": [],
+      "events": [],
+      "lineups": {
+        "home": {
+          "starters": [],
+          "bench": [],
+          "coach": null
+        },
+        "away": {
+          "starters": [],
+          "bench": [],
+          "coach": null
+        }
+      },
+      "detailFetchedAt": null,
+      "lastDetailCheck": null
+    },
+    {
+      "id": "226551",
+      "round": 20,
+      "kickoff": null,
+      "venue": null,
+      "home": "733",
+      "away": "891",
+      "status": "scheduled",
+      "score": null,
+      "referees": [],
+      "events": [],
+      "lineups": {
+        "home": {
+          "starters": [],
+          "bench": [],
+          "coach": null
+        },
+        "away": {
+          "starters": [],
+          "bench": [],
+          "coach": null
+        }
+      },
+      "detailFetchedAt": null,
+      "lastDetailCheck": null
+    },
+    {
+      "id": "226558",
+      "round": 21,
+      "kickoff": null,
+      "venue": null,
+      "home": "731",
+      "away": "733",
+      "status": "scheduled",
+      "score": null,
+      "referees": [],
+      "events": [],
+      "lineups": {
+        "home": {
+          "starters": [],
+          "bench": [],
+          "coach": null
+        },
+        "away": {
+          "starters": [],
+          "bench": [],
+          "coach": null
+        }
+      },
+      "detailFetchedAt": null,
+      "lastDetailCheck": null
+    },
+    {
+      "id": "226565",
+      "round": 22,
+      "kickoff": null,
+      "venue": null,
+      "home": "733",
+      "away": "823",
+      "status": "scheduled",
+      "score": null,
+      "referees": [],
+      "events": [],
+      "lineups": {
+        "home": {
+          "starters": [],
+          "bench": [],
+          "coach": null
+        },
+        "away": {
+          "starters": [],
+          "bench": [],
+          "coach": null
+        }
+      },
+      "detailFetchedAt": null,
+      "lastDetailCheck": null
+    },
+    {
+      "id": "226572",
+      "round": 23,
+      "kickoff": null,
+      "venue": null,
+      "home": "884",
+      "away": "733",
+      "status": "scheduled",
+      "score": null,
+      "referees": [],
+      "events": [],
+      "lineups": {
+        "home": {
+          "starters": [],
+          "bench": [],
+          "coach": null
+        },
+        "away": {
+          "starters": [],
+          "bench": [],
+          "coach": null
+        }
+      },
+      "detailFetchedAt": null,
+      "lastDetailCheck": null
+    },
+    {
+      "id": "226581",
+      "round": 24,
+      "kickoff": null,
+      "venue": null,
+      "home": "937",
+      "away": "733",
+      "status": "scheduled",
+      "score": null,
+      "referees": [],
+      "events": [],
+      "lineups": {
+        "home": {
+          "starters": [],
+          "bench": [],
+          "coach": null
+        },
+        "away": {
+          "starters": [],
+          "bench": [],
+          "coach": null
+        }
+      },
+      "detailFetchedAt": null,
+      "lastDetailCheck": null
+    },
+    {
+      "id": "226590",
+      "round": 25,
+      "kickoff": null,
+      "venue": null,
+      "home": "733",
+      "away": "732",
+      "status": "scheduled",
+      "score": null,
+      "referees": [],
+      "events": [],
+      "lineups": {
+        "home": {
+          "starters": [],
+          "bench": [],
+          "coach": null
+        },
+        "away": {
+          "starters": [],
+          "bench": [],
+          "coach": null
+        }
+      },
+      "detailFetchedAt": null,
+      "lastDetailCheck": null
+    },
+    {
+      "id": "226599",
+      "round": 26,
+      "kickoff": null,
+      "venue": null,
+      "home": "727",
+      "away": "733",
+      "status": "scheduled",
+      "score": null,
+      "referees": [],
+      "events": [],
+      "lineups": {
+        "home": {
+          "starters": [],
+          "bench": [],
+          "coach": null
+        },
+        "away": {
+          "starters": [],
+          "bench": [],
+          "coach": null
+        }
+      },
+      "detailFetchedAt": null,
+      "lastDetailCheck": null
+    },
+    {
+      "id": "226608",
+      "round": 27,
+      "kickoff": null,
+      "venue": null,
+      "home": "733",
+      "away": "651",
+      "status": "scheduled",
+      "score": null,
+      "referees": [],
+      "events": [],
+      "lineups": {
+        "home": {
+          "starters": [],
+          "bench": [],
+          "coach": null
+        },
+        "away": {
+          "starters": [],
+          "bench": [],
+          "coach": null
+        }
+      },
+      "detailFetchedAt": null,
+      "lastDetailCheck": null
+    },
+    {
+      "id": "226617",
+      "round": 28,
+      "kickoff": null,
+      "venue": null,
+      "home": "997",
+      "away": "733",
+      "status": "scheduled",
+      "score": null,
+      "referees": [],
+      "events": [],
+      "lineups": {
+        "home": {
+          "starters": [],
+          "bench": [],
+          "coach": null
+        },
+        "away": {
+          "starters": [],
+          "bench": [],
+          "coach": null
+        }
+      },
+      "detailFetchedAt": null,
+      "lastDetailCheck": null
+    },
+    {
+      "id": "226626",
+      "round": 29,
+      "kickoff": null,
+      "venue": null,
+      "home": "733",
+      "away": "728",
+      "status": "scheduled",
+      "score": null,
+      "referees": [],
+      "events": [],
+      "lineups": {
+        "home": {
+          "starters": [],
+          "bench": [],
+          "coach": null
+        },
+        "away": {
+          "starters": [],
+          "bench": [],
+          "coach": null
+        }
+      },
+      "detailFetchedAt": null,
+      "lastDetailCheck": null
+    },
+    {
+      "id": "226635",
+      "round": 30,
+      "kickoff": null,
+      "venue": null,
+      "home": "849",
+      "away": "733",
+      "status": "scheduled",
+      "score": null,
+      "referees": [],
+      "events": [],
+      "lineups": {
+        "home": {
+          "starters": [],
+          "bench": [],
+          "coach": null
+        },
+        "away": {
+          "starters": [],
+          "bench": [],
+          "coach": null
+        }
+      },
+      "detailFetchedAt": null,
+      "lastDetailCheck": null
+    }
+  ],
+  "standings": [
+    {
+      "position": 1,
+      "clubId": "891",
+      "played": 3,
+      "wins": 2,
+      "draws": 1,
+      "losses": 0,
+      "goalsFor": 6,
+      "goalsAgainst": 1,
+      "goalDifference": 5,
+      "points": 7,
+      "adjustedPoints": 7,
+      "official": true
+    },
+    {
+      "position": 2,
+      "clubId": "1036",
+      "played": 3,
+      "wins": 2,
+      "draws": 1,
+      "losses": 0,
+      "goalsFor": 5,
+      "goalsAgainst": 0,
+      "goalDifference": 5,
+      "points": 7,
+      "adjustedPoints": 7,
+      "official": true
+    },
+    {
+      "position": 3,
+      "clubId": "732",
+      "played": 3,
+      "wins": 2,
+      "draws": 0,
+      "losses": 1,
+      "goalsFor": 2,
+      "goalsAgainst": 1,
+      "goalDifference": 1,
+      "points": 6,
+      "adjustedPoints": 6,
+      "official": true
+    },
+    {
+      "position": 4,
+      "clubId": "884",
+      "played": 3,
+      "wins": 2,
+      "draws": 0,
+      "losses": 1,
+      "goalsFor": 5,
+      "goalsAgainst": 5,
+      "goalDifference": 0,
+      "points": 6,
+      "adjustedPoints": 6,
+      "official": true
+    },
+    {
+      "position": 5,
+      "clubId": "736",
+      "played": 3,
+      "wins": 1,
+      "draws": 2,
+      "losses": 0,
+      "goalsFor": 2,
+      "goalsAgainst": 1,
+      "goalDifference": 1,
+      "points": 5,
+      "adjustedPoints": 5,
+      "official": true
+    },
+    {
+      "position": 6,
+      "clubId": "731",
+      "played": 3,
+      "wins": 1,
+      "draws": 2,
+      "losses": 0,
+      "goalsFor": 1,
+      "goalsAgainst": 0,
+      "goalDifference": 1,
+      "points": 5,
+      "adjustedPoints": 5,
+      "official": true
+    },
+    {
+      "position": 7,
+      "clubId": "727",
+      "played": 2,
+      "wins": 1,
+      "draws": 1,
+      "losses": 0,
+      "goalsFor": 3,
+      "goalsAgainst": 2,
+      "goalDifference": 1,
+      "points": 4,
+      "adjustedPoints": 4,
+      "official": true
+    },
+    {
+      "position": 8,
+      "clubId": "823",
+      "played": 3,
+      "wins": 1,
+      "draws": 1,
+      "losses": 1,
+      "goalsFor": 2,
+      "goalsAgainst": 2,
+      "goalDifference": 0,
+      "points": 4,
+      "adjustedPoints": 4,
+      "official": true
+    },
+    {
+      "position": 9,
+      "clubId": "733",
+      "played": 3,
+      "wins": 1,
+      "draws": 0,
+      "losses": 2,
+      "goalsFor": 3,
+      "goalsAgainst": 5,
+      "goalDifference": -2,
+      "points": 3,
+      "adjustedPoints": 3,
+      "official": true
+    },
+    {
+      "position": 10,
+      "clubId": "997",
+      "played": 2,
+      "wins": 1,
+      "draws": 0,
+      "losses": 1,
+      "goalsFor": 4,
+      "goalsAgainst": 2,
+      "goalDifference": 2,
+      "points": 3,
+      "adjustedPoints": 3,
+      "official": true
+    },
+    {
+      "position": 11,
+      "clubId": "729",
+      "played": 3,
+      "wins": 1,
+      "draws": 0,
+      "losses": 2,
+      "goalsFor": 2,
+      "goalsAgainst": 3,
+      "goalDifference": -1,
+      "points": 3,
+      "adjustedPoints": 3,
+      "official": true
+    },
+    {
+      "position": 12,
+      "clubId": "734",
+      "played": 3,
+      "wins": 1,
+      "draws": 0,
+      "losses": 2,
+      "goalsFor": 2,
+      "goalsAgainst": 4,
+      "goalDifference": -2,
+      "points": 3,
+      "adjustedPoints": 3,
+      "official": true
+    },
+    {
+      "position": 13,
+      "clubId": "849",
+      "played": 3,
+      "wins": 0,
+      "draws": 2,
+      "losses": 1,
+      "goalsFor": 2,
+      "goalsAgainst": 3,
+      "goalDifference": -1,
+      "points": 2,
+      "adjustedPoints": 2,
+      "official": true
+    },
+    {
+      "position": 14,
+      "clubId": "937",
+      "played": 3,
+      "wins": 0,
+      "draws": 2,
+      "losses": 1,
+      "goalsFor": 1,
+      "goalsAgainst": 3,
+      "goalDifference": -2,
+      "points": 2,
+      "adjustedPoints": 2,
+      "official": true
+    },
+    {
+      "position": 15,
+      "clubId": "728",
+      "played": 2,
+      "wins": 0,
+      "draws": 0,
+      "losses": 2,
+      "goalsFor": 1,
+      "goalsAgainst": 3,
+      "goalDifference": -2,
+      "points": 0,
+      "adjustedPoints": 0,
+      "official": true
+    },
+    {
+      "position": 16,
+      "clubId": "651",
+      "played": 2,
+      "wins": 0,
+      "draws": 0,
+      "losses": 2,
+      "goalsFor": 0,
+      "goalsAgainst": 6,
+      "goalDifference": -6,
+      "points": 0,
+      "adjustedPoints": -3,
+      "official": true
+    }
+  ]
+}

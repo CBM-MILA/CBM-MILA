@@ -1,0 +1,34 @@
+name: Update CBM data
+
+on:
+  schedule:
+    - cron: "*/20 * * * *"     # كل 20 دقيقة (توقيت UTC)
+  workflow_dispatch: {}          # تشغيل يدوي من تبويب Actions
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-data
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install requests beautifulsoup4
+      - name: Run scraper
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python scraper.py
+      - name: Commit changes
+        run: |
+          git config user.name "cbm-bot"
+          git config user.email "cbm-bot@users.noreply.github.com"
+          git add data/data.json
+          git diff --staged --quiet || (git commit -m "chore: auto-update data" && git push)
