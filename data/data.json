@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "lastUpdated": "2026-10-11T01:05:17+01:00",
+  "lastUpdated": "2026-10-11T19:04:04+01:00",
   "sourceUrls": {
     "club": "https://www.lirf.dz/ar/club/733",
     "ranking": "https://www.lirf.dz/ar/ranking",
@@ -2115,8 +2115,8 @@
       "goalsFor": 0,
       "goalsAgainst": 6,
       "goalDifference": -6,
-      "points": -3,
-      "adjustedPoints": -3,
+      "points": -4,
+      "adjustedPoints": -4,
       "official": true
     }
   ]
