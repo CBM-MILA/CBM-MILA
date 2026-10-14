@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "lastUpdated": "2026-10-14T15:35:54+01:00",
+  "lastUpdated": "2026-10-14T16:40:31+01:00",
   "sourceUrls": {
     "club": "https://www.lirf.dz/ar/club/733",
     "ranking": "https://www.lirf.dz/ar/ranking",
@@ -33,9 +33,9 @@
     "country": "Algeria",
     "logo": "https://www.lirf.dz/clubs-logos/733-1656234689.png",
     "stadium": {
-      "name": "—",
-      "ar": "لا يوجد ملعب مرتبط رسميًا بملف النادي على LIRF",
-      "source": "LIRF club profile — no associated stadium"
+      "name": "Stade Belkacem Belaid",
+      "ar": "ملعب بلقاسم بلعيد",
+      "source": "Stade Belkacem Belaid, Mila"
     }
   },
   "staff": [
@@ -43,8 +43,8 @@
       "id": "staff-1",
       "name": {
         "ar": "بلعريبي سعيد",
-        "latin": "سعيد بلعريبي",
-        "en": "سعيد بلعريبي"
+        "latin": "Said Belaribi",
+        "en": "Said Belaribi"
       },
       "role": {
         "ar": "مدرب أكابر",
@@ -57,8 +57,8 @@
       "id": "staff-2",
       "name": {
         "ar": "قياس محمد",
-        "latin": "قياس محمد",
-        "en": "قياس محمد"
+        "latin": "Mohammed Kias",
+        "en": "Mohammed Kias"
       },
       "role": {
         "ar": "1er Entr. Adjoint Séniors",
@@ -71,8 +71,8 @@
       "id": "staff-3",
       "name": {
         "ar": "يحياوي الوليد",
-        "latin": "يحياوي الوليد",
-        "en": "يحياوي الوليد"
+        "latin": "El Oualid Yahiaoui",
+        "en": "El Oualid Yahiaoui"
       },
       "role": {
         "ar": "مدرب حراس أكابر",
@@ -85,8 +85,8 @@
       "id": "staff-4",
       "name": {
         "ar": "مسعي أسامة",
-        "latin": "مسعي أسامة",
-        "en": "مسعي أسامة"
+        "latin": "Oussama Messai",
+        "en": "Oussama Messai"
       },
       "role": {
         "ar": "محضر بدني أكابر",
@@ -102,56 +102,56 @@
       "shirt": 1,
       "name": {
         "ar": "حميدي محمد بهاء الدين",
-        "latin": "حميدي محمد بهاء الدين",
-        "en": "حميدي محمد بهاء الدين"
+        "latin": "Mohamed Baha Eddine Hamidi",
+        "en": "Mohamed Baha Eddine Hamidi"
       },
       "position": "GK",
       "birthDate": "2001-07-05",
-      "approxAge": null,
+      "approxAge": 25,
       "nationality": "الجزائر",
       "photoUrl": "https://www.lirf.dz/licence-photo/photo-pro-870947-1789843107.png",
       "sourceUrl": "https://www.lirf.dz/ar/player/43091",
-      "lastFetchedAt": null
+      "lastFetchedAt": "2026-10-14T16:40:25+01:00"
     },
     {
       "id": "62230",
       "shirt": 30,
       "name": {
         "ar": "شابونية حسام",
-        "latin": "شابونية حسام",
-        "en": "شابونية حسام"
+        "latin": "Houceme Chabounia",
+        "en": "Houceme Chabounia"
       },
       "position": "GK",
       "birthDate": "1997-01-21",
-      "approxAge": null,
+      "approxAge": 29,
       "nationality": "الجزائر",
       "photoUrl": "https://www.lirf.dz/licence-photo/photo-pro-870975-1789845765.png",
       "sourceUrl": "https://www.lirf.dz/ar/player/62230",
-      "lastFetchedAt": null
+      "lastFetchedAt": "2026-10-14T16:40:25+01:00"
     },
     {
       "id": "129241",
       "shirt": 16,
       "name": {
         "ar": "مقيرد عمر",
-        "latin": "مقيرد عمر",
-        "en": "مقيرد عمر"
+        "latin": "Omar Mekired",
+        "en": "Omar Mekired"
       },
       "position": "GK",
       "birthDate": "2006-09-06",
-      "approxAge": null,
+      "approxAge": 20,
       "nationality": "الجزائر",
       "photoUrl": "https://www.lirf.dz/licence-photo/photo-pro-871473-1789845435.png",
       "sourceUrl": "https://www.lirf.dz/ar/player/129241",
-      "lastFetchedAt": null
+      "lastFetchedAt": "2026-10-14T16:40:25+01:00"
     },
     {
       "id": "72760",
       "shirt": 2,
       "name": {
         "ar": "فقراوي بلقاسم",
-        "latin": "فقراوي بلقاسم",
-        "en": "فقراوي بلقاسم"
+        "latin": "Belgacem Fekraoui",
+        "en": "Belgacem Fekraoui"
       },
       "position": "DEF",
       "birthDate": null,
@@ -159,15 +159,15 @@
       "nationality": "الجزائر",
       "photoUrl": "https://www.lirf.dz/licence-photo/photo-pro-870950-1789843145.png",
       "sourceUrl": "https://www.lirf.dz/ar/player/72760",
-      "lastFetchedAt": null
+      "lastFetchedAt": "2026-10-14T16:40:25+01:00"
     },
     {
       "id": "42007",
       "shirt": 3,
       "name": {
         "ar": "زكور اسامة",
-        "latin": "زكور اسامة",
-        "en": "زكور اسامة"
+        "latin": "Oussama Zekour",
+        "en": "Oussama Zekour"
       },
       "position": "DEF",
       "birthDate": null,
@@ -175,31 +175,31 @@
       "nationality": "الجزائر",
       "photoUrl": "https://www.lirf.dz/licence-photo/photo-pro-873472-1789845963.png",
       "sourceUrl": "https://www.lirf.dz/ar/player/42007",
-      "lastFetchedAt": null
+      "lastFetchedAt": "2026-10-14T16:40:25+01:00"
     },
     {
       "id": "36975",
       "shirt": 4,
       "name": {
         "ar": "قلبوزة بلقاسم",
-        "latin": "قلبوزة بلقاسم",
-        "en": "قلبوزة بلقاسم"
+        "latin": "Belgacem Kalbouza",
+        "en": "Belgacem Kalbouza"
       },
       "position": "DEF",
       "birthDate": "1996-05-14",
-      "approxAge": null,
+      "approxAge": 30,
       "nationality": "الجزائر",
       "photoUrl": "https://www.lirf.dz/licence-photo/photo-pro-870953-1789845132.png",
       "sourceUrl": "https://www.lirf.dz/ar/player/36975",
-      "lastFetchedAt": null
+      "lastFetchedAt": "2026-10-14T16:40:25+01:00"
     },
     {
       "id": "46519",
       "shirt": 5,
       "name": {
         "ar": "بولدياب بلال",
-        "latin": "بولدياب بلال",
-        "en": "بولدياب بلال"
+        "latin": "Bilal Bouldiab",
+        "en": "Bilal Bouldiab"
       },
       "position": "DEF",
       "birthDate": null,
@@ -207,47 +207,47 @@
       "nationality": "الجزائر",
       "photoUrl": "https://www.lirf.dz/licence-photo/photo-pro-870955-1789845155.png",
       "sourceUrl": "https://www.lirf.dz/ar/player/46519",
-      "lastFetchedAt": null
+      "lastFetchedAt": "2026-10-14T16:40:25+01:00"
     },
     {
       "id": "58378",
       "shirt": 20,
       "name": {
         "ar": "بن يحي سراج الدين",
-        "latin": "بن يحي سراج الدين",
-        "en": "بن يحي سراج الدين"
+        "latin": "Seradj Eddine Benyahia",
+        "en": "Seradj Eddine Benyahia"
       },
       "position": "DEF",
       "birthDate": "2005-08-15",
-      "approxAge": null,
+      "approxAge": 21,
       "nationality": "الجزائر",
       "photoUrl": "https://www.lirf.dz/licence-photo/photo-pro-870969-1789845542.png",
       "sourceUrl": "https://www.lirf.dz/ar/player/58378",
-      "lastFetchedAt": null
+      "lastFetchedAt": "2026-10-14T16:40:25+01:00"
     },
     {
       "id": "44171",
       "shirt": 22,
       "name": {
         "ar": "بن لعريبي سليمان",
-        "latin": "بن لعريبي سليمان",
-        "en": "بن لعريبي سليمان"
+        "latin": "Slimane Benlaribi",
+        "en": "Slimane Benlaribi"
       },
       "position": "DEF",
       "birthDate": "1993-10-30",
-      "approxAge": null,
+      "approxAge": 32,
       "nationality": "الجزائر",
       "photoUrl": "https://www.lirf.dz/licence-photo/photo-pro-870971-1789845612.png",
       "sourceUrl": "https://www.lirf.dz/ar/player/44171",
-      "lastFetchedAt": null
+      "lastFetchedAt": "2026-10-14T16:40:25+01:00"
     },
     {
       "id": "47553",
       "shirt": 24,
       "name": {
         "ar": "بودابة برهان",
-        "latin": "بودابة برهان",
-        "en": "بودابة برهان"
+        "latin": "Borhane Boudaba",
+        "en": "Borhane Boudaba"
       },
       "position": "DEF",
       "birthDate": null,
@@ -255,31 +255,31 @@
       "nationality": "الجزائر",
       "photoUrl": "https://www.lirf.dz/licence-photo/photo-pro-870972-1789845640.png",
       "sourceUrl": "https://www.lirf.dz/ar/player/47553",
-      "lastFetchedAt": null
+      "lastFetchedAt": "2026-10-14T16:40:25+01:00"
     },
     {
       "id": "42302",
       "shirt": 6,
       "name": {
         "ar": "عابد واسيم",
-        "latin": "عابد واسيم",
-        "en": "عابد واسيم"
+        "latin": "Ouassim Abed",
+        "en": "Ouassim Abed"
       },
       "position": "MID",
       "birthDate": "2001-06-03",
-      "approxAge": null,
+      "approxAge": 25,
       "nationality": "الجزائر",
       "photoUrl": "https://www.lirf.dz/licence-photo/photo-pro-873470-1789846014.png",
       "sourceUrl": "https://www.lirf.dz/ar/player/42302",
-      "lastFetchedAt": null
+      "lastFetchedAt": "2026-10-14T16:40:25+01:00"
     },
     {
       "id": "40940",
       "shirt": 8,
       "name": {
         "ar": "سياب يوسف إسلام",
-        "latin": "سياب يوسف إسلام",
-        "en": "سياب يوسف إسلام"
+        "latin": "Youcef Islam Siab",
+        "en": "Youcef Islam Siab"
       },
       "position": "MID",
       "birthDate": null,
@@ -287,63 +287,63 @@
       "nationality": "الجزائر",
       "photoUrl": "https://www.lirf.dz/licence-photo/photo-pro-870961-1789845276.png",
       "sourceUrl": "https://www.lirf.dz/ar/player/40940",
-      "lastFetchedAt": null
+      "lastFetchedAt": "2026-10-14T16:40:25+01:00"
     },
     {
       "id": "377274",
       "shirt": 10,
       "name": {
         "ar": "عقبي بن حدوش حسن",
-        "latin": "عقبي بن حدوش حسن",
-        "en": "عقبي بن حدوش حسن"
+        "latin": "Hassen Ogbi Benhadouche",
+        "en": "Hassen Ogbi Benhadouche"
       },
       "position": "MID",
       "birthDate": "1989-08-17",
-      "approxAge": null,
+      "approxAge": 37,
       "nationality": "الجزائر",
       "photoUrl": null,
       "sourceUrl": "https://www.lirf.dz/ar/player/377274",
-      "lastFetchedAt": null
+      "lastFetchedAt": "2026-10-14T16:40:25+01:00"
     },
     {
       "id": "52968",
       "shirt": 14,
       "name": {
         "ar": "عتامنة محمد عصام",
-        "latin": "عتامنة محمد عصام",
-        "en": "عتامنة محمد عصام"
+        "latin": "Mohamed Issam Atamna",
+        "en": "Mohamed Issam Atamna"
       },
       "position": "MID",
       "birthDate": "1995-06-08",
-      "approxAge": null,
+      "approxAge": 31,
       "nationality": "الجزائر",
       "photoUrl": "https://www.lirf.dz/licence-photo/photo-pro-870963-1789845335.png",
       "sourceUrl": "https://www.lirf.dz/ar/player/52968",
-      "lastFetchedAt": null
+      "lastFetchedAt": "2026-10-14T16:40:25+01:00"
     },
     {
       "id": "69852",
       "shirt": 15,
       "name": {
         "ar": "قيرة إسماعيل",
-        "latin": "قيرة إسماعيل",
-        "en": "قيرة إسماعيل"
+        "latin": "Ismail Guira",
+        "en": "Ismail Guira"
       },
       "position": "MID",
       "birthDate": "1994-07-12",
-      "approxAge": null,
+      "approxAge": 32,
       "nationality": "الجزائر",
       "photoUrl": "https://www.lirf.dz/licence-photo/photo-pro-870965-1789845401.png",
       "sourceUrl": "https://www.lirf.dz/ar/player/69852",
-      "lastFetchedAt": null
+      "lastFetchedAt": "2026-10-14T16:40:25+01:00"
     },
     {
       "id": "14596",
       "shirt": 19,
       "name": {
         "ar": "قدور عبد المالك",
-        "latin": "قدور عبد المالك",
-        "en": "قدور عبد المالك"
+        "latin": "Abdelmalek Kaddour",
+        "en": "Abdelmalek Kaddour"
       },
       "position": "MID",
       "birthDate": null,
@@ -351,15 +351,15 @@
       "nationality": "الجزائر",
       "photoUrl": "https://www.lirf.dz/licence-photo/photo-pro-870968-1789845520.png",
       "sourceUrl": "https://www.lirf.dz/ar/player/14596",
-      "lastFetchedAt": null
+      "lastFetchedAt": "2026-10-14T16:40:25+01:00"
     },
     {
       "id": "48886",
       "shirt": 25,
       "name": {
         "ar": "مبرك محمد تاج الدين",
-        "latin": "مبرك محمد تاج الدين",
-        "en": "مبرك محمد تاج الدين"
+        "latin": "Mohamed Tadj Eddine Mebrek",
+        "en": "Mohamed Tadj Eddine Mebrek"
       },
       "position": "MID",
       "birthDate": null,
@@ -367,31 +367,31 @@
       "nationality": "الجزائر",
       "photoUrl": "https://www.lirf.dz/licence-photo/photo-pro-870973-1789845664.png",
       "sourceUrl": "https://www.lirf.dz/ar/player/48886",
-      "lastFetchedAt": null
+      "lastFetchedAt": "2026-10-14T16:40:25+01:00"
     },
     {
       "id": "130839",
       "shirt": 26,
       "name": {
         "ar": "بوقصبة وسيم",
-        "latin": "بوقصبة وسيم",
-        "en": "بوقصبة وسيم"
+        "latin": "Ouassim Boukacem",
+        "en": "Ouassim Boukacem"
       },
       "position": "MID",
       "birthDate": "2005-09-04",
-      "approxAge": null,
+      "approxAge": 21,
       "nationality": "الجزائر",
       "photoUrl": "https://www.lirf.dz/licence-photo/photo-pro-870974-1789845706.png",
       "sourceUrl": "https://www.lirf.dz/ar/player/130839",
-      "lastFetchedAt": null
+      "lastFetchedAt": "2026-10-14T16:40:25+01:00"
     },
     {
       "id": "51430",
       "shirt": 27,
       "name": {
         "ar": "شريبط ابراهيم",
-        "latin": "شريبط ابراهيم",
-        "en": "شريبط ابراهيم"
+        "latin": "Brahim Cheribet",
+        "en": "Brahim Cheribet"
       },
       "position": "MID",
       "birthDate": null,
@@ -399,39 +399,39 @@
       "nationality": "الجزائر",
       "photoUrl": "https://www.lirf.dz/licence-photo/photo-pro-871467-1789845737.png",
       "sourceUrl": "https://www.lirf.dz/ar/player/51430",
-      "lastFetchedAt": null
+      "lastFetchedAt": "2026-10-14T16:40:25+01:00"
     },
     {
       "id": "129258",
       "shirt": 28,
       "name": {
         "ar": "جزار عبد العالي",
-        "latin": "جزار عبد العالي",
-        "en": "جزار عبد العالي"
+        "latin": "Abdelali Djezzar",
+        "en": "Abdelali Djezzar"
       },
       "position": "MID",
       "birthDate": "2006-08-17",
-      "approxAge": null,
+      "approxAge": 20,
       "nationality": "الجزائر",
       "photoUrl": null,
       "sourceUrl": "https://www.lirf.dz/ar/player/129258",
-      "lastFetchedAt": null
+      "lastFetchedAt": "2026-10-14T16:40:25+01:00"
     },
     {
       "id": "52586",
       "shirt": 7,
       "name": {
         "ar": "بن الطيب رامي",
-        "latin": "بن الطيب رامي",
-        "en": "بن الطيب رامي"
+        "latin": "Rami Bentayeb",
+        "en": "Rami Bentayeb"
       },
       "position": "FW",
       "birthDate": "2004-04-11",
-      "approxAge": null,
+      "approxAge": 22,
       "nationality": "الجزائر",
       "photoUrl": "https://www.lirf.dz/licence-photo/photo-pro-870959-1789845210.png",
       "sourceUrl": "https://www.lirf.dz/ar/player/52586",
-      "lastFetchedAt": null
+      "lastFetchedAt": "2026-10-14T16:40:25+01:00"
     },
     {
       "id": "40725",
@@ -454,8 +454,8 @@
       "shirt": 11,
       "name": {
         "ar": "خابية صلاح الدين",
-        "latin": "خابية صلاح الدين",
-        "en": "خابية صلاح الدين"
+        "latin": "Salah Eddine Khabia",
+        "en": "Salah Eddine Khabia"
       },
       "position": "FW",
       "birthDate": null,
@@ -463,15 +463,15 @@
       "nationality": "الجزائر",
       "photoUrl": "https://www.lirf.dz/licence-photo/photo-pro-870964-1789845365.png",
       "sourceUrl": "https://www.lirf.dz/ar/player/51990",
-      "lastFetchedAt": null
+      "lastFetchedAt": "2026-10-14T16:40:25+01:00"
     },
     {
       "id": "49698",
       "shirt": 17,
       "name": {
         "ar": "رملي ناجي",
-        "latin": "رملي ناجي",
-        "en": "رملي ناجي"
+        "latin": "Nadji Ramli",
+        "en": "Nadji Ramli"
       },
       "position": "FW",
       "birthDate": null,
@@ -479,15 +479,15 @@
       "nationality": "الجزائر",
       "photoUrl": "https://www.lirf.dz/licence-photo/photo-pro-870966-1789845457.png",
       "sourceUrl": "https://www.lirf.dz/ar/player/49698",
-      "lastFetchedAt": null
+      "lastFetchedAt": "2026-10-14T16:40:25+01:00"
     },
     {
       "id": "43990",
       "shirt": 18,
       "name": {
         "ar": "ماضي رابح",
-        "latin": "ماضي رابح",
-        "en": "ماضي رابح"
+        "latin": "Rabah Madhi",
+        "en": "Rabah Madhi"
       },
       "position": "FW",
       "birthDate": null,
@@ -495,31 +495,31 @@
       "nationality": "الجزائر",
       "photoUrl": "https://www.lirf.dz/licence-photo/photo-pro-870967-1789845497.png",
       "sourceUrl": "https://www.lirf.dz/ar/player/43990",
-      "lastFetchedAt": null
+      "lastFetchedAt": "2026-10-14T16:40:25+01:00"
     },
     {
       "id": "58346",
       "shirt": 21,
       "name": {
         "ar": "لعطيوي وسيم",
-        "latin": "لعطيوي وسيم",
-        "en": "لعطيوي وسيم"
+        "latin": "Ouassim Latioui",
+        "en": "Ouassim Latioui"
       },
       "position": "FW",
       "birthDate": "2000-04-03",
-      "approxAge": null,
+      "approxAge": 26,
       "nationality": "الجزائر",
       "photoUrl": "https://www.lirf.dz/licence-photo/photo-pro-870970-1789845579.png",
       "sourceUrl": "https://www.lirf.dz/ar/player/58346",
-      "lastFetchedAt": null
+      "lastFetchedAt": "2026-10-14T16:40:25+01:00"
     },
     {
       "id": "51164",
       "shirt": 23,
       "name": {
         "ar": "دغموش رابح",
-        "latin": "دغموش رابح",
-        "en": "دغموش رابح"
+        "latin": "Rabah Dekhmouche",
+        "en": "Rabah Dekhmouche"
       },
       "position": "FW",
       "birthDate": null,
@@ -527,7 +527,7 @@
       "nationality": "الجزائر",
       "photoUrl": "https://www.lirf.dz/licence-photo/photo-pro-874562-1789845991.png",
       "sourceUrl": "https://www.lirf.dz/ar/player/51164",
-      "lastFetchedAt": null
+      "lastFetchedAt": "2026-10-14T16:40:25+01:00"
     }
   ],
   "opponents": [
@@ -1299,7 +1299,7 @@
       "id": "226452",
       "round": 8,
       "kickoff": null,
-      "venue": null,
+      "venue": "Stade Belkacem Belaid, Mila",
       "home": "733",
       "away": "884",
       "status": "scheduled",
@@ -1325,7 +1325,7 @@
       "id": "226461",
       "round": 9,
       "kickoff": null,
-      "venue": null,
+      "venue": "Stade Belkacem Belaid, Mila",
       "home": "733",
       "away": "937",
       "status": "scheduled",
@@ -1377,7 +1377,7 @@
       "id": "226479",
       "round": 11,
       "kickoff": null,
-      "venue": null,
+      "venue": "Stade Belkacem Belaid, Mila",
       "home": "733",
       "away": "727",
       "status": "scheduled",
@@ -1429,7 +1429,7 @@
       "id": "226497",
       "round": 13,
       "kickoff": null,
-      "venue": null,
+      "venue": "Stade Belkacem Belaid, Mila",
       "home": "733",
       "away": "997",
       "status": "scheduled",
@@ -1481,7 +1481,7 @@
       "id": "226515",
       "round": 15,
       "kickoff": null,
-      "venue": null,
+      "venue": "Stade Belkacem Belaid, Mila",
       "home": "733",
       "away": "849",
       "status": "scheduled",
@@ -1507,7 +1507,7 @@
       "id": "226523",
       "round": 16,
       "kickoff": null,
-      "venue": null,
+      "venue": "Stade Belkacem Belaid, Mila",
       "home": "733",
       "away": "1036",
       "status": "scheduled",
@@ -1559,7 +1559,7 @@
       "id": "226537",
       "round": 18,
       "kickoff": null,
-      "venue": null,
+      "venue": "Stade Belkacem Belaid, Mila",
       "home": "733",
       "away": "736",
       "status": "scheduled",
@@ -1611,7 +1611,7 @@
       "id": "226551",
       "round": 20,
       "kickoff": null,
-      "venue": null,
+      "venue": "Stade Belkacem Belaid, Mila",
       "home": "733",
       "away": "891",
       "status": "scheduled",
@@ -1663,7 +1663,7 @@
       "id": "226565",
       "round": 22,
       "kickoff": null,
-      "venue": null,
+      "venue": "Stade Belkacem Belaid, Mila",
       "home": "733",
       "away": "823",
       "status": "scheduled",
@@ -1741,7 +1741,7 @@
       "id": "226590",
       "round": 25,
       "kickoff": null,
-      "venue": null,
+      "venue": "Stade Belkacem Belaid, Mila",
       "home": "733",
       "away": "732",
       "status": "scheduled",
@@ -1793,7 +1793,7 @@
       "id": "226608",
       "round": 27,
       "kickoff": null,
-      "venue": null,
+      "venue": "Stade Belkacem Belaid, Mila",
       "home": "733",
       "away": "651",
       "status": "scheduled",
@@ -1845,7 +1845,7 @@
       "id": "226626",
       "round": 29,
       "kickoff": null,
-      "venue": null,
+      "venue": "Stade Belkacem Belaid, Mila",
       "home": "733",
       "away": "728",
       "status": "scheduled",
