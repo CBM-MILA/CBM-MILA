@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "lastUpdated": "2026-10-11T12:00:00+01:00",
+  "lastUpdated": "2026-10-14T12:30:00+01:00",
   "sourceUrls": {
     "club": "https://www.lirf.dz/ar/club/733",
     "ranking": "https://www.lirf.dz/ar/ranking",
@@ -33,9 +33,9 @@
     "country": "Algeria",
     "logo": "https://www.lirf.dz/clubs-logos/733-1656234689.png",
     "stadium": {
-      "name": "—",
-      "ar": "لا يوجد ملعب مرتبط رسميًا بملف النادي على LIRF",
-      "source": "LIRF club profile — no associated stadium"
+      "name": "Stade Belkacem Belaid, Mila",
+      "ar": "ملعب بلقاسم بلعيد، ميلة",
+      "source": "Stade Communal Belkacem Belaid"
     }
   },
   "staff": [
@@ -437,7 +437,7 @@
       "id": "40725",
       "shirt": 9,
       "name": {
-        "ar": "BENSEGHIER HAMZA",
+        "ar": "بن صغير حمزة",
         "latin": "HAMZA BENSEGHIER",
         "en": "HAMZA BENSEGHIER"
       },
@@ -1166,7 +1166,7 @@
       "id": "226417",
       "round": 3,
       "kickoff": "2026-10-10T15:00:00+01:00",
-      "venue": "Souidani Boujemaa stadium, Guelma",
+      "venue": "Souidani Boujemaa Stadium, Guelma",
       "home": "736",
       "away": "733",
       "status": "finished",
@@ -1174,8 +1174,26 @@
         "home": 1,
         "away": 0
       },
-      "referees": [],
+      "referees": [
+        "حجاب رمزي",
+        "عوينة فوزي",
+        "حجاب عبد الكريم"
+      ],
       "events": [
+        {
+          "minute": 17,
+          "type": "yellow",
+          "team": "736",
+          "playerId": null,
+          "playerName": "بودبزة قيس"
+        },
+        {
+          "minute": 31,
+          "type": "yellow",
+          "team": "736",
+          "playerId": null,
+          "playerName": "ولد طالب ماسينيسا"
+        },
         {
           "minute": 31,
           "type": "yellow",
@@ -1191,11 +1209,65 @@
           "playerName": null
         },
         {
+          "minute": 45,
+          "type": "sub-in",
+          "team": "736",
+          "playerId": null,
+          "playerName": "فرشيشي خليل",
+          "relatedPlayerId": null,
+          "relatedPlayerName": "رحماني بلال"
+        },
+        {
+          "minute": 45,
+          "type": "sub-out",
+          "team": "736",
+          "playerId": null,
+          "playerName": "رحماني بلال",
+          "relatedPlayerId": null,
+          "relatedPlayerName": "فرشيشي خليل"
+        },
+        {
           "minute": 60,
           "type": "goal",
           "team": "736",
           "playerId": null,
           "playerName": "عبد الحفيظ حفاص"
+        },
+        {
+          "minute": 62,
+          "type": "sub-in",
+          "team": "736",
+          "playerId": null,
+          "playerName": "غضابنية مداني وسيم",
+          "relatedPlayerId": null,
+          "relatedPlayerName": "بن لمخربش أحمد"
+        },
+        {
+          "minute": 62,
+          "type": "sub-out",
+          "team": "736",
+          "playerId": null,
+          "playerName": "بن لمخربش أحمد",
+          "relatedPlayerId": null,
+          "relatedPlayerName": "غضابنية مداني وسيم"
+        },
+        {
+          "minute": 65,
+          "type": "sub-in",
+          "team": "736",
+          "playerId": null,
+          "playerName": "بن مالك بلال",
+          "relatedPlayerId": null,
+          "relatedPlayerName": "ولد طالب ماسينيسا"
+        },
+        {
+          "minute": 65,
+          "type": "sub-out",
+          "team": "736",
+          "playerId": null,
+          "playerName": "ولد طالب ماسينيسا",
+          "relatedPlayerId": null,
+          "relatedPlayerName": "بن مالك بلال"
         },
         {
           "minute": 65,
@@ -1214,6 +1286,49 @@
           "playerName": null,
           "relatedPlayerId": "43990",
           "relatedPlayerName": null
+        },
+        {
+          "minute": 70,
+          "type": "sub-in",
+          "team": "736",
+          "playerId": null,
+          "playerName": "محمد الطاهر هديبلي",
+          "relatedPlayerId": null,
+          "relatedPlayerName": "شرارية عبد الرحمان"
+        },
+        {
+          "minute": 70,
+          "type": "sub-out",
+          "team": "736",
+          "playerId": null,
+          "playerName": "شرارية عبد الرحمان",
+          "relatedPlayerId": null,
+          "relatedPlayerName": "محمد الطاهر هديبلي"
+        },
+        {
+          "minute": 70,
+          "type": "sub-in",
+          "team": "736",
+          "playerId": null,
+          "playerName": "مباركي سيد علي",
+          "relatedPlayerId": null,
+          "relatedPlayerName": "هضام خيرالدين"
+        },
+        {
+          "minute": 70,
+          "type": "sub-out",
+          "team": "736",
+          "playerId": null,
+          "playerName": "هضام خيرالدين",
+          "relatedPlayerId": null,
+          "relatedPlayerName": "مباركي سيد علي"
+        },
+        {
+          "minute": 72,
+          "type": "yellow",
+          "team": "736",
+          "playerId": null,
+          "playerName": "بن مالك بلال"
         },
         {
           "minute": 81,
@@ -1252,6 +1367,13 @@
           "relatedPlayerName": null
         },
         {
+          "minute": 84,
+          "type": "yellow",
+          "team": "736",
+          "playerId": null,
+          "playerName": "غضابنية مداني وسيم"
+        },
+        {
           "minute": 90,
           "type": "sub-in",
           "team": "733",
@@ -1272,6 +1394,13 @@
         {
           "minute": 90,
           "type": "yellow",
+          "team": "736",
+          "playerId": null,
+          "playerName": "متحزم أسامة"
+        },
+        {
+          "minute": 90,
+          "type": "yellow",
           "team": "733",
           "playerId": "47553",
           "playerName": null
@@ -1279,9 +1408,91 @@
       ],
       "lineups": {
         "home": {
-          "starters": [],
-          "bench": [],
-          "coach": null
+          "starters": [
+            {
+              "playerName": "متحزم أسامة",
+              "shirt": 30
+            },
+            {
+              "playerName": "بن عاتي عبد الوهاب",
+              "shirt": 3
+            },
+            {
+              "playerName": "عبد الحفيظ حفاص",
+              "shirt": 15
+            },
+            {
+              "playerName": "سايحي عبد الرحيم",
+              "shirt": 18
+            },
+            {
+              "playerName": "سعايدية محمد الأمين",
+              "shirt": 20
+            },
+            {
+              "playerName": "شرارية عبد الرحمان",
+              "shirt": 4
+            },
+            {
+              "playerName": "طلحي أنيس",
+              "shirt": 21
+            },
+            {
+              "playerName": "رحماني بلال",
+              "shirt": 28
+            },
+            {
+              "playerName": "ولد طالب ماسينيسا",
+              "shirt": 7
+            },
+            {
+              "playerName": "بن لمخربش أحمد",
+              "shirt": 17
+            },
+            {
+              "playerName": "هضام خيرالدين",
+              "shirt": 24
+            }
+          ],
+          "bench": [
+            {
+              "playerName": "معلم صالح عبد القادر",
+              "shirt": 5
+            },
+            {
+              "playerName": "فرشيشي خليل",
+              "shirt": 6
+            },
+            {
+              "playerName": "بن نافلة بكوش عبد القادر",
+              "shirt": 8
+            },
+            {
+              "playerName": "مباركي سيد علي",
+              "shirt": 9
+            },
+            {
+              "playerName": "غضابنية مداني وسيم",
+              "shirt": 11
+            },
+            {
+              "playerName": "خنيش عبد الرحمن",
+              "shirt": 13
+            },
+            {
+              "playerName": "بودبزة قيس",
+              "shirt": 16
+            },
+            {
+              "playerName": "محمد الطاهر هديبلي",
+              "shirt": 19
+            },
+            {
+              "playerName": "بن مالك بلال",
+              "shirt": 27
+            }
+          ],
+          "coach": "حمودة تقي الدين"
         },
         "away": {
           "starters": [
@@ -1351,14 +1562,14 @@
           "coach": "بلعريبي سعيد"
         }
       },
-      "detailFetchedAt": null,
-      "lastDetailCheck": null
+      "detailFetchedAt": "2026-10-10T18:00:00+01:00",
+      "lastDetailCheck": "2026-10-14T12:00:00+01:00"
     },
     {
       "id": "226424",
       "round": 4,
       "kickoff": null,
-      "venue": null,
+      "venue": "Stade Belkacem Belaid, Mila",
       "home": "733",
       "away": "729",
       "status": "scheduled",
@@ -1410,7 +1621,7 @@
       "id": "226438",
       "round": 6,
       "kickoff": null,
-      "venue": null,
+      "venue": "Stade Belkacem Belaid, Mila",
       "home": "733",
       "away": "731",
       "status": "scheduled",
@@ -1462,7 +1673,7 @@
       "id": "226452",
       "round": 8,
       "kickoff": null,
-      "venue": null,
+      "venue": "Stade Belkacem Belaid, Mila",
       "home": "733",
       "away": "884",
       "status": "scheduled",
@@ -1488,7 +1699,7 @@
       "id": "226461",
       "round": 9,
       "kickoff": null,
-      "venue": null,
+      "venue": "Stade Belkacem Belaid, Mila",
       "home": "733",
       "away": "937",
       "status": "scheduled",
@@ -1540,7 +1751,7 @@
       "id": "226479",
       "round": 11,
       "kickoff": null,
-      "venue": null,
+      "venue": "Stade Belkacem Belaid, Mila",
       "home": "733",
       "away": "727",
       "status": "scheduled",
@@ -1592,7 +1803,7 @@
       "id": "226497",
       "round": 13,
       "kickoff": null,
-      "venue": null,
+      "venue": "Stade Belkacem Belaid, Mila",
       "home": "733",
       "away": "997",
       "status": "scheduled",
@@ -1644,7 +1855,7 @@
       "id": "226515",
       "round": 15,
       "kickoff": null,
-      "venue": null,
+      "venue": "Stade Belkacem Belaid, Mila",
       "home": "733",
       "away": "849",
       "status": "scheduled",
@@ -1670,7 +1881,7 @@
       "id": "226523",
       "round": 16,
       "kickoff": null,
-      "venue": null,
+      "venue": "Stade Belkacem Belaid, Mila",
       "home": "733",
       "away": "1036",
       "status": "scheduled",
@@ -1722,7 +1933,7 @@
       "id": "226537",
       "round": 18,
       "kickoff": null,
-      "venue": null,
+      "venue": "Stade Belkacem Belaid, Mila",
       "home": "733",
       "away": "736",
       "status": "scheduled",
@@ -1774,7 +1985,7 @@
       "id": "226551",
       "round": 20,
       "kickoff": null,
-      "venue": null,
+      "venue": "Stade Belkacem Belaid, Mila",
       "home": "733",
       "away": "891",
       "status": "scheduled",
@@ -1826,7 +2037,7 @@
       "id": "226565",
       "round": 22,
       "kickoff": null,
-      "venue": null,
+      "venue": "Stade Belkacem Belaid, Mila",
       "home": "733",
       "away": "823",
       "status": "scheduled",
@@ -1904,7 +2115,7 @@
       "id": "226590",
       "round": 25,
       "kickoff": null,
-      "venue": null,
+      "venue": "Stade Belkacem Belaid, Mila",
       "home": "733",
       "away": "732",
       "status": "scheduled",
@@ -1956,7 +2167,7 @@
       "id": "226608",
       "round": 27,
       "kickoff": null,
-      "venue": null,
+      "venue": "Stade Belkacem Belaid, Mila",
       "home": "733",
       "away": "651",
       "status": "scheduled",
@@ -2008,7 +2219,7 @@
       "id": "226626",
       "round": 29,
       "kickoff": null,
-      "venue": null,
+      "venue": "Stade Belkacem Belaid, Mila",
       "home": "733",
       "away": "728",
       "status": "scheduled",
@@ -2279,7 +2490,7 @@
       "goalsAgainst": 6,
       "goalDifference": -6,
       "points": 0,
-      "adjustedPoints": -3,
+      "adjustedPoints": -4,
       "official": true
     }
   ]
