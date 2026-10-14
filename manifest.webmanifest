@@ -1,27 +1,66 @@
 {
+  "id": "/CBM-MILA/",
   "name": "نادي شباب ميلة · CBM Mila 1936",
   "short_name": "CBM Mila",
   "description": "المنصة الرقمية الرسمية لمناصري نادي شباب بلدية ميلة (CBM 1936) — النتائج، الترتيب، التشكيلة، وبطاقة المناصر الرقمية.",
-  "start_url": "./index.html",
+  "lang": "ar",
+  "dir": "rtl",
+  "start_url": "./?source=pwa",
   "scope": "./",
   "display": "standalone",
-  "orientation": "portrait",
   "background_color": "#040406",
   "theme_color": "#040406",
-  "dir": "rtl",
-  "lang": "ar",
+  "categories": ["sports"],
   "icons": [
     {
       "src": "./icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     },
     {
       "src": "./icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
+    },
+    {
+      "src": "./icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "النتائج والمباريات",
+      "short_name": "المباريات",
+      "description": "عرض نتائج ومواعيد مباريات شباب ميلة",
+      "url": "./#/matches",
+      "icons": [{ "src": "./icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    },
+    {
+      "name": "جدول الترتيب",
+      "short_name": "الترتيب",
+      "description": "عرض جدول ترتيب رابطة ما بين الجهات - الشرق",
+      "url": "./#/table",
+      "icons": [{ "src": "./icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    },
+    {
+      "name": "بطاقتي الرسمية",
+      "short_name": "بطاقتي",
+      "description": "عرض أو إصدار بطاقة المناصر الرقمية الرسمية",
+      "url": "./#/club",
+      "icons": [{ "src": "./icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "./share-image.jpg",
+      "sizes": "1200x630",
+      "type": "image/jpeg",
+      "form_factor": "wide",
+      "label": "المنصة الرقمية الرسمية لنادي شباب ميلة CBM 1936"
     }
   ]
 }
