@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "lastUpdated": "2026-10-14T10:35:51+01:00",
+  "lastUpdated": "2026-10-14T15:35:54+01:00",
   "sourceUrls": {
     "club": "https://www.lirf.dz/ar/club/733",
     "ranking": "https://www.lirf.dz/ar/ranking",
@@ -1195,7 +1195,7 @@
       "id": "226424",
       "round": 4,
       "kickoff": "2026-10-23T15:00:00+01:00",
-      "venue": null,
+      "venue": "Stade Belkacem Belaid, Mila",
       "home": "733",
       "away": "729",
       "status": "scheduled",
@@ -1247,7 +1247,7 @@
       "id": "226438",
       "round": 6,
       "kickoff": null,
-      "venue": null,
+      "venue": "Stade Belkacem Belaid, Mila",
       "home": "733",
       "away": "731",
       "status": "scheduled",
