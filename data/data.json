@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "lastUpdated": "2026-10-11T19:04:04+01:00",
+  "lastUpdated": "2026-10-14T10:35:51+01:00",
   "sourceUrls": {
     "club": "https://www.lirf.dz/ar/club/733",
     "ranking": "https://www.lirf.dz/ar/ranking",
@@ -1194,7 +1194,7 @@
     {
       "id": "226424",
       "round": 4,
-      "kickoff": null,
+      "kickoff": "2026-10-23T15:00:00+01:00",
       "venue": null,
       "home": "733",
       "away": "729",
