@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "lastUpdated": "2026-10-14T16:40:31+01:00",
+  "lastUpdated": "2026-10-20T18:38:56+01:00",
   "sourceUrls": {
     "club": "https://www.lirf.dz/ar/club/733",
     "ranking": "https://www.lirf.dz/ar/ranking",
@@ -2037,6 +2037,20 @@
     },
     {
       "position": 11,
+      "clubId": "728",
+      "played": 3,
+      "wins": 1,
+      "draws": 0,
+      "losses": 2,
+      "goalsFor": 4,
+      "goalsAgainst": 5,
+      "goalDifference": -1,
+      "points": 3,
+      "adjustedPoints": 3,
+      "official": true
+    },
+    {
+      "position": 12,
       "clubId": "729",
       "played": 3,
       "wins": 1,
@@ -2050,7 +2064,7 @@
       "official": true
     },
     {
-      "position": 12,
+      "position": 13,
       "clubId": "734",
       "played": 3,
       "wins": 1,
@@ -2064,7 +2078,7 @@
       "official": true
     },
     {
-      "position": 13,
+      "position": 14,
       "clubId": "849",
       "played": 3,
       "wins": 0,
@@ -2078,7 +2092,7 @@
       "official": true
     },
     {
-      "position": 14,
+      "position": 15,
       "clubId": "937",
       "played": 3,
       "wins": 0,
@@ -2092,29 +2106,15 @@
       "official": true
     },
     {
-      "position": 15,
-      "clubId": "728",
-      "played": 2,
-      "wins": 0,
-      "draws": 0,
-      "losses": 2,
-      "goalsFor": 1,
-      "goalsAgainst": 3,
-      "goalDifference": -2,
-      "points": 0,
-      "adjustedPoints": 0,
-      "official": true
-    },
-    {
       "position": 16,
       "clubId": "651",
-      "played": 2,
+      "played": 3,
       "wins": 0,
       "draws": 0,
-      "losses": 2,
-      "goalsFor": 0,
-      "goalsAgainst": 6,
-      "goalDifference": -6,
+      "losses": 3,
+      "goalsFor": 2,
+      "goalsAgainst": 9,
+      "goalDifference": -7,
       "points": -4,
       "adjustedPoints": -4,
       "official": true
