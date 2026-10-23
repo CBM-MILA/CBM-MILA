@@ -1,0 +1,445 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CBM Mila Fan PWA Dataset (schemaVersion 3)",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "lastUpdated",
+    "sourceUrls",
+    "sourceMeta",
+    "club",
+    "staff",
+    "players",
+    "opponents",
+    "matches",
+    "standings"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "integer",
+      "const": 3
+    },
+    "lastUpdated": {
+      "type": "string",
+      "minLength": 19
+    },
+    "sourceUrls": {
+      "type": "object",
+      "required": [
+        "club",
+        "ranking",
+        "player",
+        "match",
+        "calendar"
+      ],
+      "properties": {
+        "club": {
+          "type": "string"
+        },
+        "ranking": {
+          "type": "string"
+        },
+        "player": {
+          "type": "string"
+        },
+        "match": {
+          "type": "string"
+        },
+        "calendar": {
+          "type": "string"
+        },
+        "statistics": {
+          "type": "string"
+        },
+        "home": {
+          "type": "string"
+        }
+      }
+    },
+    "sourceMeta": {
+      "type": "object",
+      "required": [
+        "seasonId",
+        "seasonName",
+        "competitionId",
+        "timezone"
+      ],
+      "properties": {
+        "seasonId": {
+          "type": "string"
+        },
+        "seasonName": {
+          "type": "string"
+        },
+        "competitionId": {
+          "type": "string"
+        },
+        "competitionAr": {
+          "type": "string"
+        },
+        "competitionLatin": {
+          "type": "string"
+        },
+        "timezone": {
+          "type": "string"
+        },
+        "relegationPlaces": {
+          "type": "integer"
+        }
+      }
+    },
+    "club": {
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "short"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "object",
+          "required": [
+            "ar",
+            "latin"
+          ],
+          "properties": {
+            "ar": {
+              "type": "string"
+            },
+            "latin": {
+              "type": "string"
+            }
+          }
+        },
+        "short": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "logo": {
+          "type": "string"
+        },
+        "stadium": {
+          "type": "object"
+        }
+      }
+    },
+    "staff": {
+      "type": "array"
+    },
+    "players": {
+      "type": "array",
+      "minItems": 1
+    },
+    "opponents": {
+      "type": "array",
+      "minItems": 15
+    },
+    "matches": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "round",
+          "home",
+          "away",
+          "status"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "round": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "kickoff": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "venue": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "home": {
+            "type": "string"
+          },
+          "away": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "scheduled",
+              "rescheduled",
+              "live",
+              "finished",
+              "postponed",
+              "forfeit"
+            ]
+          },
+          "closedDoors": {
+            "type": "boolean"
+          },
+          "rescheduledFrom": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "score": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "home": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "away": {
+                "type": "integer",
+                "minimum": 0
+              }
+            },
+            "required": [
+              "home",
+              "away"
+            ]
+          }
+        }
+      }
+    },
+    "standings": {
+      "type": "array",
+      "minItems": 16,
+      "maxItems": 16,
+      "items": {
+        "type": "object",
+        "required": [
+          "position",
+          "clubId",
+          "played",
+          "wins",
+          "draws",
+          "losses",
+          "goalsFor",
+          "goalsAgainst",
+          "goalDifference",
+          "points",
+          "adjustedPoints"
+        ],
+        "properties": {
+          "position": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 16
+          },
+          "clubId": {
+            "type": "string"
+          },
+          "played": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "wins": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "draws": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "losses": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "goalsFor": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "goalsAgainst": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "goalDifference": {
+            "type": "integer"
+          },
+          "points": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "adjustedPoints": {
+            "type": "integer"
+          },
+          "pointsPenalty": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "official": {
+            "type": "boolean"
+          },
+          "officialDeduction": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "topScorers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "rank",
+          "clubId",
+          "goals",
+          "name"
+        ],
+        "properties": {
+          "rank": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "playerId": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "clubId": {
+            "type": "string"
+          },
+          "shirt": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "goals": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "matches": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0
+          },
+          "name": {
+            "type": "object",
+            "required": [
+              "ar"
+            ],
+            "properties": {
+              "ar": {
+                "type": "string"
+              },
+              "latin": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "en": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "roundResults": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "round",
+          "home",
+          "away",
+          "status"
+        ],
+        "properties": {
+          "id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "round": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "kickoff": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "venue": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "home": {
+            "type": "string"
+          },
+          "away": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "scheduled",
+              "rescheduled",
+              "live",
+              "finished",
+              "postponed",
+              "forfeit"
+            ]
+          },
+          "closedDoors": {
+            "type": "boolean"
+          },
+          "score": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "home": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "away": {
+                "type": "integer",
+                "minimum": 0
+              }
+            },
+            "required": [
+              "home",
+              "away"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

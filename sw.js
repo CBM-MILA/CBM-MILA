@@ -1,159 +1,199 @@
-// CBM Mila Service Worker (v18) — Offline-First + Web Push Notifications
-const V = 'v18';
-const SHELL_C = 'cbm-shell-' + V;
-const DATA_C = 'cbm-data-' + V;
+/* CBM Mila 1936 — Official PWA Service Worker (v4) */
+'use strict';
 
-const SHELL = [
+try {
+  importScripts('./config.js');
+} catch (e) {}
+
+const CACHE_VERSION = self.CBM_BUILD_VERSION || '2026.10.23.v4';
+const STATIC_CACHE = `cbm-static-${CACHE_VERSION}`;
+const DATA_CACHE = `cbm-data-${CACHE_VERSION}`;
+const EXPECTED_CACHES = new Set([STATIC_CACHE, DATA_CACHE]);
+
+const STATIC_ASSETS = [
   './',
   './index.html',
   './style.css',
-  './app.js',
   './config.js',
   './qrcode.min.js',
+  './app.js',
   './manifest.webmanifest',
+  './cairo-bold.woff2',
+  './cairo-regular.woff2',
   './logo.png',
   './icon-192.png',
   './icon-512.png',
-  './icon-maskable-512.png',
-  './apple-touch-icon.png',
-  './card-template.jpg',
-  './hero-bg.jpg',
-  './share-image.jpg',
-  './fonts/cairo-regular.woff2',
-  './fonts/cairo-bold.woff2'
+  './apple-touch-icon.png'
 ];
 
-self.addEventListener('install', e => {
-  e.waitUntil(
-    caches.open(SHELL_C)
-      .then(c => Promise.all(SHELL.map(u => c.add(u).catch(() => {}))))
+const NETWORK_FIRST_SHELL_PATHS = new Set([
+  '/',
+  '/index.html',
+  '/app.js',
+  '/config.js',
+  '/style.css'
+]);
+
+function isShellAsset(pathname) {
+  for (const suffix of NETWORK_FIRST_SHELL_PATHS) {
+    if (pathname === suffix || pathname.endsWith(suffix)) return true;
+  }
+  return false;
+}
+
+self.addEventListener('install', event => {
+  event.waitUntil(
+    caches.open(STATIC_CACHE)
+      .then(cache => Promise.allSettled(STATIC_ASSETS.map(url => cache.add(url))))
       .then(() => self.skipWaiting())
   );
 });
 
-self.addEventListener('activate', e => {
-  e.waitUntil((async () => {
-    for (const k of await caches.keys()) {
-      if (k !== SHELL_C && k !== DATA_C) await caches.delete(k);
+self.addEventListener('activate', event => {
+  event.waitUntil(
+    caches.keys()
+      .then(keys => {
+        const hadOldCaches = keys.some(key => !EXPECTED_CACHES.has(key));
+        return Promise.all(
+          keys.map(key => EXPECTED_CACHES.has(key) ? Promise.resolve() : caches.delete(key))
+        ).then(() => hadOldCaches);
+      })
+      .then(async hadOldCaches => {
+        await self.clients.claim();
+        if (hadOldCaches) {
+          const clients = await self.clients.matchAll({ type: 'window', includeUncontrolled: true });
+          for (const client of clients) {
+            client.postMessage({ type: 'CBM_SW_UPDATED', version: CACHE_VERSION });
+          }
+        }
+      })
+  );
+});
+
+async function networkFirstData(request) {
+  const cache = await caches.open(DATA_CACHE);
+  const ctrl = new AbortController();
+  const timer = setTimeout(() => ctrl.abort(), 8000);
+  try {
+    const response = await fetch(request, { cache: 'no-cache', signal: ctrl.signal });
+    clearTimeout(timer);
+    if (response && response.ok) {
+      cache.put('./data/data.json', response.clone());
     }
-    await self.clients.claim();
-  })());
+    return response;
+  } catch (err) {
+    clearTimeout(timer);
+    const cached = await cache.match('./data/data.json') || await cache.match(request, { ignoreSearch: true });
+    if (cached) return cached;
+    throw err;
+  }
+}
+
+async function networkFirstShell(request) {
+  const cache = await caches.open(STATIC_CACHE);
+  const ctrl = new AbortController();
+  const timer = setTimeout(() => ctrl.abort(), 4000);
+  try {
+    const response = await fetch(request, { cache: 'no-cache', signal: ctrl.signal });
+    clearTimeout(timer);
+    if (response && response.ok && response.type === 'basic') {
+      cache.put(request, response.clone());
+    }
+    return response;
+  } catch (err) {
+    clearTimeout(timer);
+    const cached = await cache.match(request, { ignoreSearch: true });
+    if (cached) return cached;
+    if (request.mode === 'navigate') {
+      const fallback = await cache.match('./index.html') || await cache.match('./');
+      if (fallback) return fallback;
+    }
+    return new Response('Offline — CBM Mila 1936', {
+      status: 503,
+      headers: { 'Content-Type': 'text/plain; charset=utf-8' }
+    });
+  }
+}
+
+async function staleWhileRevalidate(request) {
+  const cache = await caches.open(STATIC_CACHE);
+  const cached = await cache.match(request, { ignoreSearch: true });
+  const networkPromise = fetch(request)
+    .then(response => {
+      if (response && response.ok && response.type === 'basic') {
+        cache.put(request, response.clone());
+      }
+      return response;
+    })
+    .catch(() => null);
+
+  if (cached) return cached;
+  const networkResponse = await networkPromise;
+  if (networkResponse) return networkResponse;
+  return new Response('Offline — CBM Mila 1936', {
+    status: 503,
+    headers: { 'Content-Type': 'text/plain; charset=utf-8' }
+  });
+}
+
+self.addEventListener('fetch', event => {
+  const { request } = event;
+  if (request.method !== 'GET') return;
+  const url = new URL(request.url);
+  if (url.origin !== self.location.origin) return;
+
+  if (url.pathname.endsWith('/data/data.json') || url.pathname.endsWith('/data.json')) {
+    event.respondWith(networkFirstData(request));
+    return;
+  }
+  if (request.mode === 'navigate' || isShellAsset(url.pathname)) {
+    event.respondWith(networkFirstShell(request));
+    return;
+  }
+  event.respondWith(staleWhileRevalidate(request));
 });
 
-self.addEventListener('message', e => {
-  if (e.data && e.data.type === 'SKIP_WAITING') self.skipWaiting();
-});
-
-// استقبال الإشعارات الفورية (Web Push) حتى لو كان التطبيق مغلقاً
-self.addEventListener('push', e => {
+self.addEventListener('push', event => {
   let payload = {
-    title: 'شباب ميلة · CBM Mila 1936',
-    body: 'تحديث جديد في منصة شباب ميلة الرسمية 🔴⚪',
+    title: 'شباب ميلة · CBM Mila 1936 🔴⚪',
+    body: 'تحديث جديد لمباريات شباب ميلة',
     icon: './icon-192.png',
     badge: './icon-192.png',
-    tag: 'cbm-match-alert',
+    tag: 'cbm-match',
     url: './#/home'
   };
-  if (e.data) {
+  if (event.data) {
     try {
-      const parsed = e.data.json();
-      payload = Object.assign(payload, parsed);
-    } catch (err) {
-      payload.body = e.data.text() || payload.body;
+      const parsed = event.data.json();
+      if (parsed && typeof parsed === 'object') payload = { ...payload, ...parsed };
+    } catch (e) {
+      payload.body = event.data.text() || payload.body;
     }
   }
-  e.waitUntil(
+  event.waitUntil(
     self.registration.showNotification(payload.title, {
       body: payload.body,
       icon: payload.icon || './icon-192.png',
       badge: payload.badge || './icon-192.png',
+      tag: payload.tag || 'cbm-match',
       dir: 'auto',
-      vibrate: [200, 100, 200],
-      tag: payload.tag || 'cbm-match-alert',
-      renotify: true,
       data: { url: payload.url || './#/home' }
     })
   );
 });
 
-// فتح التطبيق عند الضغط على الإشعار في شاشة القفل
-self.addEventListener('notificationclick', e => {
-  e.notification.close();
-  const targetUrl = (e.notification.data && e.notification.data.url) || './#/home';
-  e.waitUntil((async () => {
-    const allClients = await self.clients.matchAll({ type: 'window', includeUncontrolled: true });
-    for (const client of allClients) {
-      if ('focus' in client) {
-        await client.focus();
-        if (targetUrl.includes('#')) {
-          client.postMessage({ type: 'NAVIGATE', url: targetUrl });
+self.addEventListener('notificationclick', event => {
+  event.notification.close();
+  const targetUrl = (event.notification.data && event.notification.data.url) || './#/home';
+  event.waitUntil(
+    self.clients.matchAll({ type: 'window', includeUncontrolled: true }).then(windowClients => {
+      for (const client of windowClients) {
+        if ('focus' in client) {
+          client.navigate(targetUrl).catch(() => {});
+          return client.focus();
         }
-        return;
       }
-    }
-    if (self.clients.openWindow) {
-      await self.clients.openWindow(targetUrl);
-    }
-  })());
-});
-
-self.addEventListener('fetch', e => {
-  const r = e.request;
-  const u = new URL(r.url);
-  if (r.method !== 'GET' || u.origin !== location.origin) return;
-
-  const key = u.origin + u.pathname;
-
-  if (u.pathname.endsWith('/data/data.json') || u.pathname.endsWith('/data.json')) {
-    e.respondWith((async () => {
-      try {
-        const net = await fetch(r);
-        if (net.ok) {
-          const cache = await caches.open(DATA_C);
-          cache.put(key, net.clone());
-        }
-        return net;
-      } catch (err) {
-        const cached = await caches.match(key);
-        if (cached) return cached;
-        throw err;
-      }
-    })());
-    return;
-  }
-
-  const isAppCode =
-    r.mode === 'navigate' ||
-    u.pathname.endsWith('/') ||
-    u.pathname.endsWith('/index.html') ||
-    u.pathname.endsWith('/app.js') ||
-    u.pathname.endsWith('/style.css') ||
-    u.pathname.endsWith('/config.js');
-
-  if (isAppCode) {
-    e.respondWith((async () => {
-      try {
-        const net = await fetch(r);
-        if (net.ok) {
-          const cache = await caches.open(SHELL_C);
-          cache.put(key, net.clone());
-        }
-        return net;
-      } catch (err) {
-        const cached = await caches.match(key) || (r.mode === 'navigate' ? await caches.match('./index.html') : null);
-        if (cached) return cached;
-        throw err;
-      }
-    })());
-    return;
-  }
-
-  e.respondWith((async () => {
-    const cached = await caches.match(key);
-    const netPromise = fetch(r).then(n => {
-      if (n.ok) caches.open(SHELL_C).then(x => x.put(key, n.clone()));
-      return n;
-    }).catch(() => cached);
-    return cached || netPromise;
-  })());
+      if (self.clients.openWindow) return self.clients.openWindow(targetUrl);
+    })
+  );
 });

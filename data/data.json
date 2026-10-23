@@ -1,12 +1,14 @@
 {
   "schemaVersion": 3,
-  "lastUpdated": "2026-10-23T18:34:37+01:00",
+  "lastUpdated": "2026-10-23T22:30:00+01:00",
   "sourceUrls": {
     "club": "https://www.lirf.dz/ar/club/733",
     "ranking": "https://www.lirf.dz/ar/ranking",
     "player": "https://www.lirf.dz/ar/player/{id}",
     "match": "https://www.lirf.dz/ar/match/{id}",
-    "calendar": "https://www.lirf.dz/ar/calendar"
+    "calendar": "https://www.lirf.dz/ar/calendar",
+    "statistics": "https://www.lirf.dz/ar/statistics",
+    "home": "https://www.lirf.dz/"
   },
   "sourceMeta": {
     "seasonId": "6",
@@ -111,7 +113,13 @@
       "nationality": "الجزائر",
       "photoUrl": "https://www.lirf.dz/licence-photo/photo-pro-870947-1789843107.png",
       "sourceUrl": "https://www.lirf.dz/ar/player/43091",
-      "lastFetchedAt": "2026-10-14T16:40:25+01:00"
+      "lastFetchedAt": "2026-10-23T22:30:00+01:00",
+      "stats": {
+        "appearances": 3,
+        "goals": 0,
+        "yellowCards": 0,
+        "redCards": 0
+      }
     },
     {
       "id": "62230",
@@ -127,7 +135,13 @@
       "nationality": "الجزائر",
       "photoUrl": "https://www.lirf.dz/licence-photo/photo-pro-870975-1789845765.png",
       "sourceUrl": "https://www.lirf.dz/ar/player/62230",
-      "lastFetchedAt": "2026-10-14T16:40:25+01:00"
+      "lastFetchedAt": "2026-10-23T22:30:00+01:00",
+      "stats": {
+        "appearances": 3,
+        "goals": 0,
+        "yellowCards": 0,
+        "redCards": 0
+      }
     },
     {
       "id": "129241",
@@ -143,7 +157,13 @@
       "nationality": "الجزائر",
       "photoUrl": "https://www.lirf.dz/licence-photo/photo-pro-871473-1789845435.png",
       "sourceUrl": "https://www.lirf.dz/ar/player/129241",
-      "lastFetchedAt": "2026-10-14T16:40:25+01:00"
+      "lastFetchedAt": "2026-10-23T22:30:00+01:00",
+      "stats": {
+        "appearances": 0,
+        "goals": 0,
+        "yellowCards": 0,
+        "redCards": 0
+      }
     },
     {
       "id": "72760",
@@ -159,7 +179,13 @@
       "nationality": "الجزائر",
       "photoUrl": "https://www.lirf.dz/licence-photo/photo-pro-870950-1789843145.png",
       "sourceUrl": "https://www.lirf.dz/ar/player/72760",
-      "lastFetchedAt": "2026-10-14T16:40:25+01:00"
+      "lastFetchedAt": "2026-10-23T22:30:00+01:00",
+      "stats": {
+        "appearances": 2,
+        "goals": 0,
+        "yellowCards": 1,
+        "redCards": 0
+      }
     },
     {
       "id": "42007",
@@ -175,7 +201,13 @@
       "nationality": "الجزائر",
       "photoUrl": "https://www.lirf.dz/licence-photo/photo-pro-873472-1789845963.png",
       "sourceUrl": "https://www.lirf.dz/ar/player/42007",
-      "lastFetchedAt": "2026-10-14T16:40:25+01:00"
+      "lastFetchedAt": "2026-10-23T22:30:00+01:00",
+      "stats": {
+        "appearances": 3,
+        "goals": 0,
+        "yellowCards": 0,
+        "redCards": 0
+      }
     },
     {
       "id": "36975",
@@ -191,7 +223,13 @@
       "nationality": "الجزائر",
       "photoUrl": "https://www.lirf.dz/licence-photo/photo-pro-870953-1789845132.png",
       "sourceUrl": "https://www.lirf.dz/ar/player/36975",
-      "lastFetchedAt": "2026-10-14T16:40:25+01:00"
+      "lastFetchedAt": "2026-10-23T22:30:00+01:00",
+      "stats": {
+        "appearances": 3,
+        "goals": 0,
+        "yellowCards": 0,
+        "redCards": 0
+      }
     },
     {
       "id": "46519",
@@ -207,7 +245,13 @@
       "nationality": "الجزائر",
       "photoUrl": "https://www.lirf.dz/licence-photo/photo-pro-870955-1789845155.png",
       "sourceUrl": "https://www.lirf.dz/ar/player/46519",
-      "lastFetchedAt": "2026-10-14T16:40:25+01:00"
+      "lastFetchedAt": "2026-10-23T22:30:00+01:00",
+      "stats": {
+        "appearances": 3,
+        "goals": 0,
+        "yellowCards": 1,
+        "redCards": 0
+      }
     },
     {
       "id": "58378",
@@ -223,7 +267,13 @@
       "nationality": "الجزائر",
       "photoUrl": "https://www.lirf.dz/licence-photo/photo-pro-870969-1789845542.png",
       "sourceUrl": "https://www.lirf.dz/ar/player/58378",
-      "lastFetchedAt": "2026-10-14T16:40:25+01:00"
+      "lastFetchedAt": "2026-10-23T22:30:00+01:00",
+      "stats": {
+        "appearances": 3,
+        "goals": 0,
+        "yellowCards": 1,
+        "redCards": 0
+      }
     },
     {
       "id": "44171",
@@ -239,7 +289,13 @@
       "nationality": "الجزائر",
       "photoUrl": "https://www.lirf.dz/licence-photo/photo-pro-870971-1789845612.png",
       "sourceUrl": "https://www.lirf.dz/ar/player/44171",
-      "lastFetchedAt": "2026-10-14T16:40:25+01:00"
+      "lastFetchedAt": "2026-10-23T22:30:00+01:00",
+      "stats": {
+        "appearances": 3,
+        "goals": 0,
+        "yellowCards": 0,
+        "redCards": 0
+      }
     },
     {
       "id": "47553",
@@ -255,7 +311,13 @@
       "nationality": "الجزائر",
       "photoUrl": "https://www.lirf.dz/licence-photo/photo-pro-870972-1789845640.png",
       "sourceUrl": "https://www.lirf.dz/ar/player/47553",
-      "lastFetchedAt": "2026-10-14T16:40:25+01:00"
+      "lastFetchedAt": "2026-10-23T22:30:00+01:00",
+      "stats": {
+        "appearances": 3,
+        "goals": 0,
+        "yellowCards": 1,
+        "redCards": 0
+      }
     },
     {
       "id": "42302",
@@ -271,7 +333,13 @@
       "nationality": "الجزائر",
       "photoUrl": "https://www.lirf.dz/licence-photo/photo-pro-873470-1789846014.png",
       "sourceUrl": "https://www.lirf.dz/ar/player/42302",
-      "lastFetchedAt": "2026-10-14T16:40:25+01:00"
+      "lastFetchedAt": "2026-10-23T22:30:00+01:00",
+      "stats": {
+        "appearances": 1,
+        "goals": 0,
+        "yellowCards": 0,
+        "redCards": 0
+      }
     },
     {
       "id": "40940",
@@ -287,7 +355,13 @@
       "nationality": "الجزائر",
       "photoUrl": "https://www.lirf.dz/licence-photo/photo-pro-870961-1789845276.png",
       "sourceUrl": "https://www.lirf.dz/ar/player/40940",
-      "lastFetchedAt": "2026-10-14T16:40:25+01:00"
+      "lastFetchedAt": "2026-10-23T22:30:00+01:00",
+      "stats": {
+        "appearances": 3,
+        "goals": 0,
+        "yellowCards": 0,
+        "redCards": 0
+      }
     },
     {
       "id": "377274",
@@ -303,7 +377,13 @@
       "nationality": "الجزائر",
       "photoUrl": null,
       "sourceUrl": "https://www.lirf.dz/ar/player/377274",
-      "lastFetchedAt": "2026-10-14T16:40:25+01:00"
+      "lastFetchedAt": "2026-10-23T22:30:00+01:00",
+      "stats": {
+        "appearances": 3,
+        "goals": 0,
+        "yellowCards": 0,
+        "redCards": 0
+      }
     },
     {
       "id": "52968",
@@ -319,7 +399,13 @@
       "nationality": "الجزائر",
       "photoUrl": "https://www.lirf.dz/licence-photo/photo-pro-870963-1789845335.png",
       "sourceUrl": "https://www.lirf.dz/ar/player/52968",
-      "lastFetchedAt": "2026-10-14T16:40:25+01:00"
+      "lastFetchedAt": "2026-10-23T22:30:00+01:00",
+      "stats": {
+        "appearances": 0,
+        "goals": 0,
+        "yellowCards": 0,
+        "redCards": 0
+      }
     },
     {
       "id": "69852",
@@ -335,7 +421,13 @@
       "nationality": "الجزائر",
       "photoUrl": "https://www.lirf.dz/licence-photo/photo-pro-870965-1789845401.png",
       "sourceUrl": "https://www.lirf.dz/ar/player/69852",
-      "lastFetchedAt": "2026-10-14T16:40:25+01:00"
+      "lastFetchedAt": "2026-10-23T22:30:00+01:00",
+      "stats": {
+        "appearances": 3,
+        "goals": 0,
+        "yellowCards": 0,
+        "redCards": 0
+      }
     },
     {
       "id": "14596",
@@ -351,7 +443,13 @@
       "nationality": "الجزائر",
       "photoUrl": "https://www.lirf.dz/licence-photo/photo-pro-870968-1789845520.png",
       "sourceUrl": "https://www.lirf.dz/ar/player/14596",
-      "lastFetchedAt": "2026-10-14T16:40:25+01:00"
+      "lastFetchedAt": "2026-10-23T22:30:00+01:00",
+      "stats": {
+        "appearances": 3,
+        "goals": 0,
+        "yellowCards": 0,
+        "redCards": 0
+      }
     },
     {
       "id": "48886",
@@ -367,7 +465,13 @@
       "nationality": "الجزائر",
       "photoUrl": "https://www.lirf.dz/licence-photo/photo-pro-870973-1789845664.png",
       "sourceUrl": "https://www.lirf.dz/ar/player/48886",
-      "lastFetchedAt": "2026-10-14T16:40:25+01:00"
+      "lastFetchedAt": "2026-10-23T22:30:00+01:00",
+      "stats": {
+        "appearances": 3,
+        "goals": 0,
+        "yellowCards": 0,
+        "redCards": 0
+      }
     },
     {
       "id": "130839",
@@ -383,7 +487,13 @@
       "nationality": "الجزائر",
       "photoUrl": "https://www.lirf.dz/licence-photo/photo-pro-870974-1789845706.png",
       "sourceUrl": "https://www.lirf.dz/ar/player/130839",
-      "lastFetchedAt": "2026-10-14T16:40:25+01:00"
+      "lastFetchedAt": "2026-10-23T22:30:00+01:00",
+      "stats": {
+        "appearances": 1,
+        "goals": 0,
+        "yellowCards": 0,
+        "redCards": 0
+      }
     },
     {
       "id": "51430",
@@ -399,7 +509,13 @@
       "nationality": "الجزائر",
       "photoUrl": "https://www.lirf.dz/licence-photo/photo-pro-871467-1789845737.png",
       "sourceUrl": "https://www.lirf.dz/ar/player/51430",
-      "lastFetchedAt": "2026-10-14T16:40:25+01:00"
+      "lastFetchedAt": "2026-10-23T22:30:00+01:00",
+      "stats": {
+        "appearances": 3,
+        "goals": 0,
+        "yellowCards": 0,
+        "redCards": 0
+      }
     },
     {
       "id": "129258",
@@ -415,7 +531,13 @@
       "nationality": "الجزائر",
       "photoUrl": null,
       "sourceUrl": "https://www.lirf.dz/ar/player/129258",
-      "lastFetchedAt": "2026-10-14T16:40:25+01:00"
+      "lastFetchedAt": "2026-10-23T22:30:00+01:00",
+      "stats": {
+        "appearances": 0,
+        "goals": 0,
+        "yellowCards": 0,
+        "redCards": 0
+      }
     },
     {
       "id": "52586",
@@ -431,15 +553,21 @@
       "nationality": "الجزائر",
       "photoUrl": "https://www.lirf.dz/licence-photo/photo-pro-870959-1789845210.png",
       "sourceUrl": "https://www.lirf.dz/ar/player/52586",
-      "lastFetchedAt": "2026-10-14T16:40:25+01:00"
+      "lastFetchedAt": "2026-10-23T22:30:00+01:00",
+      "stats": {
+        "appearances": 0,
+        "goals": 0,
+        "yellowCards": 0,
+        "redCards": 0
+      }
     },
     {
       "id": "40725",
       "shirt": 9,
       "name": {
-        "ar": "BENSEGHIER HAMZA",
-        "latin": "HAMZA BENSEGHIER",
-        "en": "HAMZA BENSEGHIER"
+        "ar": "بن صغير حمزة",
+        "latin": "Hamza Benseghier",
+        "en": "Hamza Benseghier"
       },
       "position": "FW",
       "birthDate": "2002-02-23",
@@ -447,7 +575,13 @@
       "nationality": "الجزائر",
       "photoUrl": "https://www.lirf.dz/licence-photo/photo-pro-870962-1789845311.png",
       "sourceUrl": "https://www.lirf.dz/ar/player/40725",
-      "lastFetchedAt": "2026-10-04T00:00:00+01:00"
+      "lastFetchedAt": "2026-10-23T22:30:00+01:00",
+      "stats": {
+        "appearances": 3,
+        "goals": 1,
+        "yellowCards": 0,
+        "redCards": 0
+      }
     },
     {
       "id": "51990",
@@ -463,7 +597,13 @@
       "nationality": "الجزائر",
       "photoUrl": "https://www.lirf.dz/licence-photo/photo-pro-870964-1789845365.png",
       "sourceUrl": "https://www.lirf.dz/ar/player/51990",
-      "lastFetchedAt": "2026-10-14T16:40:25+01:00"
+      "lastFetchedAt": "2026-10-23T22:30:00+01:00",
+      "stats": {
+        "appearances": 2,
+        "goals": 0,
+        "yellowCards": 0,
+        "redCards": 0
+      }
     },
     {
       "id": "49698",
@@ -479,7 +619,13 @@
       "nationality": "الجزائر",
       "photoUrl": "https://www.lirf.dz/licence-photo/photo-pro-870966-1789845457.png",
       "sourceUrl": "https://www.lirf.dz/ar/player/49698",
-      "lastFetchedAt": "2026-10-14T16:40:25+01:00"
+      "lastFetchedAt": "2026-10-23T22:30:00+01:00",
+      "stats": {
+        "appearances": 4,
+        "goals": 2,
+        "yellowCards": 1,
+        "redCards": 0
+      }
     },
     {
       "id": "43990",
@@ -495,7 +641,13 @@
       "nationality": "الجزائر",
       "photoUrl": "https://www.lirf.dz/licence-photo/photo-pro-870967-1789845497.png",
       "sourceUrl": "https://www.lirf.dz/ar/player/43990",
-      "lastFetchedAt": "2026-10-14T16:40:25+01:00"
+      "lastFetchedAt": "2026-10-23T22:30:00+01:00",
+      "stats": {
+        "appearances": 3,
+        "goals": 1,
+        "yellowCards": 0,
+        "redCards": 0
+      }
     },
     {
       "id": "58346",
@@ -511,7 +663,13 @@
       "nationality": "الجزائر",
       "photoUrl": "https://www.lirf.dz/licence-photo/photo-pro-870970-1789845579.png",
       "sourceUrl": "https://www.lirf.dz/ar/player/58346",
-      "lastFetchedAt": "2026-10-14T16:40:25+01:00"
+      "lastFetchedAt": "2026-10-23T22:30:00+01:00",
+      "stats": {
+        "appearances": 1,
+        "goals": 0,
+        "yellowCards": 0,
+        "redCards": 0
+      }
     },
     {
       "id": "51164",
@@ -527,7 +685,13 @@
       "nationality": "الجزائر",
       "photoUrl": "https://www.lirf.dz/licence-photo/photo-pro-874562-1789845991.png",
       "sourceUrl": "https://www.lirf.dz/ar/player/51164",
-      "lastFetchedAt": "2026-10-14T16:40:25+01:00"
+      "lastFetchedAt": "2026-10-23T22:30:00+01:00",
+      "stats": {
+        "appearances": 2,
+        "goals": 0,
+        "yellowCards": 0,
+        "redCards": 0
+      }
     }
   ],
   "opponents": [
@@ -891,7 +1055,8 @@
         }
       },
       "detailFetchedAt": "2026-10-04T00:00:00+01:00",
-      "lastDetailCheck": "2026-10-04T00:00:00+01:00"
+      "lastDetailCheck": "2026-10-04T00:00:00+01:00",
+      "closedDoors": false
     },
     {
       "id": "226410",
@@ -1160,13 +1325,14 @@
         }
       },
       "detailFetchedAt": "2026-10-04T00:00:00+01:00",
-      "lastDetailCheck": "2026-10-04T00:00:00+01:00"
+      "lastDetailCheck": "2026-10-04T00:00:00+01:00",
+      "closedDoors": false
     },
     {
       "id": "226417",
       "round": 3,
       "kickoff": "2026-10-10T15:00:00+01:00",
-      "venue": "Souidani Boujemaa stadium, Guelma",
+      "venue": "Souidani Boujemaa Stadium, Guelma",
       "home": "736",
       "away": "733",
       "status": "finished",
@@ -1174,22 +1340,397 @@
         "home": 1,
         "away": 0
       },
-      "referees": [],
-      "events": [],
+      "referees": [
+        "حجاب رمزي",
+        "عوينة فوزي",
+        "حجاب عبد الكريم"
+      ],
+      "events": [
+        {
+          "minute": 17,
+          "type": "yellow",
+          "team": "736",
+          "playerId": null,
+          "playerName": "بودبزة قيس"
+        },
+        {
+          "minute": 31,
+          "type": "yellow",
+          "team": "736",
+          "playerId": null,
+          "playerName": "ولد طالب ماسينيسا"
+        },
+        {
+          "minute": 31,
+          "type": "yellow",
+          "team": "733",
+          "playerId": "58378",
+          "playerName": null
+        },
+        {
+          "minute": 38,
+          "type": "yellow",
+          "team": "733",
+          "playerId": "49698",
+          "playerName": null
+        },
+        {
+          "minute": 45,
+          "type": "sub-in",
+          "team": "736",
+          "playerId": null,
+          "playerName": "فرشيشي خليل",
+          "relatedPlayerId": null,
+          "relatedPlayerName": "رحماني بلال"
+        },
+        {
+          "minute": 45,
+          "type": "sub-out",
+          "team": "736",
+          "playerId": null,
+          "playerName": "رحماني بلال",
+          "relatedPlayerId": null,
+          "relatedPlayerName": "فرشيشي خليل"
+        },
+        {
+          "minute": 60,
+          "type": "goal",
+          "team": "736",
+          "playerId": null,
+          "playerName": "عبد الحفيظ حفاص"
+        },
+        {
+          "minute": 62,
+          "type": "sub-in",
+          "team": "736",
+          "playerId": null,
+          "playerName": "غضابنية مداني وسيم",
+          "relatedPlayerId": null,
+          "relatedPlayerName": "بن لمخربش أحمد"
+        },
+        {
+          "minute": 62,
+          "type": "sub-out",
+          "team": "736",
+          "playerId": null,
+          "playerName": "بن لمخربش أحمد",
+          "relatedPlayerId": null,
+          "relatedPlayerName": "غضابنية مداني وسيم"
+        },
+        {
+          "minute": 65,
+          "type": "sub-in",
+          "team": "736",
+          "playerId": null,
+          "playerName": "بن مالك بلال",
+          "relatedPlayerId": null,
+          "relatedPlayerName": "ولد طالب ماسينيسا"
+        },
+        {
+          "minute": 65,
+          "type": "sub-out",
+          "team": "736",
+          "playerId": null,
+          "playerName": "ولد طالب ماسينيسا",
+          "relatedPlayerId": null,
+          "relatedPlayerName": "بن مالك بلال"
+        },
+        {
+          "minute": 65,
+          "type": "sub-in",
+          "team": "733",
+          "playerId": "43990",
+          "playerName": null,
+          "relatedPlayerId": "51430",
+          "relatedPlayerName": null
+        },
+        {
+          "minute": 65,
+          "type": "sub-out",
+          "team": "733",
+          "playerId": "51430",
+          "playerName": null,
+          "relatedPlayerId": "43990",
+          "relatedPlayerName": null
+        },
+        {
+          "minute": 70,
+          "type": "sub-in",
+          "team": "736",
+          "playerId": null,
+          "playerName": "محمد الطاهر هديبلي",
+          "relatedPlayerId": null,
+          "relatedPlayerName": "شرارية عبد الرحمان"
+        },
+        {
+          "minute": 70,
+          "type": "sub-out",
+          "team": "736",
+          "playerId": null,
+          "playerName": "شرارية عبد الرحمان",
+          "relatedPlayerId": null,
+          "relatedPlayerName": "محمد الطاهر هديبلي"
+        },
+        {
+          "minute": 70,
+          "type": "sub-in",
+          "team": "736",
+          "playerId": null,
+          "playerName": "مباركي سيد علي",
+          "relatedPlayerId": null,
+          "relatedPlayerName": "هضام خيرالدين"
+        },
+        {
+          "minute": 70,
+          "type": "sub-out",
+          "team": "736",
+          "playerId": null,
+          "playerName": "هضام خيرالدين",
+          "relatedPlayerId": null,
+          "relatedPlayerName": "مباركي سيد علي"
+        },
+        {
+          "minute": 72,
+          "type": "yellow",
+          "team": "736",
+          "playerId": null,
+          "playerName": "بن مالك بلال"
+        },
+        {
+          "minute": 81,
+          "type": "sub-in",
+          "team": "733",
+          "playerId": "14596",
+          "playerName": null,
+          "relatedPlayerId": "40725",
+          "relatedPlayerName": null
+        },
+        {
+          "minute": 81,
+          "type": "sub-out",
+          "team": "733",
+          "playerId": "40725",
+          "playerName": null,
+          "relatedPlayerId": "14596",
+          "relatedPlayerName": null
+        },
+        {
+          "minute": 81,
+          "type": "sub-in",
+          "team": "733",
+          "playerId": "42007",
+          "playerName": null,
+          "relatedPlayerId": "58378",
+          "relatedPlayerName": null
+        },
+        {
+          "minute": 81,
+          "type": "sub-out",
+          "team": "733",
+          "playerId": "58378",
+          "playerName": null,
+          "relatedPlayerId": "42007",
+          "relatedPlayerName": null
+        },
+        {
+          "minute": 84,
+          "type": "yellow",
+          "team": "736",
+          "playerId": null,
+          "playerName": "غضابنية مداني وسيم"
+        },
+        {
+          "minute": 90,
+          "type": "sub-in",
+          "team": "733",
+          "playerId": "130839",
+          "playerName": null,
+          "relatedPlayerId": "40940",
+          "relatedPlayerName": null
+        },
+        {
+          "minute": 90,
+          "type": "sub-out",
+          "team": "733",
+          "playerId": "40940",
+          "playerName": null,
+          "relatedPlayerId": "130839",
+          "relatedPlayerName": null
+        },
+        {
+          "minute": 90,
+          "type": "yellow",
+          "team": "736",
+          "playerId": null,
+          "playerName": "متحزم أسامة"
+        },
+        {
+          "minute": 90,
+          "type": "yellow",
+          "team": "733",
+          "playerId": "47553",
+          "playerName": null
+        }
+      ],
       "lineups": {
         "home": {
-          "starters": [],
-          "bench": [],
-          "coach": null
+          "starters": [
+            {
+              "playerName": "متحزم أسامة",
+              "shirt": 30
+            },
+            {
+              "playerName": "بن عاتي عبد الوهاب",
+              "shirt": 3
+            },
+            {
+              "playerName": "عبد الحفيظ حفاص",
+              "shirt": 15
+            },
+            {
+              "playerName": "سايحي عبد الرحيم",
+              "shirt": 18
+            },
+            {
+              "playerName": "سعايدية محمد الأمين",
+              "shirt": 20
+            },
+            {
+              "playerName": "شرارية عبد الرحمان",
+              "shirt": 4
+            },
+            {
+              "playerName": "طلحي أنيس",
+              "shirt": 21
+            },
+            {
+              "playerName": "رحماني بلال",
+              "shirt": 28
+            },
+            {
+              "playerName": "ولد طالب ماسينيسا",
+              "shirt": 7
+            },
+            {
+              "playerName": "بن لمخربش أحمد",
+              "shirt": 17
+            },
+            {
+              "playerName": "هضام خيرالدين",
+              "shirt": 24
+            }
+          ],
+          "bench": [
+            {
+              "playerName": "معلم صالح عبد القادر",
+              "shirt": 5
+            },
+            {
+              "playerName": "فرشيشي خليل",
+              "shirt": 6
+            },
+            {
+              "playerName": "بن نافلة بكوش عبد القادر",
+              "shirt": 8
+            },
+            {
+              "playerName": "مباركي سيد علي",
+              "shirt": 9
+            },
+            {
+              "playerName": "غضابنية مداني وسيم",
+              "shirt": 11
+            },
+            {
+              "playerName": "خنيش عبد الرحمن",
+              "shirt": 13
+            },
+            {
+              "playerName": "بودبزة قيس",
+              "shirt": 16
+            },
+            {
+              "playerName": "محمد الطاهر هديبلي",
+              "shirt": 19
+            },
+            {
+              "playerName": "بن مالك بلال",
+              "shirt": 27
+            }
+          ],
+          "coach": "حمودة تقي الدين"
         },
         "away": {
-          "starters": [],
-          "bench": [],
-          "coach": null
+          "starters": [
+            {
+              "playerId": "43091"
+            },
+            {
+              "playerId": "36975"
+            },
+            {
+              "playerId": "46519"
+            },
+            {
+              "playerId": "58378"
+            },
+            {
+              "playerId": "47553"
+            },
+            {
+              "playerId": "40940"
+            },
+            {
+              "playerId": "377274"
+            },
+            {
+              "playerId": "48886"
+            },
+            {
+              "playerId": "51430"
+            },
+            {
+              "playerId": "40725"
+            },
+            {
+              "playerId": "49698"
+            }
+          ],
+          "bench": [
+            {
+              "playerId": "42302"
+            },
+            {
+              "playerId": "69852"
+            },
+            {
+              "playerId": "43990"
+            },
+            {
+              "playerId": "14596"
+            },
+            {
+              "playerId": "58346"
+            },
+            {
+              "playerId": "44171"
+            },
+            {
+              "playerId": "130839"
+            },
+            {
+              "playerId": "62230"
+            },
+            {
+              "playerId": "42007"
+            }
+          ],
+          "coach": "بلعريبي سعيد"
         }
       },
-      "detailFetchedAt": null,
-      "lastDetailCheck": null
+      "detailFetchedAt": "2026-10-10T18:00:00+01:00",
+      "lastDetailCheck": "2026-10-14T12:00:00+01:00",
+      "closedDoors": false
     },
     {
       "id": "226424",
@@ -1218,7 +1759,8 @@
         }
       },
       "detailFetchedAt": null,
-      "lastDetailCheck": null
+      "lastDetailCheck": "2026-10-23T22:30:00+01:00",
+      "closedDoors": false
     },
     {
       "id": "226431",
@@ -1244,7 +1786,8 @@
         }
       },
       "detailFetchedAt": null,
-      "lastDetailCheck": null
+      "lastDetailCheck": null,
+      "closedDoors": false
     },
     {
       "id": "226438",
@@ -1270,7 +1813,8 @@
         }
       },
       "detailFetchedAt": null,
-      "lastDetailCheck": null
+      "lastDetailCheck": null,
+      "closedDoors": false
     },
     {
       "id": "226445",
@@ -1296,7 +1840,8 @@
         }
       },
       "detailFetchedAt": null,
-      "lastDetailCheck": null
+      "lastDetailCheck": null,
+      "closedDoors": false
     },
     {
       "id": "226452",
@@ -1322,7 +1867,8 @@
         }
       },
       "detailFetchedAt": null,
-      "lastDetailCheck": null
+      "lastDetailCheck": null,
+      "closedDoors": false
     },
     {
       "id": "226461",
@@ -1348,7 +1894,8 @@
         }
       },
       "detailFetchedAt": null,
-      "lastDetailCheck": null
+      "lastDetailCheck": null,
+      "closedDoors": false
     },
     {
       "id": "226470",
@@ -1374,7 +1921,8 @@
         }
       },
       "detailFetchedAt": null,
-      "lastDetailCheck": null
+      "lastDetailCheck": null,
+      "closedDoors": false
     },
     {
       "id": "226479",
@@ -1400,7 +1948,8 @@
         }
       },
       "detailFetchedAt": null,
-      "lastDetailCheck": null
+      "lastDetailCheck": null,
+      "closedDoors": false
     },
     {
       "id": "226488",
@@ -1426,7 +1975,8 @@
         }
       },
       "detailFetchedAt": null,
-      "lastDetailCheck": null
+      "lastDetailCheck": null,
+      "closedDoors": false
     },
     {
       "id": "226497",
@@ -1452,7 +2002,8 @@
         }
       },
       "detailFetchedAt": null,
-      "lastDetailCheck": null
+      "lastDetailCheck": null,
+      "closedDoors": false
     },
     {
       "id": "226506",
@@ -1478,7 +2029,8 @@
         }
       },
       "detailFetchedAt": null,
-      "lastDetailCheck": null
+      "lastDetailCheck": null,
+      "closedDoors": false
     },
     {
       "id": "226515",
@@ -1504,7 +2056,8 @@
         }
       },
       "detailFetchedAt": null,
-      "lastDetailCheck": null
+      "lastDetailCheck": null,
+      "closedDoors": false
     },
     {
       "id": "226523",
@@ -1530,7 +2083,8 @@
         }
       },
       "detailFetchedAt": null,
-      "lastDetailCheck": null
+      "lastDetailCheck": null,
+      "closedDoors": false
     },
     {
       "id": "226530",
@@ -1556,7 +2110,8 @@
         }
       },
       "detailFetchedAt": null,
-      "lastDetailCheck": null
+      "lastDetailCheck": null,
+      "closedDoors": false
     },
     {
       "id": "226537",
@@ -1582,7 +2137,8 @@
         }
       },
       "detailFetchedAt": null,
-      "lastDetailCheck": null
+      "lastDetailCheck": null,
+      "closedDoors": false
     },
     {
       "id": "226544",
@@ -1608,7 +2164,8 @@
         }
       },
       "detailFetchedAt": null,
-      "lastDetailCheck": null
+      "lastDetailCheck": null,
+      "closedDoors": false
     },
     {
       "id": "226551",
@@ -1634,7 +2191,8 @@
         }
       },
       "detailFetchedAt": null,
-      "lastDetailCheck": null
+      "lastDetailCheck": null,
+      "closedDoors": false
     },
     {
       "id": "226558",
@@ -1660,7 +2218,8 @@
         }
       },
       "detailFetchedAt": null,
-      "lastDetailCheck": null
+      "lastDetailCheck": null,
+      "closedDoors": false
     },
     {
       "id": "226565",
@@ -1686,7 +2245,8 @@
         }
       },
       "detailFetchedAt": null,
-      "lastDetailCheck": null
+      "lastDetailCheck": null,
+      "closedDoors": false
     },
     {
       "id": "226572",
@@ -1712,7 +2272,8 @@
         }
       },
       "detailFetchedAt": null,
-      "lastDetailCheck": null
+      "lastDetailCheck": null,
+      "closedDoors": false
     },
     {
       "id": "226581",
@@ -1738,7 +2299,8 @@
         }
       },
       "detailFetchedAt": null,
-      "lastDetailCheck": null
+      "lastDetailCheck": null,
+      "closedDoors": false
     },
     {
       "id": "226590",
@@ -1764,7 +2326,8 @@
         }
       },
       "detailFetchedAt": null,
-      "lastDetailCheck": null
+      "lastDetailCheck": null,
+      "closedDoors": false
     },
     {
       "id": "226599",
@@ -1790,7 +2353,8 @@
         }
       },
       "detailFetchedAt": null,
-      "lastDetailCheck": null
+      "lastDetailCheck": null,
+      "closedDoors": false
     },
     {
       "id": "226608",
@@ -1816,7 +2380,8 @@
         }
       },
       "detailFetchedAt": null,
-      "lastDetailCheck": null
+      "lastDetailCheck": null,
+      "closedDoors": false
     },
     {
       "id": "226617",
@@ -1842,7 +2407,8 @@
         }
       },
       "detailFetchedAt": null,
-      "lastDetailCheck": null
+      "lastDetailCheck": null,
+      "closedDoors": false
     },
     {
       "id": "226626",
@@ -1868,7 +2434,8 @@
         }
       },
       "detailFetchedAt": null,
-      "lastDetailCheck": null
+      "lastDetailCheck": null,
+      "closedDoors": false
     },
     {
       "id": "226635",
@@ -1894,7 +2461,8 @@
         }
       },
       "detailFetchedAt": null,
-      "lastDetailCheck": null
+      "lastDetailCheck": null,
+      "closedDoors": false
     }
   ],
   "standings": [
@@ -1910,7 +2478,9 @@
       "goalDifference": 3,
       "points": 9,
       "adjustedPoints": 9,
-      "official": true
+      "pointsPenalty": 0,
+      "official": true,
+      "officialDeduction": false
     },
     {
       "position": 2,
@@ -1924,7 +2494,9 @@
       "goalDifference": 5,
       "points": 8,
       "adjustedPoints": 8,
-      "official": true
+      "pointsPenalty": 0,
+      "official": true,
+      "officialDeduction": false
     },
     {
       "position": 3,
@@ -1938,7 +2510,9 @@
       "goalDifference": 2,
       "points": 8,
       "adjustedPoints": 8,
-      "official": true
+      "pointsPenalty": 0,
+      "official": true,
+      "officialDeduction": false
     },
     {
       "position": 4,
@@ -1952,7 +2526,9 @@
       "goalDifference": 5,
       "points": 7,
       "adjustedPoints": 7,
-      "official": true
+      "pointsPenalty": 0,
+      "official": true,
+      "officialDeduction": false
     },
     {
       "position": 5,
@@ -1966,7 +2542,9 @@
       "goalDifference": 0,
       "points": 7,
       "adjustedPoints": 7,
-      "official": true
+      "pointsPenalty": 0,
+      "official": true,
+      "officialDeduction": false
     },
     {
       "position": 6,
@@ -1980,7 +2558,9 @@
       "goalDifference": 3,
       "points": 6,
       "adjustedPoints": 6,
-      "official": true
+      "pointsPenalty": 0,
+      "official": true,
+      "officialDeduction": false
     },
     {
       "position": 7,
@@ -1994,7 +2574,9 @@
       "goalDifference": 1,
       "points": 6,
       "adjustedPoints": 6,
-      "official": true
+      "pointsPenalty": 0,
+      "official": true,
+      "officialDeduction": false
     },
     {
       "position": 8,
@@ -2008,7 +2590,9 @@
       "goalDifference": -1,
       "points": 6,
       "adjustedPoints": 6,
-      "official": true
+      "pointsPenalty": 0,
+      "official": true,
+      "officialDeduction": false
     },
     {
       "position": 9,
@@ -2022,7 +2606,9 @@
       "goalDifference": 0,
       "points": 5,
       "adjustedPoints": 5,
-      "official": true
+      "pointsPenalty": 0,
+      "official": true,
+      "officialDeduction": false
     },
     {
       "position": 10,
@@ -2036,7 +2622,9 @@
       "goalDifference": 0,
       "points": 4,
       "adjustedPoints": 4,
-      "official": true
+      "pointsPenalty": 0,
+      "official": true,
+      "officialDeduction": false
     },
     {
       "position": 11,
@@ -2050,7 +2638,9 @@
       "goalDifference": -1,
       "points": 3,
       "adjustedPoints": 3,
-      "official": true
+      "pointsPenalty": 0,
+      "official": true,
+      "officialDeduction": false
     },
     {
       "position": 12,
@@ -2064,7 +2654,9 @@
       "goalDifference": -1,
       "points": 3,
       "adjustedPoints": 3,
-      "official": true
+      "pointsPenalty": 0,
+      "official": true,
+      "officialDeduction": false
     },
     {
       "position": 13,
@@ -2078,7 +2670,9 @@
       "goalDifference": -2,
       "points": 3,
       "adjustedPoints": 3,
-      "official": true
+      "pointsPenalty": 0,
+      "official": true,
+      "officialDeduction": false
     },
     {
       "position": 14,
@@ -2092,7 +2686,9 @@
       "goalDifference": -4,
       "points": 3,
       "adjustedPoints": 3,
-      "official": true
+      "pointsPenalty": 0,
+      "official": true,
+      "officialDeduction": false
     },
     {
       "position": 15,
@@ -2106,7 +2702,9 @@
       "goalDifference": -3,
       "points": 2,
       "adjustedPoints": 2,
-      "official": true
+      "pointsPenalty": 0,
+      "official": true,
+      "officialDeduction": false
     },
     {
       "position": 16,
@@ -2118,9 +2716,576 @@
       "goalsFor": 2,
       "goalsAgainst": 9,
       "goalDifference": -7,
-      "points": -3,
+      "points": 1,
       "adjustedPoints": -3,
-      "official": true
+      "pointsPenalty": 4,
+      "official": true,
+      "officialDeduction": true
+    }
+  ],
+  "topScorers": [
+    {
+      "rank": 1,
+      "playerId": null,
+      "clubId": "736",
+      "shirt": 17,
+      "goals": 3,
+      "matches": 4,
+      "name": {
+        "ar": "بن لمخربش أحمد",
+        "latin": "Ahmed Benlemkherbeche",
+        "en": "Ahmed Benlemkherbeche"
+      }
+    },
+    {
+      "playerId": null,
+      "clubId": "736",
+      "shirt": null,
+      "goals": 3,
+      "matches": 4,
+      "name": {
+        "ar": "بن لمخربش أحمد",
+        "latin": "بن لمخربش أحمد",
+        "en": "بن لمخربش أحمد"
+      },
+      "rank": 2
+    },
+    {
+      "rank": 3,
+      "playerId": null,
+      "clubId": "1036",
+      "shirt": 21,
+      "goals": 2,
+      "matches": 3,
+      "name": {
+        "ar": "خنطيط أسامة بشير",
+        "latin": "Oussama Bachir Khentit",
+        "en": "Oussama Bachir Khentit"
+      }
+    },
+    {
+      "rank": 4,
+      "playerId": null,
+      "clubId": "1036",
+      "shirt": 24,
+      "goals": 2,
+      "matches": 3,
+      "name": {
+        "ar": "زوقار إدريس",
+        "latin": "Idris Zouggar",
+        "en": "Idris Zouggar"
+      }
+    },
+    {
+      "rank": 5,
+      "playerId": null,
+      "clubId": "727",
+      "shirt": 18,
+      "goals": 2,
+      "matches": 3,
+      "name": {
+        "ar": "بولقرارة عبد المالك",
+        "latin": "Abdelmalek Boulkerara",
+        "en": "Abdelmalek Boulkerara"
+      }
+    },
+    {
+      "rank": 6,
+      "playerId": null,
+      "clubId": "891",
+      "shirt": 9,
+      "goals": 2,
+      "matches": 3,
+      "name": {
+        "ar": "بن معمر وائل",
+        "latin": "Ouail Benmamar",
+        "en": "Ouail Benmamar"
+      }
+    },
+    {
+      "rank": 7,
+      "playerId": null,
+      "clubId": "732",
+      "shirt": 10,
+      "goals": 2,
+      "matches": 4,
+      "name": {
+        "ar": "غالمي عثمان",
+        "latin": "Othman Ghalmi",
+        "en": "Othman Ghalmi"
+      }
+    },
+    {
+      "rank": 8,
+      "playerId": "49698",
+      "clubId": "733",
+      "shirt": 17,
+      "goals": 2,
+      "matches": 4,
+      "name": {
+        "ar": "رملي ناجي",
+        "latin": "Nadji Ramli",
+        "en": "Nadji Ramli"
+      }
+    },
+    {
+      "rank": 9,
+      "playerId": null,
+      "clubId": "736",
+      "shirt": 15,
+      "goals": 2,
+      "matches": 4,
+      "name": {
+        "ar": "عبد الحفيظ حفاص",
+        "latin": "Abdelhafid Hoggas",
+        "en": "Abdelhafid Hoggas"
+      }
+    },
+    {
+      "rank": 10,
+      "playerId": null,
+      "clubId": "891",
+      "shirt": 14,
+      "goals": 2,
+      "matches": 4,
+      "name": {
+        "ar": "حمودي شمس الدين",
+        "latin": "Chems Eddine Hammoudi",
+        "en": "Chems Eddine Hammoudi"
+      }
+    },
+    {
+      "rank": 11,
+      "playerId": null,
+      "clubId": "651",
+      "shirt": 27,
+      "goals": 1,
+      "matches": 2,
+      "name": {
+        "ar": "كباري أحمد",
+        "latin": "Kabari Ahmed",
+        "en": "Kabari Ahmed"
+      }
+    },
+    {
+      "rank": 12,
+      "playerId": null,
+      "clubId": "651",
+      "shirt": 25,
+      "goals": 1,
+      "matches": 2,
+      "name": {
+        "ar": "رحبة عبد الله صلاح الدين",
+        "latin": "Rahba Abdellah Salah-Eddine",
+        "en": "Rahba Abdellah Salah-Eddine"
+      }
+    },
+    {
+      "rank": 13,
+      "playerId": null,
+      "clubId": "728",
+      "shirt": 26,
+      "goals": 1,
+      "matches": 2,
+      "name": {
+        "ar": "عايب أرسلان شكيب",
+        "latin": "Areselane Chakib Layeb",
+        "en": "Areselane Chakib Layeb"
+      }
+    },
+    {
+      "rank": 14,
+      "playerId": null,
+      "clubId": "728",
+      "shirt": 23,
+      "goals": 1,
+      "matches": 2,
+      "name": {
+        "ar": "أوشارف شمس الدين",
+        "latin": "Oucharef Chemseddine",
+        "en": "Oucharef Chemseddine"
+      }
+    },
+    {
+      "rank": 15,
+      "playerId": null,
+      "clubId": "729",
+      "shirt": 5,
+      "goals": 1,
+      "matches": 2,
+      "name": {
+        "ar": "بوعزيز أديب",
+        "latin": "Bouaziz Adib",
+        "en": "Bouaziz Adib"
+      }
+    },
+    {
+      "rank": 16,
+      "playerId": null,
+      "clubId": "734",
+      "shirt": 27,
+      "goals": 1,
+      "matches": 2,
+      "name": {
+        "ar": "قطاف تمام أحمد مصطفى",
+        "latin": "Guettaf Temam Ahmed Mostefa",
+        "en": "Guettaf Temam Ahmed Mostefa"
+      }
+    },
+    {
+      "rank": 17,
+      "playerId": null,
+      "clubId": "891",
+      "shirt": 11,
+      "goals": 1,
+      "matches": 2,
+      "name": {
+        "ar": "غلام لشطر وسيم",
+        "latin": "Ouassim Ghoulem Lachetar",
+        "en": "Ouassim Ghoulem Lachetar"
+      }
+    },
+    {
+      "rank": 18,
+      "playerId": null,
+      "clubId": "937",
+      "shirt": 25,
+      "goals": 1,
+      "matches": 2,
+      "name": {
+        "ar": "بشير بلال",
+        "latin": "Bilal Bachir",
+        "en": "Bilal Bachir"
+      }
+    },
+    {
+      "rank": 19,
+      "playerId": null,
+      "clubId": "997",
+      "shirt": 21,
+      "goals": 1,
+      "matches": 2,
+      "name": {
+        "ar": "درغوم شعيب",
+        "latin": "Chouaib Derghoume",
+        "en": "Chouaib Derghoume"
+      }
+    },
+    {
+      "rank": 20,
+      "playerId": null,
+      "clubId": "997",
+      "shirt": 9,
+      "goals": 1,
+      "matches": 2,
+      "name": {
+        "ar": "بومسحل منصف",
+        "latin": "Mounsif Boumeshal",
+        "en": "Mounsif Boumeshal"
+      }
+    },
+    {
+      "rank": 21,
+      "playerId": null,
+      "clubId": "1036",
+      "shirt": 25,
+      "goals": 1,
+      "matches": 3,
+      "name": {
+        "ar": "قرماطي تهامي",
+        "latin": "Touhami Guermati",
+        "en": "Touhami Guermati"
+      }
+    },
+    {
+      "rank": 22,
+      "playerId": null,
+      "clubId": "727",
+      "shirt": 26,
+      "goals": 1,
+      "matches": 3,
+      "name": {
+        "ar": "مختاري عبد الرحيم",
+        "latin": "Abderahim Mokhtari",
+        "en": "Abderahim Mokhtari"
+      }
+    },
+    {
+      "rank": 23,
+      "playerId": null,
+      "clubId": "728",
+      "shirt": 7,
+      "goals": 1,
+      "matches": 3,
+      "name": {
+        "ar": "رابحي سيف الدين",
+        "latin": "Seif Eddine Rabhi",
+        "en": "Seif Eddine Rabhi"
+      }
+    },
+    {
+      "rank": 24,
+      "playerId": null,
+      "clubId": "729",
+      "shirt": 10,
+      "goals": 1,
+      "matches": 3,
+      "name": {
+        "ar": "لعصيص رياض",
+        "latin": "Riadhe Laacisse",
+        "en": "Riadhe Laacisse"
+      }
+    },
+    {
+      "rank": 25,
+      "playerId": null,
+      "clubId": "731",
+      "shirt": 6,
+      "goals": 1,
+      "matches": 3,
+      "name": {
+        "ar": "إليهم نزيه",
+        "latin": "Nazih Ilihoum",
+        "en": "Nazih Ilihoum"
+      }
+    },
+    {
+      "rank": 26,
+      "playerId": "40725",
+      "clubId": "733",
+      "shirt": 9,
+      "goals": 1,
+      "matches": 3,
+      "name": {
+        "ar": "بن صغير حمزة",
+        "latin": "Hamza Benseghier",
+        "en": "Hamza Benseghier"
+      }
+    },
+    {
+      "rank": 27,
+      "playerId": "43990",
+      "clubId": "733",
+      "shirt": 18,
+      "goals": 1,
+      "matches": 3,
+      "name": {
+        "ar": "ماضي رابح",
+        "latin": "Rabah Madhi",
+        "en": "Rabah Madhi"
+      }
+    },
+    {
+      "rank": 28,
+      "playerId": null,
+      "clubId": "734",
+      "shirt": 17,
+      "goals": 1,
+      "matches": 3,
+      "name": {
+        "ar": "صغير شمس الدين",
+        "latin": "Chems Eddine Seghir",
+        "en": "Chems Eddine Seghir"
+      }
+    },
+    {
+      "rank": 29,
+      "playerId": null,
+      "clubId": "884",
+      "shirt": 17,
+      "goals": 1,
+      "matches": 3,
+      "name": {
+        "ar": "بوعفار هشام",
+        "latin": "Hichem Bouaafar",
+        "en": "Hichem Bouaafar"
+      }
+    },
+    {
+      "rank": 30,
+      "playerId": null,
+      "clubId": "884",
+      "shirt": 5,
+      "goals": 1,
+      "matches": 3,
+      "name": {
+        "ar": "زيادي حسام",
+        "latin": "Houssem Ziadi",
+        "en": "Houssem Ziadi"
+      }
+    },
+    {
+      "rank": 31,
+      "playerId": null,
+      "clubId": "891",
+      "shirt": 17,
+      "goals": 1,
+      "matches": 3,
+      "name": {
+        "ar": "زفيزف عبد المعز",
+        "latin": "Abdelmouaiz Zefizef",
+        "en": "Abdelmouaiz Zefizef"
+      }
+    },
+    {
+      "rank": 32,
+      "playerId": null,
+      "clubId": "732",
+      "shirt": 11,
+      "goals": 1,
+      "matches": 4,
+      "name": {
+        "ar": "بشكيط أنور",
+        "latin": "Anouar Bechkit",
+        "en": "Anouar Bechkit"
+      }
+    },
+    {
+      "rank": 33,
+      "playerId": null,
+      "clubId": "732",
+      "shirt": 21,
+      "goals": 1,
+      "matches": 4,
+      "name": {
+        "ar": "جمدي بن يحي",
+        "latin": "Hamdi Benyahia",
+        "en": "Hamdi Benyahia"
+      }
+    },
+    {
+      "rank": 34,
+      "playerId": null,
+      "clubId": "823",
+      "shirt": 18,
+      "goals": 1,
+      "matches": 4,
+      "name": {
+        "ar": "مناوي أحمد",
+        "latin": "Ahmed Menaoui",
+        "en": "Ahmed Menaoui"
+      }
+    },
+    {
+      "rank": 35,
+      "playerId": null,
+      "clubId": "823",
+      "shirt": 28,
+      "goals": 1,
+      "matches": 4,
+      "name": {
+        "ar": "لعجال أحمد أمين",
+        "latin": "Ahmed Amine Ladjel",
+        "en": "Ahmed Amine Ladjel"
+      }
+    }
+  ],
+  "roundResults": [
+    {
+      "id": "226424",
+      "round": 4,
+      "kickoff": "2026-10-23T15:00:00+01:00",
+      "venue": "Stade Belkacem Belaid, Mila",
+      "home": "733",
+      "away": "729",
+      "status": "finished",
+      "closedDoors": false,
+      "score": {
+        "home": 2,
+        "away": 1
+      }
+    },
+    {
+      "id": "226427",
+      "round": 4,
+      "kickoff": "2026-10-23T15:00:00+01:00",
+      "venue": "Souidani Boujemaa Stadium, Guelma",
+      "home": "732",
+      "away": "734",
+      "status": "finished",
+      "closedDoors": false,
+      "score": {
+        "home": 2,
+        "away": 0
+      }
+    },
+    {
+      "id": "226426",
+      "round": 4,
+      "kickoff": "2026-10-23T15:00:00+01:00",
+      "venue": "سوق أهراس - حمى لولو -",
+      "home": "937",
+      "away": "736",
+      "status": "finished",
+      "closedDoors": false,
+      "score": {
+        "home": 1,
+        "away": 2
+      }
+    },
+    {
+      "id": "226420",
+      "round": 4,
+      "kickoff": "2026-10-23T15:00:00+01:00",
+      "venue": "عين الكرشة بوشوارب عمار",
+      "home": "731",
+      "away": "884",
+      "status": "finished",
+      "closedDoors": false,
+      "score": {
+        "home": 1,
+        "away": 1
+      }
+    },
+    {
+      "id": "226422",
+      "round": 4,
+      "kickoff": "2026-10-23T15:00:00+01:00",
+      "venue": "بن عبدالمالك قسنطينة",
+      "home": "823",
+      "away": "891",
+      "status": "finished",
+      "closedDoors": false,
+      "score": {
+        "home": 0,
+        "away": 0
+      }
+    },
+    {
+      "id": "226423",
+      "round": 4,
+      "kickoff": "2026-10-23T15:00:00+01:00",
+      "venue": "Ain M'lila (Khelifi Touhami Zoubir)",
+      "home": "651",
+      "away": "849",
+      "status": "finished",
+      "closedDoors": false,
+      "score": {
+        "home": 0,
+        "away": 0
+      }
+    },
+    {
+      "id": "226421",
+      "round": 4,
+      "kickoff": "2026-10-24T15:00:00+01:00",
+      "venue": "المركب سعيدوني البشير",
+      "home": "997",
+      "away": "728",
+      "status": "scheduled",
+      "closedDoors": true,
+      "score": null
+    },
+    {
+      "id": "226425",
+      "round": 4,
+      "kickoff": "2026-10-24T15:00:00+01:00",
+      "venue": "الملعب البلدي قايس",
+      "home": "727",
+      "away": "1036",
+      "status": "scheduled",
+      "closedDoors": false,
+      "score": null
     }
   ]
 }

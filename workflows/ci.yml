@@ -1,0 +1,71 @@
+name: CI — Validate Scraper, Data Schema & Frontend
+
+on:
+  push:
+    branches: ["main", "master"]
+    paths-ignore:
+      - "data/**"
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+          cache-dependency-path: "requirements.txt"
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install Python dependencies
+        run: pip install -r requirements.txt
+
+      - name: Lint GitHub Actions workflow YAML files
+        run: |
+          python -c "
+          import glob, sys, yaml
+          files = sorted(glob.glob('.github/workflows/*.yml') + glob.glob('.github/workflows/*.yaml'))
+          assert files, 'No workflow files found in .github/workflows/'
+          for path in files:
+              with open(path, 'r', encoding='utf-8') as f:
+                  doc = yaml.safe_load(f)
+              assert isinstance(doc, dict), f'Invalid workflow structure in {path}'
+              print(f'YAML OK: {path}')
+          "
+
+      - name: Compile & syntax-check Python files
+        run: python -m py_compile scraper.py scripts/notify_failure.py
+
+      - name: Run scraper unit & integration tests (pytest)
+        run: pytest -v
+
+      - name: Validate data/data.json against JSON Schema & sanity rules
+        run: |
+          python -c "
+          import json, scraper, sys
+          data = scraper.load_data('data/data.json')
+          errs = scraper.validate_dataset(data, schema_path='data/schema.json')
+          if errs:
+              print('Validation errors:', errs)
+              sys.exit(1)
+          print('data/data.json schema & sanity checks passed.')
+          "
+
+      - name: Syntax-check JavaScript files (app.js, sw.js, config.js)
+        run: |
+          node --check app.js
+          node --check sw.js
+          node --check config.js

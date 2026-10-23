@@ -17,7 +17,7 @@
   } catch (e) {}
 })();
 
-const D0 = {"schemaVersion":3,"lastUpdated":"2026-10-14T14:30:00+01:00","sourceUrls":{"club":"https://www.lirf.dz/ar/club/733","ranking":"https://www.lirf.dz/ar/ranking","player":"https://www.lirf.dz/ar/player/{id}","match":"https://www.lirf.dz/ar/match/{id}","calendar":"https://www.lirf.dz/ar/calendar"},"sourceMeta":{"seasonId":"6","seasonName":"2026/2027","competitionId":"4275","competitionAr":"شرق","competitionLatin":"Ligue Inter-Régions Group East","timezone":"Africa/Algiers","palette":{"primary":"#e30613","white":"#FFFFFF","black":"#000000"},"relegationPlaces":0},"club":{"id":"733","name":{"ar":"شباب ميلة","latin":"CBM Mila"},"short":"CBM","city":"Mila","country":"Algeria","logo":"https://www.lirf.dz/clubs-logos/733-1656234689.png","stadium":{"name":"Stade Belkacem Belaid","ar":"ملعب بلقاسم بلعيد","source":"Stade Belkacem Belaid, Mila"}},"staff":[{"id":"staff-1","name":{"ar":"بلعريبي سعيد","latin":"Said Belaribi","en":"Said Belaribi"},"role":{"ar":"مدرب أكابر","en":"Head coach"},"nationality":"الجزائر","photoUrl":"https://www.lirf.dz/person-image/155316-1669552530.jpg"},{"id":"staff-2","name":{"ar":"قياس محمد","latin":"Mohammed Kias","en":"Mohammed Kias"},"role":{"ar":"1er Entr. Adjoint Séniors","en":"Assistant coach"},"nationality":"الجزائر","photoUrl":"https://www.lirf.dz/person-image/612169-1772740180.jpg"},{"id":"staff-3","name":{"ar":"يحياوي الوليد","latin":"El Oualid Yahiaoui","en":"El Oualid Yahiaoui"},"role":{"ar":"مدرب حراس أكابر","en":"Goalkeeper coach"},"nationality":"الجزائر","photoUrl":"https://www.lirf.dz/person-image/59277-1664706356.jpg"},{"id":"staff-4","name":{"ar":"مسعي أسامة","latin":"Oussama Messai","en":"Oussama Messai"},"role":{"ar":"محضر بدني أكابر","en":"Fitness coach"},"nationality":"الجزائر","photoUrl":"https://www.lirf.dz/person-image/498704-1738235237.jpg"}],"players":[{"id":"43091","shirt":1,"name":{"ar":"حميدي محمد بهاء الدين","latin":"Mohamed Baha Eddine Hamidi","en":"Mohamed Baha Eddine Hamidi"},"position":"GK","birthDate":"2001-07-05","approxAge":25,"nationality":"الجزائر","photoUrl":"https://www.lirf.dz/licence-photo/photo-pro-870947-1789843107.png","sourceUrl":"https://www.lirf.dz/ar/player/43091","lastFetchedAt":"2026-10-14T14:30:00+01:00"},{"id":"62230","shirt":30,"name":{"ar":"شابونية حسام","latin":"Houceme Chabounia","en":"Houceme Chabounia"},"position":"GK","birthDate":"1997-01-21","approxAge":29,"nationality":"الجزائر","photoUrl":"https://www.lirf.dz/licence-photo/photo-pro-870975-1789845765.png","sourceUrl":"https://www.lirf.dz/ar/player/62230","lastFetchedAt":"2026-10-14T14:30:00+01:00"},{"id":"129241","shirt":16,"name":{"ar":"مقيرد عمر","latin":"Omar Mekired","en":"Omar Mekired"},"position":"GK","birthDate":"2006-09-06","approxAge":20,"nationality":"الجزائر","photoUrl":"https://www.lirf.dz/licence-photo/photo-pro-871473-1789845435.png","sourceUrl":"https://www.lirf.dz/ar/player/129241","lastFetchedAt":"2026-10-14T14:30:00+01:00"},{"id":"72760","shirt":2,"name":{"ar":"فقراوي بلقاسم","latin":"Belgacem Fekraoui","en":"Belgacem Fekraoui"},"position":"DEF","birthDate":null,"approxAge":22,"nationality":"الجزائر","photoUrl":"https://www.lirf.dz/licence-photo/photo-pro-870950-1789843145.png","sourceUrl":"https://www.lirf.dz/ar/player/72760","lastFetchedAt":"2026-10-14T14:30:00+01:00"},{"id":"42007","shirt":3,"name":{"ar":"زكور اسامة","latin":"Oussama Zekour","en":"Oussama Zekour"},"position":"DEF","birthDate":null,"approxAge":30,"nationality":"الجزائر","photoUrl":"https://www.lirf.dz/licence-photo/photo-pro-873472-1789845963.png","sourceUrl":"https://www.lirf.dz/ar/player/42007","lastFetchedAt":"2026-10-14T14:30:00+01:00"},{"id":"36975","shirt":4,"name":{"ar":"قلبوزة بلقاسم","latin":"Belgacem Kalbouza","en":"Belgacem Kalbouza"},"position":"DEF","birthDate":"1996-05-14","approxAge":30,"nationality":"الجزائر","photoUrl":"https://www.lirf.dz/licence-photo/photo-pro-870953-1789845132.png","sourceUrl":"https://www.lirf.dz/ar/player/36975","lastFetchedAt":"2026-10-14T14:30:00+01:00"},{"id":"46519","shirt":5,"name":{"ar":"بولدياب بلال","latin":"Bilal Bouldiab","en":"Bilal Bouldiab"},"position":"DEF","birthDate":null,"approxAge":37,"nationality":"الجزائر","photoUrl":"https://www.lirf.dz/licence-photo/photo-pro-870955-1789845155.png","sourceUrl":"https://www.lirf.dz/ar/player/46519","lastFetchedAt":"2026-10-14T14:30:00+01:00"},{"id":"58378","shirt":20,"name":{"ar":"بن يحي سراج الدين","latin":"Seradj Eddine Benyahia","en":"Seradj Eddine Benyahia"},"position":"DEF","birthDate":"2005-08-15","approxAge":21,"nationality":"الجزائر","photoUrl":"https://www.lirf.dz/licence-photo/photo-pro-870969-1789845542.png","sourceUrl":"https://www.lirf.dz/ar/player/58378","lastFetchedAt":"2026-10-14T14:30:00+01:00"},{"id":"44171","shirt":22,"name":{"ar":"بن لعريبي سليمان","latin":"Slimane Benlaribi","en":"Slimane Benlaribi"},"position":"DEF","birthDate":"1993-10-30","approxAge":32,"nationality":"الجزائر","photoUrl":"https://www.lirf.dz/licence-photo/photo-pro-870971-1789845612.png","sourceUrl":"https://www.lirf.dz/ar/player/44171","lastFetchedAt":"2026-10-14T14:30:00+01:00"},{"id":"47553","shirt":24,"name":{"ar":"بودابة برهان","latin":"Borhane Boudaba","en":"Borhane Boudaba"},"position":"DEF","birthDate":null,"approxAge":28,"nationality":"الجزائر","photoUrl":"https://www.lirf.dz/licence-photo/photo-pro-870972-1789845640.png","sourceUrl":"https://www.lirf.dz/ar/player/47553","lastFetchedAt":"2026-10-14T14:30:00+01:00"},{"id":"42302","shirt":6,"name":{"ar":"عابد واسيم","latin":"Ouassim Abed","en":"Ouassim Abed"},"position":"MID","birthDate":"2001-06-03","approxAge":25,"nationality":"الجزائر","photoUrl":"https://www.lirf.dz/licence-photo/photo-pro-873470-1789846014.png","sourceUrl":"https://www.lirf.dz/ar/player/42302","lastFetchedAt":"2026-10-14T14:30:00+01:00"},{"id":"40940","shirt":8,"name":{"ar":"سياب يوسف إسلام","latin":"Youcef Islam Siab","en":"Youcef Islam Siab"},"position":"MID","birthDate":null,"approxAge":32,"nationality":"الجزائر","photoUrl":"https://www.lirf.dz/licence-photo/photo-pro-870961-1789845276.png","sourceUrl":"https://www.lirf.dz/ar/player/40940","lastFetchedAt":"2026-10-14T14:30:00+01:00"},{"id":"377274","shirt":10,"name":{"ar":"عقبي بن حدوش حسن","latin":"Hassen Ogbi Benhadouche","en":"Hassen Ogbi Benhadouche"},"position":"MID","birthDate":"1989-08-17","approxAge":37,"nationality":"الجزائر","photoUrl":null,"sourceUrl":"https://www.lirf.dz/ar/player/377274","lastFetchedAt":"2026-10-14T14:30:00+01:00"},{"id":"52968","shirt":14,"name":{"ar":"عتامنة محمد عصام","latin":"Mohamed Issam Atamna","en":"Mohamed Issam Atamna"},"position":"MID","birthDate":"1995-06-08","approxAge":31,"nationality":"الجزائر","photoUrl":"https://www.lirf.dz/licence-photo/photo-pro-870963-1789845335.png","sourceUrl":"https://www.lirf.dz/ar/player/52968","lastFetchedAt":"2026-10-14T14:30:00+01:00"},{"id":"69852","shirt":15,"name":{"ar":"قيرة إسماعيل","latin":"Ismail Guira","en":"Ismail Guira"},"position":"MID","birthDate":"1994-07-12","approxAge":32,"nationality":"الجزائر","photoUrl":"https://www.lirf.dz/licence-photo/photo-pro-870965-1789845401.png","sourceUrl":"https://www.lirf.dz/ar/player/69852","lastFetchedAt":"2026-10-14T14:30:00+01:00"},{"id":"14596","shirt":19,"name":{"ar":"قدور عبد المالك","latin":"Abdelmalek Kaddour","en":"Abdelmalek Kaddour"},"position":"MID","birthDate":null,"approxAge":21,"nationality":"الجزائر","photoUrl":"https://www.lirf.dz/licence-photo/photo-pro-870968-1789845520.png","sourceUrl":"https://www.lirf.dz/ar/player/14596","lastFetchedAt":"2026-10-14T14:30:00+01:00"},{"id":"48886","shirt":25,"name":{"ar":"مبرك محمد تاج الدين","latin":"Mohamed Tadj Eddine Mebrek","en":"Mohamed Tadj Eddine Mebrek"},"position":"MID","birthDate":null,"approxAge":34,"nationality":"الجزائر","photoUrl":"https://www.lirf.dz/licence-photo/photo-pro-870973-1789845664.png","sourceUrl":"https://www.lirf.dz/ar/player/48886","lastFetchedAt":"2026-10-14T14:30:00+01:00"},{"id":"130839","shirt":26,"name":{"ar":"بوقصبة وسيم","latin":"Ouassim Boukacem","en":"Ouassim Boukacem"},"position":"MID","birthDate":"2005-09-04","approxAge":21,"nationality":"الجزائر","photoUrl":"https://www.lirf.dz/licence-photo/photo-pro-870974-1789845706.png","sourceUrl":"https://www.lirf.dz/ar/player/130839","lastFetchedAt":"2026-10-14T14:30:00+01:00"},{"id":"51430","shirt":27,"name":{"ar":"شريبط ابراهيم","latin":"Brahim Cheribet","en":"Brahim Cheribet"},"position":"MID","birthDate":null,"approxAge":32,"nationality":"الجزائر","photoUrl":"https://www.lirf.dz/licence-photo/photo-pro-871467-1789845737.png","sourceUrl":"https://www.lirf.dz/ar/player/51430","lastFetchedAt":"2026-10-14T14:30:00+01:00"},{"id":"129258","shirt":28,"name":{"ar":"جزار عبد العالي","latin":"Abdelali Djezzar","en":"Abdelali Djezzar"},"position":"MID","birthDate":"2006-08-17","approxAge":20,"nationality":"الجزائر","photoUrl":null,"sourceUrl":"https://www.lirf.dz/ar/player/129258","lastFetchedAt":"2026-10-14T14:30:00+01:00"},{"id":"52586","shirt":7,"name":{"ar":"بن الطيب رامي","latin":"Rami Bentayeb","en":"Rami Bentayeb"},"position":"FW","birthDate":"2004-04-11","approxAge":22,"nationality":"الجزائر","photoUrl":"https://www.lirf.dz/licence-photo/photo-pro-870959-1789845210.png","sourceUrl":"https://www.lirf.dz/ar/player/52586","lastFetchedAt":"2026-10-14T14:30:00+01:00"},{"id":"40725","shirt":9,"name":{"ar":"بن صغير حمزة","latin":"Hamza Benseghier","en":"Hamza Benseghier"},"position":"FW","birthDate":"2002-02-23","approxAge":24,"nationality":"الجزائر","photoUrl":"https://www.lirf.dz/licence-photo/photo-pro-870962-1789845311.png","sourceUrl":"https://www.lirf.dz/ar/player/40725","lastFetchedAt":"2026-10-14T14:30:00+01:00"},{"id":"51990","shirt":11,"name":{"ar":"خابية صلاح الدين","latin":"Salah Eddine Khabia","en":"Salah Eddine Khabia"},"position":"FW","birthDate":null,"approxAge":33,"nationality":"الجزائر","photoUrl":"https://www.lirf.dz/licence-photo/photo-pro-870964-1789845365.png","sourceUrl":"https://www.lirf.dz/ar/player/51990","lastFetchedAt":"2026-10-14T14:30:00+01:00"},{"id":"49698","shirt":17,"name":{"ar":"رملي ناجي","latin":"Nadji Ramli","en":"Nadji Ramli"},"position":"FW","birthDate":null,"approxAge":33,"nationality":"الجزائر","photoUrl":"https://www.lirf.dz/licence-photo/photo-pro-870966-1789845457.png","sourceUrl":"https://www.lirf.dz/ar/player/49698","lastFetchedAt":"2026-10-14T14:30:00+01:00"},{"id":"43990","shirt":18,"name":{"ar":"ماضي رابح","latin":"Rabah Madhi","en":"Rabah Madhi"},"position":"FW","birthDate":null,"approxAge":24,"nationality":"الجزائر","photoUrl":"https://www.lirf.dz/licence-photo/photo-pro-870967-1789845497.png","sourceUrl":"https://www.lirf.dz/ar/player/43990","lastFetchedAt":"2026-10-14T14:30:00+01:00"},{"id":"58346","shirt":21,"name":{"ar":"لعطيوي وسيم","latin":"Ouassim Latioui","en":"Ouassim Latioui"},"position":"FW","birthDate":"2000-04-03","approxAge":26,"nationality":"الجزائر","photoUrl":"https://www.lirf.dz/licence-photo/photo-pro-870970-1789845579.png","sourceUrl":"https://www.lirf.dz/ar/player/58346","lastFetchedAt":"2026-10-14T14:30:00+01:00"},{"id":"51164","shirt":23,"name":{"ar":"دغموش رابح","latin":"Rabah Dekhmouche","en":"Rabah Dekhmouche"},"position":"FW","birthDate":null,"approxAge":34,"nationality":"الجزائر","photoUrl":"https://www.lirf.dz/licence-photo/photo-pro-874562-1789845991.png","sourceUrl":"https://www.lirf.dz/ar/player/51164","lastFetchedAt":"2026-10-14T14:30:00+01:00"}],"opponents":[{"id":"651","name":{"ar":"امل عين مليلة","latin":"ASM Ain M'lila","en":"ASM Ain M'lila"},"short":"ASM","logo":"https://www.lirf.dz/clubs-logos/651-1642066952.png"},{"id":"728","name":{"ar":"شباب عين فكرون","latin":"CRB Ain Fekroun","en":"CRB Ain Fekroun"},"short":"CRBAF","logo":"https://www.lirf.dz/clubs-logos/728-1656232557.png"},{"id":"734","name":{"ar":"شباب عين ياقوت","latin":"CRB Ain Yagout","en":"CRB Ain Yagout"},"short":"CRBAY","logo":"https://www.lirf.dz/clubs-logos/734-1656234945.png"},{"id":"997","name":{"ar":"شباب الميلية","latin":"CRBE Milia","en":"CRBE Milia"},"short":"CRBE","logo":"https://www.lirf.dz/clubs-logos/997-1663798648.png"},{"id":"1036","name":{"ar":"شباب الرياضي بلدية فرجيوة","latin":"CRB Ferdjioua","en":"CRB Ferdjioua"},"short":"CRBF","logo":"https://www.lirf.dz/clubs-logos/1036-1729464250.png"},{"id":"727","name":{"ar":"شباب قايس","latin":"CRB Kais","en":"CRB Kais"},"short":"CRBK","logo":"https://www.lirf.dz/clubs-logos/727-1656232290.png"},{"id":"849","name":{"ar":"النجم الرياضي فرفوس بئر العاتر","latin":"ESF Bir El Ater","en":"ESF Bir El Ater"},"short":"ESFBEA","logo":"https://www.lirf.dz/clubs-logos/849-1661335046.png"},{"id":"736","name":{"ar":"ترجي قالمة","latin":"ES Guelma","en":"ES Guelma"},"short":"ESG","logo":"https://www.lirf.dz/clubs-logos/736-1693664135.png"},{"id":"937","name":{"ar":"النادي الرياضي وفاق سوق اهراس","latin":"ES Souk Ahras","en":"ES Souk Ahras"},"short":"ESSA","logo":"https://www.lirf.dz/clubs-logos/937-1661430750.png"},{"id":"891","name":{"ar":"إتحاد سدراتة","latin":"IRB Sedrata","en":"IRB Sedrata"},"short":"IRBS","logo":"https://www.lirf.dz/clubs-logos/891-1661419194.png"},{"id":"731","name":{"ar":"شباب عين كرشة","latin":"JB Ain Kercha","en":"JB Ain Kercha"},"short":"JBAK","logo":"https://www.lirf.dz/clubs-logos/731-1656233831.png"},{"id":"732","name":{"ar":"نصر الفجوج","latin":"NASR El Fedjoudj","en":"NASR El Fedjoudj"},"short":"NASR","logo":"https://www.lirf.dz/clubs-logos/732-1660840984.png"},{"id":"729","name":{"ar":"نجم تازوقاغت","latin":"NRB Tazouguert","en":"NRB Tazouguert"},"short":"NRBT","logo":"https://www.lirf.dz/clubs-logos/729-1656233034.png"},{"id":"884","name":{"ar":"إتحاد بوخضرة","latin":"US Boukhadra","en":"US Boukhadra"},"short":"USB","logo":"https://www.lirf.dz/clubs-logos/884-1661417821.png"},{"id":"823","name":{"ar":"اتحاد الفوبور","latin":"USF Constantine","en":"USF Constantine"},"short":"USFC","logo":"https://www.lirf.dz/clubs-logos/823-1662314683.png"}],"matches":[{"id":"226403","round":1,"kickoff":"2026-09-26T16:00:00+01:00","venue":"Stade de Ferdjioua, Ferdjioua","home":"1036","away":"733","status":"finished","score":{"home":4,"away":0},"referees":["قويشيش عبد الكريم","LAZIZI","ZAIDI Redha"],"events":[{"minute":44,"type":"goal","team":"1036","playerId":null,"playerName":"خنطيط اسامة بشير"},{"minute":55,"type":"goal","team":"1036","playerId":null,"playerName":"خنطيط اسامة بشير"},{"minute":76,"type":"goal","team":"1036","playerId":null,"playerName":"زوقار ادريس"},{"minute":88,"type":"goal","team":"1036","playerId":null,"playerName":"زوقار ادريس"},{"minute":14,"type":"yellow","team":"733","playerId":"72760","playerName":null},{"minute":42,"type":"yellow","team":"733","playerId":"46519","playerName":null},{"minute":45,"type":"sub-in","team":"733","playerId":"377274","playerName":null,"relatedPlayerId":"48886","relatedPlayerName":null},{"minute":45,"type":"sub-out","team":"733","playerId":"48886","playerName":null,"relatedPlayerId":"377274","relatedPlayerName":null},{"minute":65,"type":"sub-in","team":"733","playerId":"51990","playerName":null,"relatedPlayerId":"72760","relatedPlayerName":null},{"minute":65,"type":"sub-out","team":"733","playerId":"72760","playerName":null,"relatedPlayerId":"51990","relatedPlayerName":null},{"minute":65,"type":"sub-in","team":"733","playerId":"14596","playerName":null,"relatedPlayerId":"40940","relatedPlayerName":null},{"minute":65,"type":"sub-out","team":"733","playerId":"40940","playerName":null,"relatedPlayerId":"14596","relatedPlayerName":null},{"minute":82,"type":"sub-in","team":"733","playerId":"43990","playerName":null,"relatedPlayerId":"49698","relatedPlayerName":null},{"minute":82,"type":"sub-out","team":"733","playerId":"49698","playerName":null,"relatedPlayerId":"43990","relatedPlayerName":null}],"lineups":{"home":{"starters":[],"bench":[],"coach":null},"away":{"starters":[{"playerId":"43091"},{"playerId":"72760"},{"playerId":"42007"},{"playerId":"46519"},{"playerId":"58378"},{"playerId":"44171"},{"playerId":"40940"},{"playerId":"48886"},{"playerId":"51430"},{"playerId":"40725"},{"playerId":"49698"}],"bench":[{"playerId":"36975"},{"playerId":"377274"},{"playerId":"51990"},{"playerId":"69852"},{"playerId":"43990"},{"playerId":"14596"},{"playerId":"51164"},{"playerId":"47553"},{"playerId":"62230"}],"coach":null}},"detailFetchedAt":"2026-10-04T00:00:00+01:00","lastDetailCheck":"2026-10-04T00:00:00+01:00"},{"id":"226410","round":2,"kickoff":"2026-10-03T15:00:00+01:00","venue":"Stade Belkacem Belaid, Mila","home":"733","away":"734","status":"finished","score":{"home":3,"away":0},"referees":["غواس يونس","مري مبروك","TEBANI Abdelhak"],"events":[{"minute":25,"type":"goal","team":"733","playerId":"40725","playerName":null},{"minute":57,"type":"goal","team":"733","playerId":"49698","playerName":null},{"minute":67,"type":"goal","team":"733","playerId":"43990","playerName":null},{"minute":45,"type":"sub-in","team":"733","playerId":"43990","playerName":null,"relatedPlayerId":"51990","relatedPlayerName":null},{"minute":45,"type":"sub-out","team":"733","playerId":"51990","playerName":null,"relatedPlayerId":"43990","relatedPlayerName":null},{"minute":45,"type":"sub-in","team":"733","playerId":"47553","playerName":null,"relatedPlayerId":"42007","relatedPlayerName":null},{"minute":45,"type":"sub-out","team":"733","playerId":"42007","playerName":null,"relatedPlayerId":"47553","relatedPlayerName":null},{"minute":76,"type":"sub-in","team":"733","playerId":"51164","playerName":null,"relatedPlayerId":"49698","relatedPlayerName":null},{"minute":76,"type":"sub-out","team":"733","playerId":"49698","playerName":null,"relatedPlayerId":"51164","relatedPlayerName":null},{"minute":78,"type":"sub-in","team":"733","playerId":"51430","playerName":null,"relatedPlayerId":"40725","relatedPlayerName":null},{"minute":78,"type":"sub-out","team":"733","playerId":"40725","playerName":null,"relatedPlayerId":"51430","relatedPlayerName":null},{"minute":85,"type":"sub-in","team":"733","playerId":"14596","playerName":null,"relatedPlayerId":"377274","relatedPlayerName":null},{"minute":85,"type":"sub-out","team":"733","playerId":"377274","playerName":null,"relatedPlayerId":"14596","relatedPlayerName":null}],"lineups":{"home":{"starters":[{"playerId":"43091"},{"playerId":"42007"},{"playerId":"36975"},{"playerId":"46519"},{"playerId":"58378"},{"playerId":"377274"},{"playerId":"48886"},{"playerId":"40940"},{"playerId":"40725"},{"playerId":"51990"},{"playerId":"49698"}],"bench":[{"playerId":"72760"},{"playerId":"51164"},{"playerId":"51430"},{"playerId":"62230"},{"playerId":"47553"},{"playerId":"44171"},{"playerId":"14596"},{"playerId":"43990"},{"playerId":"69852"}],"coach":"بلعريبي سعيد"},"away":{"starters":[{"playerName":"بلقاسم بوزيدة شراف الدين"},{"playerName":"سيليني محمد نوفل"},{"playerName":"زكور أحمد"},{"playerName":"صغير شمس الدين"},{"playerName":"قارح مصعب رائد الأمة"},{"playerName":"عليوة معاذ"},{"playerName":"بن جدو محمد أنيس"},{"playerName":"بالة رضا"},{"playerName":"بن دحمان عيسى"},{"playerName":"مغراوي عبد العزيز"},{"playerName":"عقيب وائل"}],"bench":[{"playerName":"لخزوم عاصم تقي الدين"},{"playerName":"لعماري إياد المأمون"},{"playerName":"بروال منصف"},{"playerName":"موفق طه معاذ"},{"playerName":"سعدي محمد نضال"},{"playerName":"أمزيان لخضر"},{"playerName":"عليوة اشرف"},{"playerName":"عواب أيوب"},{"playerName":"مرزوق فراس"}],"coach":"وسار فاتح"}},"detailFetchedAt":"2026-10-04T00:00:00+01:00","lastDetailCheck":"2026-10-04T00:00:00+01:00"},{"id":"226417","round":3,"kickoff":"2026-10-10T15:00:00+01:00","venue":"Souidani Boujemaa Stadium, Guelma","home":"736","away":"733","status":"finished","score":{"home":1,"away":0},"referees":["حجاب رمزي","عوينة فوزي","حجاب عبد الكريم"],"events":[{"minute":17,"type":"yellow","team":"736","playerId":null,"playerName":"بودبزة قيس"},{"minute":31,"type":"yellow","team":"736","playerId":null,"playerName":"ولد طالب ماسينيسا"},{"minute":31,"type":"yellow","team":"733","playerId":"58378","playerName":null},{"minute":38,"type":"yellow","team":"733","playerId":"49698","playerName":null},{"minute":45,"type":"sub-in","team":"736","playerId":null,"playerName":"فرشيشي خليل","relatedPlayerId":null,"relatedPlayerName":"رحماني بلال"},{"minute":45,"type":"sub-out","team":"736","playerId":null,"playerName":"رحماني بلال","relatedPlayerId":null,"relatedPlayerName":"فرشيشي خليل"},{"minute":60,"type":"goal","team":"736","playerId":null,"playerName":"عبد الحفيظ حفاص"},{"minute":62,"type":"sub-in","team":"736","playerId":null,"playerName":"غضابنية مداني وسيم","relatedPlayerId":null,"relatedPlayerName":"بن لمخربش أحمد"},{"minute":62,"type":"sub-out","team":"736","playerId":null,"playerName":"بن لمخربش أحمد","relatedPlayerId":null,"relatedPlayerName":"غضابنية مداني وسيم"},{"minute":65,"type":"sub-in","team":"736","playerId":null,"playerName":"بن مالك بلال","relatedPlayerId":null,"relatedPlayerName":"ولد طالب ماسينيسا"},{"minute":65,"type":"sub-out","team":"736","playerId":null,"playerName":"ولد طالب ماسينيسا","relatedPlayerId":null,"relatedPlayerName":"بن مالك بلال"},{"minute":65,"type":"sub-in","team":"733","playerId":"43990","playerName":null,"relatedPlayerId":"51430","relatedPlayerName":null},{"minute":65,"type":"sub-out","team":"733","playerId":"51430","playerName":null,"relatedPlayerId":"43990","relatedPlayerName":null},{"minute":70,"type":"sub-in","team":"736","playerId":null,"playerName":"محمد الطاهر هديبلي","relatedPlayerId":null,"relatedPlayerName":"شرارية عبد الرحمان"},{"minute":70,"type":"sub-out","team":"736","playerId":null,"playerName":"شرارية عبد الرحمان","relatedPlayerId":null,"relatedPlayerName":"محمد الطاهر هديبلي"},{"minute":70,"type":"sub-in","team":"736","playerId":null,"playerName":"مباركي سيد علي","relatedPlayerId":null,"relatedPlayerName":"هضام خيرالدين"},{"minute":70,"type":"sub-out","team":"736","playerId":null,"playerName":"هضام خيرالدين","relatedPlayerId":null,"relatedPlayerName":"مباركي سيد علي"},{"minute":72,"type":"yellow","team":"736","playerId":null,"playerName":"بن مالك بلال"},{"minute":81,"type":"sub-in","team":"733","playerId":"14596","playerName":null,"relatedPlayerId":"40725","relatedPlayerName":null},{"minute":81,"type":"sub-out","team":"733","playerId":"40725","playerName":null,"relatedPlayerId":"14596","relatedPlayerName":null},{"minute":81,"type":"sub-in","team":"733","playerId":"42007","playerName":null,"relatedPlayerId":"58378","relatedPlayerName":null},{"minute":81,"type":"sub-out","team":"733","playerId":"58378","playerName":null,"relatedPlayerId":"42007","relatedPlayerName":null},{"minute":84,"type":"yellow","team":"736","playerId":null,"playerName":"غضابنية مداني وسيم"},{"minute":90,"type":"sub-in","team":"733","playerId":"130839","playerName":null,"relatedPlayerId":"40940","relatedPlayerName":null},{"minute":90,"type":"sub-out","team":"733","playerId":"40940","playerName":null,"relatedPlayerId":"130839","relatedPlayerName":null},{"minute":90,"type":"yellow","team":"736","playerId":null,"playerName":"متحزم أسامة"},{"minute":90,"type":"yellow","team":"733","playerId":"47553","playerName":null}],"lineups":{"home":{"starters":[{"playerName":"متحزم أسامة","shirt":30},{"playerName":"بن عاتي عبد الوهاب","shirt":3},{"playerName":"عبد الحفيظ حفاص","shirt":15},{"playerName":"سايحي عبد الرحيم","shirt":18},{"playerName":"سعايدية محمد الأمين","shirt":20},{"playerName":"شرارية عبد الرحمان","shirt":4},{"playerName":"طلحي أنيس","shirt":21},{"playerName":"رحماني بلال","shirt":28},{"playerName":"ولد طالب ماسينيسا","shirt":7},{"playerName":"بن لمخربش أحمد","shirt":17},{"playerName":"هضام خيرالدين","shirt":24}],"bench":[{"playerName":"معلم صالح عبد القادر","shirt":5},{"playerName":"فرشيشي خليل","shirt":6},{"playerName":"بن نافلة بكوش عبد القادر","shirt":8},{"playerName":"مباركي سيد علي","shirt":9},{"playerName":"غضابنية مداني وسيم","shirt":11},{"playerName":"خنيش عبد الرحمن","shirt":13},{"playerName":"بودبزة قيس","shirt":16},{"playerName":"محمد الطاهر هديبلي","shirt":19},{"playerName":"بن مالك بلال","shirt":27}],"coach":"حمودة تقي الدين"},"away":{"starters":[{"playerId":"43091"},{"playerId":"36975"},{"playerId":"46519"},{"playerId":"58378"},{"playerId":"47553"},{"playerId":"40940"},{"playerId":"377274"},{"playerId":"48886"},{"playerId":"51430"},{"playerId":"40725"},{"playerId":"49698"}],"bench":[{"playerId":"42302"},{"playerId":"69852"},{"playerId":"43990"},{"playerId":"14596"},{"playerId":"58346"},{"playerId":"44171"},{"playerId":"130839"},{"playerId":"62230"},{"playerId":"42007"}],"coach":"بلعريبي سعيد"}},"detailFetchedAt":"2026-10-10T18:00:00+01:00","lastDetailCheck":"2026-10-14T12:00:00+01:00"},{"id":"226424","round":4,"kickoff":null,"venue":"Stade Belkacem Belaid, Mila","home":"733","away":"729","status":"scheduled","score":null,"referees":[],"events":[],"lineups":{"home":{"starters":[],"bench":[],"coach":null},"away":{"starters":[],"bench":[],"coach":null}},"detailFetchedAt":null,"lastDetailCheck":null},{"id":"226431","round":5,"kickoff":null,"venue":null,"home":"891","away":"733","status":"scheduled","score":null,"referees":[],"events":[],"lineups":{"home":{"starters":[],"bench":[],"coach":null},"away":{"starters":[],"bench":[],"coach":null}},"detailFetchedAt":null,"lastDetailCheck":null},{"id":"226438","round":6,"kickoff":null,"venue":"Stade Belkacem Belaid, Mila","home":"733","away":"731","status":"scheduled","score":null,"referees":[],"events":[],"lineups":{"home":{"starters":[],"bench":[],"coach":null},"away":{"starters":[],"bench":[],"coach":null}},"detailFetchedAt":null,"lastDetailCheck":null},{"id":"226445","round":7,"kickoff":null,"venue":null,"home":"823","away":"733","status":"scheduled","score":null,"referees":[],"events":[],"lineups":{"home":{"starters":[],"bench":[],"coach":null},"away":{"starters":[],"bench":[],"coach":null}},"detailFetchedAt":null,"lastDetailCheck":null},{"id":"226452","round":8,"kickoff":null,"venue":"Stade Belkacem Belaid, Mila","home":"733","away":"884","status":"scheduled","score":null,"referees":[],"events":[],"lineups":{"home":{"starters":[],"bench":[],"coach":null},"away":{"starters":[],"bench":[],"coach":null}},"detailFetchedAt":null,"lastDetailCheck":null},{"id":"226461","round":9,"kickoff":null,"venue":"Stade Belkacem Belaid, Mila","home":"733","away":"937","status":"scheduled","score":null,"referees":[],"events":[],"lineups":{"home":{"starters":[],"bench":[],"coach":null},"away":{"starters":[],"bench":[],"coach":null}},"detailFetchedAt":null,"lastDetailCheck":null},{"id":"226470","round":10,"kickoff":null,"venue":null,"home":"732","away":"733","status":"scheduled","score":null,"referees":[],"events":[],"lineups":{"home":{"starters":[],"bench":[],"coach":null},"away":{"starters":[],"bench":[],"coach":null}},"detailFetchedAt":null,"lastDetailCheck":null},{"id":"226479","round":11,"kickoff":null,"venue":"Stade Belkacem Belaid, Mila","home":"733","away":"727","status":"scheduled","score":null,"referees":[],"events":[],"lineups":{"home":{"starters":[],"bench":[],"coach":null},"away":{"starters":[],"bench":[],"coach":null}},"detailFetchedAt":null,"lastDetailCheck":null},{"id":"226488","round":12,"kickoff":null,"venue":null,"home":"651","away":"733","status":"scheduled","score":null,"referees":[],"events":[],"lineups":{"home":{"starters":[],"bench":[],"coach":null},"away":{"starters":[],"bench":[],"coach":null}},"detailFetchedAt":null,"lastDetailCheck":null},{"id":"226497","round":13,"kickoff":null,"venue":"Stade Belkacem Belaid, Mila","home":"733","away":"997","status":"scheduled","score":null,"referees":[],"events":[],"lineups":{"home":{"starters":[],"bench":[],"coach":null},"away":{"starters":[],"bench":[],"coach":null}},"detailFetchedAt":null,"lastDetailCheck":null},{"id":"226506","round":14,"kickoff":null,"venue":null,"home":"728","away":"733","status":"scheduled","score":null,"referees":[],"events":[],"lineups":{"home":{"starters":[],"bench":[],"coach":null},"away":{"starters":[],"bench":[],"coach":null}},"detailFetchedAt":null,"lastDetailCheck":null},{"id":"226515","round":15,"kickoff":null,"venue":"Stade Belkacem Belaid, Mila","home":"733","away":"849","status":"scheduled","score":null,"referees":[],"events":[],"lineups":{"home":{"starters":[],"bench":[],"coach":null},"away":{"starters":[],"bench":[],"coach":null}},"detailFetchedAt":null,"lastDetailCheck":null},{"id":"226523","round":16,"kickoff":null,"venue":"Stade Belkacem Belaid, Mila","home":"733","away":"1036","status":"scheduled","score":null,"referees":[],"events":[],"lineups":{"home":{"starters":[],"bench":[],"coach":null},"away":{"starters":[],"bench":[],"coach":null}},"detailFetchedAt":null,"lastDetailCheck":null},{"id":"226530","round":17,"kickoff":null,"venue":null,"home":"734","away":"733","status":"scheduled","score":null,"referees":[],"events":[],"lineups":{"home":{"starters":[],"bench":[],"coach":null},"away":{"starters":[],"bench":[],"coach":null}},"detailFetchedAt":null,"lastDetailCheck":null},{"id":"226537","round":18,"kickoff":null,"venue":"Stade Belkacem Belaid, Mila","home":"733","away":"736","status":"scheduled","score":null,"referees":[],"events":[],"lineups":{"home":{"starters":[],"bench":[],"coach":null},"away":{"starters":[],"bench":[],"coach":null}},"detailFetchedAt":null,"lastDetailCheck":null},{"id":"226544","round":19,"kickoff":null,"venue":null,"home":"729","away":"733","status":"scheduled","score":null,"referees":[],"events":[],"lineups":{"home":{"starters":[],"bench":[],"coach":null},"away":{"starters":[],"bench":[],"coach":null}},"detailFetchedAt":null,"lastDetailCheck":null},{"id":"226551","round":20,"kickoff":null,"venue":"Stade Belkacem Belaid, Mila","home":"733","away":"891","status":"scheduled","score":null,"referees":[],"events":[],"lineups":{"home":{"starters":[],"bench":[],"coach":null},"away":{"starters":[],"bench":[],"coach":null}},"detailFetchedAt":null,"lastDetailCheck":null},{"id":"226558","round":21,"kickoff":null,"venue":null,"home":"731","away":"733","status":"scheduled","score":null,"referees":[],"events":[],"lineups":{"home":{"starters":[],"bench":[],"coach":null},"away":{"starters":[],"bench":[],"coach":null}},"detailFetchedAt":null,"lastDetailCheck":null},{"id":"226565","round":22,"kickoff":null,"venue":"Stade Belkacem Belaid, Mila","home":"733","away":"823","status":"scheduled","score":null,"referees":[],"events":[],"lineups":{"home":{"starters":[],"bench":[],"coach":null},"away":{"starters":[],"bench":[],"coach":null}},"detailFetchedAt":null,"lastDetailCheck":null},{"id":"226572","round":23,"kickoff":null,"venue":null,"home":"884","away":"733","status":"scheduled","score":null,"referees":[],"events":[],"lineups":{"home":{"starters":[],"bench":[],"coach":null},"away":{"starters":[],"bench":[],"coach":null}},"detailFetchedAt":null,"lastDetailCheck":null},{"id":"226581","round":24,"kickoff":null,"venue":null,"home":"937","away":"733","status":"scheduled","score":null,"referees":[],"events":[],"lineups":{"home":{"starters":[],"bench":[],"coach":null},"away":{"starters":[],"bench":[],"coach":null}},"detailFetchedAt":null,"lastDetailCheck":null},{"id":"226590","round":25,"kickoff":null,"venue":"Stade Belkacem Belaid, Mila","home":"733","away":"732","status":"scheduled","score":null,"referees":[],"events":[],"lineups":{"home":{"starters":[],"bench":[],"coach":null},"away":{"starters":[],"bench":[],"coach":null}},"detailFetchedAt":null,"lastDetailCheck":null},{"id":"226599","round":26,"kickoff":null,"venue":null,"home":"727","away":"733","status":"scheduled","score":null,"referees":[],"events":[],"lineups":{"home":{"starters":[],"bench":[],"coach":null},"away":{"starters":[],"bench":[],"coach":null}},"detailFetchedAt":null,"lastDetailCheck":null},{"id":"226608","round":27,"kickoff":null,"venue":"Stade Belkacem Belaid, Mila","home":"733","away":"651","status":"scheduled","score":null,"referees":[],"events":[],"lineups":{"home":{"starters":[],"bench":[],"coach":null},"away":{"starters":[],"bench":[],"coach":null}},"detailFetchedAt":null,"lastDetailCheck":null},{"id":"226617","round":28,"kickoff":null,"venue":null,"home":"997","away":"733","status":"scheduled","score":null,"referees":[],"events":[],"lineups":{"home":{"starters":[],"bench":[],"coach":null},"away":{"starters":[],"bench":[],"coach":null}},"detailFetchedAt":null,"lastDetailCheck":null},{"id":"226626","round":29,"kickoff":null,"venue":"Stade Belkacem Belaid, Mila","home":"733","away":"728","status":"scheduled","score":null,"referees":[],"events":[],"lineups":{"home":{"starters":[],"bench":[],"coach":null},"away":{"starters":[],"bench":[],"coach":null}},"detailFetchedAt":null,"lastDetailCheck":null},{"id":"226635","round":30,"kickoff":null,"venue":null,"home":"849","away":"733","status":"scheduled","score":null,"referees":[],"events":[],"lineups":{"home":{"starters":[],"bench":[],"coach":null},"away":{"starters":[],"bench":[],"coach":null}},"detailFetchedAt":null,"lastDetailCheck":null}],"standings":[{"position":1,"clubId":"891","played":3,"wins":2,"draws":1,"losses":0,"goalsFor":6,"goalsAgainst":1,"goalDifference":5,"points":7,"adjustedPoints":7,"official":true},{"position":2,"clubId":"1036","played":3,"wins":2,"draws":1,"losses":0,"goalsFor":5,"goalsAgainst":0,"goalDifference":5,"points":7,"adjustedPoints":7,"official":true},{"position":3,"clubId":"732","played":3,"wins":2,"draws":0,"losses":1,"goalsFor":2,"goalsAgainst":1,"goalDifference":1,"points":6,"adjustedPoints":6,"official":true},{"position":4,"clubId":"884","played":3,"wins":2,"draws":0,"losses":1,"goalsFor":5,"goalsAgainst":5,"goalDifference":0,"points":6,"adjustedPoints":6,"official":true},{"position":5,"clubId":"736","played":3,"wins":1,"draws":2,"losses":0,"goalsFor":2,"goalsAgainst":1,"goalDifference":1,"points":5,"adjustedPoints":5,"official":true},{"position":6,"clubId":"731","played":3,"wins":1,"draws":2,"losses":0,"goalsFor":1,"goalsAgainst":0,"goalDifference":1,"points":5,"adjustedPoints":5,"official":true},{"position":7,"clubId":"727","played":2,"wins":1,"draws":1,"losses":0,"goalsFor":3,"goalsAgainst":2,"goalDifference":1,"points":4,"adjustedPoints":4,"official":true},{"position":8,"clubId":"823","played":3,"wins":1,"draws":1,"losses":1,"goalsFor":2,"goalsAgainst":2,"goalDifference":0,"points":4,"adjustedPoints":4,"official":true},{"position":9,"clubId":"733","played":3,"wins":1,"draws":0,"losses":2,"goalsFor":3,"goalsAgainst":5,"goalDifference":-2,"points":3,"adjustedPoints":3,"official":true},{"position":10,"clubId":"997","played":2,"wins":1,"draws":0,"losses":1,"goalsFor":4,"goalsAgainst":2,"goalDifference":2,"points":3,"adjustedPoints":3,"official":true},{"position":11,"clubId":"729","played":3,"wins":1,"draws":0,"losses":2,"goalsFor":2,"goalsAgainst":3,"goalDifference":-1,"points":3,"adjustedPoints":3,"official":true},{"position":12,"clubId":"734","played":3,"wins":1,"draws":0,"losses":2,"goalsFor":2,"goalsAgainst":4,"goalDifference":-2,"points":3,"adjustedPoints":3,"official":true},{"position":13,"clubId":"849","played":3,"wins":0,"draws":2,"losses":1,"goalsFor":2,"goalsAgainst":3,"goalDifference":-1,"points":2,"adjustedPoints":2,"official":true},{"position":14,"clubId":"937","played":3,"wins":0,"draws":2,"losses":1,"goalsFor":1,"goalsAgainst":3,"goalDifference":-2,"points":2,"adjustedPoints":2,"official":true},{"position":15,"clubId":"728","played":2,"wins":0,"draws":0,"losses":2,"goalsFor":1,"goalsAgainst":3,"goalDifference":-2,"points":0,"adjustedPoints":0,"official":true},{"position":16,"clubId":"651","played":2,"wins":0,"draws":0,"losses":2,"goalsFor":0,"goalsAgainst":6,"goalDifference":-6,"points":0,"adjustedPoints":-4,"official":true}]};
+const D0 = {"schemaVersion":3,"lastUpdated":"1970-01-01T00:00:00Z","sourceUrls":{"club":"https://www.lirf.dz/ar/club/733","ranking":"https://www.lirf.dz/ar/ranking","player":"https://www.lirf.dz/ar/player/{id}","match":"https://www.lirf.dz/ar/match/{id}","calendar":"https://www.lirf.dz/ar/calendar","statistics":"https://www.lirf.dz/ar/statistics","home":"https://www.lirf.dz/"},"sourceMeta":{"seasonId":"6","seasonName":"2026/2027","competitionId":"4275","competitionAr":"شرق","competitionLatin":"Ligue Inter-Régions Group East","timezone":"Africa/Algiers","palette":{"primary":"#e30613","white":"#FFFFFF","black":"#000000"},"relegationPlaces":0},"club":{"id":"733","name":{"ar":"شباب ميلة","latin":"CBM Mila"},"short":"CBM","city":"Mila","country":"Algeria","logo":"https://www.lirf.dz/clubs-logos/733-1656234689.png","stadium":{"name":"Stade Belkacem Belaid","ar":"ملعب بلقاسم بلعيد","source":"Stade Belkacem Belaid, Mila"}},"staff":[],"players":[],"opponents":[],"matches":[],"standings":[],"topScorers":[],"roundResults":[]};
 const LOGO = './logo.png', CBM = '733', KEY = 'CBM_MILA_APP_V10';
 document.documentElement.style.setProperty('--logo', `url("${LOGO}")`);
 
@@ -40,7 +40,7 @@ const L = {
     wins:'ف', dr:'ت', ls:'خ', winsLbl:'انتصارات', sp:'الترتيب', tm:'المباراة',
     md_day:'يوم المباراة 🔥', md_now:'جارية الآن ⚽', md_wait:'بانتظار النتيجة النهائية ⏳',
     recap:'ملخص آخر مواجهة', won:'فوز ثمين 🟢', drew:'تعادل 🟡', lost:'خسارة 🔴',
-    scorers:'مسجلو الأهداف', scorersRank:'ترتيب الهدافين', nat:'الجنسية', born:'تاريخ الميلاد', age:'سنة', ast:'تمريرات حاسمة',
+    scorers:'مسجلو الأهداف', scorersRank:'ترتيب هدافي شباب ميلة', leagueScorersRank:'ترتيب هدافي البطولة · فوج الشرق', roundResultsTitle:'نتائج ومباريات الجولة الحالية · فوج الشرق', pendingScorers:'بانتظار نشر ورقة التحكيم الرسمية من الرابطة', nat:'الجنسية', born:'تاريخ الميلاد', age:'سنة', ast:'تمريرات حاسمة',
     plog:'سجل مشاركات اللاعب', back:'رجوع', nop:'لم يشارك في مباريات رسمية بعد',
     ccta:'استخرج بطاقة المناصر الرسمية 🔴⚪', cphd:'اكتب اسمك واللقب كما تريده على البطاقة',
     cphd2:'احصل على رقمك الخاص وبطاقتك الرقمية الرسمية', cname:'الاسم واللقب الكامل',
@@ -96,7 +96,19 @@ const L = {
     notifEnabledToast:'تم تفعيل إشعارات المباريات بنجاح 🔔',
     notifDisabledToast:'تم إيقاف الإشعارات',
     notifTestTitle:'شباب ميلة · CBM Mila 1936 🔴⚪',
-    notifTestBody:'الإشعارات الفورية تعمل بنجاح! ستصلك نتائج ومواعيد مباريات شباب ميلة فور صدورها ⚽'
+    notifTestBody:'الإشعارات الفورية تعمل بنجاح! ستصلك نتائج ومواعيد مباريات شباب ميلة فور صدورها ⚽',
+    closedDoors:'🚫 بدون جمهور',
+    st_postponed:'⏸️ مؤجلة',
+    st_rescheduled:'📅 موعد جديد',
+    st_live:'🔴 جارية الآن (مباشر)',
+    st_forfeit:'⚖️ على البساط',
+    staleWarn:'⚠️ البيانات المعروضة قد لا تكون محدّثة (أقدم من 24 ساعة أو تعذّر الاتصال).',
+    staleRetry:'تحديث الآن',
+    updJustNow:'محدّث للتو',
+    updMinsAgo:'محدّث منذ {n} د',
+    updHrsAgo:'محدّث منذ {n} س',
+    updDaysAgo:'محدّث منذ {n} يوم',
+    swUpdateToast:'يتوفر تحديث جديد للتطبيق — اضغط تحديث أو أعد تحميل الصفحة 🔄'
   },
   en: {
     home:'Home', matches:'Matches', table:'Table', squad:'Squad', club:'Club',
@@ -116,7 +128,7 @@ const L = {
     wins:'W', dr:'D', ls:'L', winsLbl:'Wins', sp:'Standing', tm:'Match',
     md_day:'Match Day 🔥', md_now:'Live Now ⚽', md_wait:'Awaiting Final Score ⏳',
     recap:'Latest Match Recap', won:'Victory 🟢', drew:'Draw 🟡', lost:'Defeat 🔴',
-    scorers:'Goal Scorers', scorersRank:'Top Scorers', nat:'Nationality', born:'Date of Birth', age:'yrs', ast:'Assists',
+    scorers:'Goal Scorers', scorersRank:'CBM Mila Top Scorers', leagueScorersRank:'League Top Scorers · Group East', roundResultsTitle:'Current Round Matches · Group East', pendingScorers:'Awaiting official LIRF match sheet attribution', nat:'Nationality', born:'Date of Birth', age:'yrs', ast:'Assists',
     plog:'Player Match Log', back:'Back', nop:'No official appearances yet',
     ccta:'Get Your Official Supporter Card 🔴⚪', cphd:'Enter your full name as it will appear on the card',
     cphd2:'Get your unique random ID and official digital membership card', cname:'Full Name',
@@ -172,7 +184,19 @@ const L = {
     notifEnabledToast:'Match notifications enabled 🔔',
     notifDisabledToast:'Notifications disabled',
     notifTestTitle:'CBM Mila 1936 · Official App 🔴⚪',
-    notifTestBody:'Push notifications are active! You will receive CBM Mila match scores and kickoff alerts ⚽'
+    notifTestBody:'Push notifications are active! You will receive CBM Mila match scores and kickoff alerts ⚽',
+    closedDoors:'🚫 Behind Closed Doors',
+    st_postponed:'⏸️ Postponed',
+    st_rescheduled:'📅 Rescheduled',
+    st_live:'🔴 Live Now',
+    st_forfeit:'⚖️ Forfeit',
+    staleWarn:'⚠️ Displayed data may be outdated (older than 24h or last sync failed).',
+    staleRetry:'Refresh Now',
+    updJustNow:'Updated just now',
+    updMinsAgo:'Updated {n}m ago',
+    updHrsAgo:'Updated {n}h ago',
+    updDaysAgo:'Updated {n}d ago',
+    swUpdateToast:'New version available — refresh to update 🔄'
   },
   fr: {
     home:'Accueil', matches:'Matchs', table:'Classement', squad:'Effectif', club:'Club',
@@ -192,7 +216,7 @@ const L = {
     wins:'G', dr:'N', ls:'P', winsLbl:'Victoires', sp:'Rang', tm:'Match',
     md_day:'Jour de Match 🔥', md_now:'En Direct ⚽', md_wait:'En attente du score ⏳',
     recap:'Résumé du Dernier Match', won:'Victoire 🟢', drew:'Match Nul 🟡', lost:'Défaite 🔴',
-    scorers:'Buteurs', scorersRank:'Meilleurs Buteurs', nat:'Nationalité', born:'Date de naissance', age:'ans', ast:'Passes déc.',
+    scorers:'Buteurs', scorersRank:'Buteurs du CBM Mila', leagueScorersRank:'Meilleurs Buteurs · Groupe Est', roundResultsTitle:'Résultats de la Journée · Groupe Est', pendingScorers:'En attente de la feuille de match officielle LIRF', nat:'Nationalité', born:'Date de naissance', age:'ans', ast:'Passes déc.',
     plog:'Historique des Matchs', back:'Retour', nop:'Aucune apparition officielle',
     ccta:'Obtenez votre Carte de Supporter Officielle 🔴⚪', cphd:'Entrez votre nom complet tel qu\'il apparaîtra sur la carte',
     cphd2:'Obtenez votre identifiant unique et votre carte numérique officielle', cname:'Nom et Prénom',
@@ -248,14 +272,26 @@ const L = {
     notifEnabledToast:'Notifications activées avec succès 🔔',
     notifDisabledToast:'Notifications désactivées',
     notifTestTitle:'CBM Mila 1936 · Plateforme Officielle 🔴⚪',
-    notifTestBody:'Les notifications sont actives ! Vous recevrez les résultats et horaires des matchs du CBM Mila ⚽'
+    notifTestBody:'Les notifications sont actives ! Vous recevrez les résultats et horaires des matchs du CBM Mila ⚽',
+    closedDoors:'🚫 À huis clos',
+    st_postponed:'⏸️ Reporté',
+    st_rescheduled:'📅 Reprogrammé',
+    st_live:'🔴 En Direct',
+    st_forfeit:'⚖️ Forfait',
+    staleWarn:'⚠️ Les données affichées peuvent être obsolètes (plus de 24h ou synchronisation échouée).',
+    staleRetry:'Actualiser',
+    updJustNow:'Mis à jour à l\'instant',
+    updMinsAgo:'Mis à jour il y a {n} min',
+    updHrsAgo:'Mis à jour il y a {n} h',
+    updDaysAgo:'Mis à jour il y a {n} j',
+    swUpdateToast:'Nouvelle version disponible — actualisez la page 🔄'
   }
 };
 
 const S = {
   lang: 'ar', theme: 'dark', tab: 'upc', mLoc: 'all', mSearch: '',
   pos: 'ALL', pSearch: '', pSort: 'def', tblView: 'tbl', luSide: 'cbm',
-  data: D0, C: null, open: null, openClub: null, hash: ''
+  data: D0, C: null, open: null, openClub: null, hash: '', syncFailed: false, etag: '', lastMod: '', lastSyncOkAt: 0
 };
 
 let lastTriggerEl = null;
@@ -314,7 +350,44 @@ const loc = () => S.lang === 'ar' ? 'ar-DZ-u-nu-latn' : S.lang === 'fr' ? 'fr-FR
 const okD = v => !!v && !isNaN(new Date(v));
 const fD = v => okD(v) ? new Intl.DateTimeFormat(loc(), {timeZone:'Africa/Algiers', weekday:'short', day:'numeric', month:'short'}).format(new Date(v)) : t('tbd');
 const fDT = v => okD(v) ? new Intl.DateTimeFormat(loc(), {timeZone:'Africa/Algiers', day:'numeric', month:'short', year:'numeric', hour:'2-digit', minute:'2-digit', hour12:false}).format(new Date(v)) : '—';
-const fT = v => okD(v) ? new Intl.DateTimeFormat(loc(), {timeZone:'Africa/Algiers', hour:'2-digit', minute:'2-digit', hour12:false}).format(new Date(v)) : '--:--';
+const fT = v => okD(v) ? new Intl.DateTimeFormat(loc(), {timeZone:'Africa/Algiers', hour:'2-digit', minute:'2-digit', hour12:false}).format(new Date(v)) : t('tbd');
+
+function relUpd(iso) {
+  if (!okD(iso) || String(iso).startsWith('1970-')) return t('tbd');
+  const diffMin = Math.max(0, Math.floor((Date.now() - new Date(iso).getTime()) / 60000));
+  if (diffMin < 2) return t('updJustNow');
+  if (diffMin < 60) return t('updMinsAgo').replace('{n}', String(diffMin));
+  const diffHr = Math.floor(diffMin / 60);
+  if (diffHr < 24) return t('updHrsAgo').replace('{n}', String(diffHr));
+  return t('updDaysAgo').replace('{n}', String(Math.floor(diffHr / 24)));
+}
+
+function isDataStale() {
+  if (S.syncFailed) return true;
+  if (!okD(S.data?.lastUpdated) || String(S.data.lastUpdated).startsWith('1970-')) return true;
+  return (Date.now() - new Date(S.data.lastUpdated).getTime()) > 864e5;
+}
+
+function staleBannerHtml() {
+  const rel = esc(relUpd(S.data?.lastUpdated));
+  if (!isDataStale()) {
+    return `<div class="sync-bar ok" role="status"><span>🕒 ${esc(t('lastUpd'))}: <b>${rel}</b></span></div>`;
+  }
+  return `<div class="sync-bar stale" role="alert">
+    <span>${esc(t('staleWarn'))} (${rel})</span>
+    <button type="button" class="btn-mini" data-sync="1">🔄 ${esc(t('staleRetry'))}</button>
+  </div>`;
+}
+
+function matchBadgesHtml(m) {
+  let b = '';
+  if (m.status === 'live') b += `<span class="tag live-b">${esc(t('st_live'))}</span>`;
+  else if (m.status === 'postponed') b += `<span class="tag post-b">${esc(t('st_postponed'))}</span>`;
+  else if (m.status === 'forfeit') b += `<span class="tag post-b">${esc(t('st_forfeit'))}</span>`;
+  else if (m.rescheduledFrom) b += `<span class="tag resch-b">${esc(t('st_rescheduled'))}</span>`;
+  if (m.closedDoors) b += `<span class="tag closed-b">${esc(t('closedDoors'))}</span>`;
+  return b;
+}
 
 function playerAge(p) {
   if (!p) return null;
@@ -390,6 +463,31 @@ function calc() {
     });
   });
 
+  (d.players || []).forEach(p => {
+    const s = st[p.id], ps = p.stats;
+    if (!s || !ps) return;
+    if ((ps.goals || 0) > s.g) s.g = ps.goals;
+    if ((ps.yellowCards || 0) > s.y) s.y = ps.yellowCards;
+    if ((ps.redCards || 0) > s.r) s.r = ps.redCards;
+    if ((ps.appearances || 0) > s.apps) {
+      s.apps = ps.appearances;
+      if (!s.min) s.min = s.apps * 60;
+    }
+  });
+
+  let teamGoalsFor = 0;
+  const pendingGoalMatches = [];
+  fin.forEach(m => {
+    const cbmG = isH(m) ? (m.score?.home || 0) : (m.score?.away || 0);
+    teamGoalsFor += cbmG;
+    const evG = (m.events || []).filter(e => String(e.team) === CBM && e.type === 'goal').length;
+    if (cbmG > evG) {
+      pendingGoalMatches.push({m, count: cbmG - evG});
+    }
+  });
+  const meRow = (d.standings || []).find(r => String(r.clubId) === CBM);
+  if (meRow && (meRow.goalsFor || 0) > teamGoalsFor) teamGoalsFor = meRow.goalsFor;
+
   const mx = Math.max(0, ...Object.values(st).map(s => s.g));
   const top = new Set(mx > 0 ? Object.values(st).filter(s => s.g === mx).map(s => s.id) : []);
   const byTime = fin.slice().sort((a, b) => new Date(a.kickoff || 0) - new Date(b.kickoff || 0));
@@ -398,13 +496,20 @@ function calc() {
   (d.standings || []).forEach(r => {
     cf[String(r.clubId)] = {W: r.wins || 0, D: r.draws || 0, L: r.losses || 0, k: []};
   });
-  byTime.forEach(m => [m.home, m.away].forEach(id => {
-    const c = cf[String(id)];
-    if (!c) return;
-    const h = String(m.home) === String(id);
-    const a = h ? m.score.home : m.score.away, b = h ? m.score.away : m.score.home;
-    c.k.push(a > b ? 'W' : a < b ? 'L' : 'D');
-  }));
+  const seenMatchPairs = new Set();
+  const allFinForForm = byTime.concat((d.roundResults || []).filter(m => m.status === 'finished' && m.score));
+  allFinForForm.forEach(m => {
+    const pairKey = `${m.round}:${m.home}:${m.away}`;
+    if (seenMatchPairs.has(pairKey)) return;
+    seenMatchPairs.add(pairKey);
+    [m.home, m.away].forEach(id => {
+      const c = cf[String(id)];
+      if (!c) return;
+      const h = String(m.home) === String(id);
+      const a = h ? m.score.home : m.score.away, b = h ? m.score.away : m.score.home;
+      c.k.push(a > b ? 'W' : a < b ? 'L' : 'D');
+    });
+  });
   const fm = {};
   Object.keys(cf).forEach(id => {
     const c = cf[id], rem = {W: c.W, D: c.D, L: c.L};
@@ -431,7 +536,7 @@ function calc() {
   const avgAge = ages.length ? (ages.reduce((a, b) => a + b, 0) / ages.length).toFixed(1) : '—';
   const totalMinutes = fin.length * 90;
 
-  return {st, top, all, fin, form, fm, next, last, pts, gf, ga, cs, avgAge, totalMinutes, hasA};
+  return {st, top, all, fin, form, fm, next, last, pts, gf, ga, cs, avgAge, totalMinutes, hasA, teamGoalsFor, pendingGoalMatches};
 }
 
 const gb = id => S.C.top.has(String(id)) ? `<span class="gb">${t('top')}</span>` : '';
@@ -452,9 +557,9 @@ function formHtml() {
   }).join('') || '<span class="lab">—</span>'}</div>`;
 }
 
-const scr = s => `<span>${s.home}</span><span>-</span><span>${s.away}</span>`;
-const mid = m => m.score ? `<div class="scr">${scr(m.score)}</div>` : `<div class="num">${fT(m.kickoff)}</div>`;
-const tag = m => isH(m) ? `<span class="tag h">${t('hm')}</span>` : `<span class="tag a">${t('aw')}</span>`;
+const scr = s => `<span>${esc(s.home)}</span><span>-</span><span>${esc(s.away)}</span>`;
+const mid = m => m.status === 'postponed' ? `<div class="num">${esc(t('st_postponed'))}</div>` : (m.score ? `<div class="scr">${scr(m.score)}</div>` : `<div class="num">${esc(fT(m.kickoff))}</div>`);
+const tag = m => (isH(m) ? `<span class="tag h">${esc(t('hm'))}</span>` : `<span class="tag a">${esc(t('aw'))}</span>`) + matchBadgesHtml(m);
 
 function mItem(m) {
   const r = res(m), v = venue(m.venue), cls = r === 'W' ? 'w' : r === 'L' ? 'l' : r === 'D' ? 'd' : 'u';
@@ -509,10 +614,11 @@ function meters(n) {
   return row('PWR', 'p') + row('ATK', 'a') + row('DEF', 'd');
 }
 
-/* جدول ترتيب الهدافين (البند 13) */
+/* جدول ترتيب هدافي شباب ميلة وهدافي البطولة (فوج الشرق) */
 function renderScorersBox() {
   const sc = Object.values(S.C.st).filter(x => x.g > 0).sort((a, b) => (b.g - a.g) || (a.min - b.min));
-  if (!sc.length) return '';
+  const pend = S.C.pendingGoalMatches || [];
+  if (!sc.length && !pend.length) return '';
   return `<div class="h2">⚽ ${t('scorersRank')}</div>
   <div class="glass">${sc.map((s, idx) => {
     const p = ply(s.id);
@@ -523,6 +629,49 @@ function renderScorersBox() {
       <div style="flex:1"><b>${esc(nm(p))}</b><small>#${p.shirt ?? '–'} · ${t('pos')[p.position] || ''} · ${s.apps} ${t('apps')}</small></div>
       <span class="tag h num">${s.g} ${t('gl')}</span>
     </a>`;
+  }).join('')}${pend.map(({m, count}) => {
+    const opp = isH(m) ? club(m.away) : club(m.home);
+    return `<div class="row" data-m="${esc(m.id)}" role="button" tabindex="0" style="cursor:pointer">
+      <b class="num" style="width:22px;color:var(--red)">+${count}</b>
+      ${crest(CBM, 36)}
+      <div style="flex:1"><b>${t('round')} ${esc(m.round)} · ${esc(nm(opp))} (${esc(m.score.home)}-${esc(m.score.away)})</b><small>${esc(t('pendingScorers'))}</small></div>
+      <span class="tag a num">+${count} ${t('gl')}</span>
+    </div>`;
+  }).join('')}</div>`;
+}
+
+function renderLeagueScorersBox() {
+  const list = (S.data.topScorers || []).slice(0, 15);
+  if (!list.length) return '';
+  return `<div class="h2">🏆 ${t('leagueScorersRank')}</div>
+  <div class="glass">${list.map((item, idx) => {
+    const isCbm = String(item.clubId) === CBM;
+    const p = item.playerId ? ply(item.playerId) : null;
+    const c = club(item.clubId);
+    const dispName = p ? nm(p) : nm(item);
+    const subLine = `${nm(c)}${item.shirt ? ' · #' + item.shirt : ''}${item.matches ? ' · ' + item.matches + ' ' + t('apps') : ''}`;
+    const tagAttr = p ? `href="#/player/${esc(p.id)}"` : `data-club="${esc(item.clubId)}" role="button" tabindex="0" style="cursor:pointer"`;
+    return `<a class="row${isCbm ? ' me-row' : ''}" ${tagAttr}>
+      <b class="num" style="width:24px;color:${idx < 3 ? 'var(--gold)' : 'var(--mu)'}">#${idx + 1}</b>
+      ${crest(item.clubId, 34)}
+      <div style="flex:1"><b>${esc(dispName)}</b><small>${esc(subLine)}</small></div>
+      <span class="tag ${isCbm ? 'h' : 'a'} num">${esc(item.goals)} ${t('gl')}</span>
+    </a>`;
+  }).join('')}</div>`;
+}
+
+function renderRoundResultsBox() {
+  const rr = S.data.roundResults || [];
+  if (!rr.length) return '';
+  return `<div class="h2">🏟️ ${t('roundResultsTitle')}</div>
+  <div class="glass">${rr.map(m => {
+    const isCbmMatch = String(m.home) === CBM || String(m.away) === CBM;
+    const scHtml = m.score ? `${m.score.home} - ${m.score.away}` : fT(m.kickoff);
+    return `<div class="row" ${isCbmMatch && m.id ? `data-m="${esc(m.id)}"` : `data-club="${esc(m.home)}"`} role="button" tabindex="0" style="cursor:pointer">
+      <div style="display:flex;align-items:center;gap:6px;flex:1;min-width:0">${crest(m.home, 26)}<b style="font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${esc(nm(club(m.home)))}</b></div>
+      <span class="tag ${m.score ? 'h' : 'a'} num" style="min-width:54px;text-align:center">${esc(scHtml)}</span>
+      <div style="display:flex;align-items:center;justify-content:flex-end;gap:6px;flex:1;min-width:0"><b style="font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:end">${esc(nm(club(m.away)))}</b>${crest(m.away, 26)}</div>
+    </div>`;
   }).join('')}</div>`;
 }
 
@@ -712,7 +861,7 @@ function vTable() {
     ${bestAtk ? `<div class="t" data-club="${esc(bestAtk.clubId)}" role="button" tabindex="0" style="cursor:pointer"><span class="tl">🔥 ${t('bestAtk')}</span><b class="big num">${bestAtk.goalsFor}</b><span class="sub">${esc(nm(club(bestAtk.clubId)))}</span></div>` : ''}
     ${bestDef ? `<div class="t" data-club="${esc(bestDef.clubId)}" role="button" tabindex="0" style="cursor:pointer"><span class="tl">🛡️ ${t('bestDef')}</span><b class="big num">${bestDef.goalsAgainst}</b><span class="sub">${esc(nm(club(bestDef.clubId)))}</span></div>` : ''}
     <div class="t s2"><span class="tl">⚽ ${t('totalGoals')}</span><b class="big num">${totalGoals}</b><span class="sub">${esc(t('tl'))} · ${esc(S.data.sourceMeta?.seasonName || '')}</span></div>
-  </div>${renderScorersBox()}<div style="height:14px"></div>` : ''}
+  </div>${renderLeagueScorersBox()}${renderScorersBox()}${renderRoundResultsBox()}<div style="height:14px"></div>` : ''}
   <div class="glass tbl">
     <div class="tr hd">
       <span>#</span><span style="text-align:start">${t('club')}</span><span>${t('pl')}</span>
@@ -730,7 +879,7 @@ function vSquad() {
   const mA = Math.max(1, ..._s.map(x => x.apps));
   const mM = Math.max(1, ..._s.map(x => x.min));
   const mG = Math.max(1, ..._s.map(x => x.g));
-  const totalG = _s.reduce((a, b) => a + b.g, 0);
+  const totalG = Math.max(S.C.teamGoalsFor || 0, _s.reduce((a, b) => a + b.g, 0));
 
   let ps = (S.data.players || []).filter(p => S.pos === 'ALL' || p.position === S.pos);
   if (S.pSearch.trim()) {
@@ -1073,7 +1222,7 @@ function render() {
     S.C = calc();
     const r = rt();
     const V = {home: vHome, matches: vMatches, table: vTable, squad: vSquad, club: vClub, player: vPlayer, verify: vVerify}[r] || vHome;
-    $('app').innerHTML = V();
+    $('app').innerHTML = staleBannerHtml() + V();
     $('nav').innerHTML = TABS.map(([k, i]) => {
       const label = t(k);
       const isOn = k === (V === vHome ? 'home' : r === 'player' ? 'squad' : r);
@@ -1246,8 +1395,34 @@ function urlBase64ToUint8Array(base64String) {
   return outputArray;
 }
 
-async function showLocalNotification(title, body, url = './#/home') {
+const NOTIFIED_TAGS_KEY = 'CBM_NOTIFIED_TAGS_V1';
+function wasTagNotified(tag) {
+  if (!tag) return false;
+  try {
+    const arr = JSON.parse(localStorage.getItem(NOTIFIED_TAGS_KEY) || '[]');
+    return Array.isArray(arr) && arr.includes(tag);
+  } catch (e) { return false; }
+}
+function markTagNotified(tag) {
+  if (!tag) return;
+  try {
+    const arr = JSON.parse(localStorage.getItem(NOTIFIED_TAGS_KEY) || '[]');
+    const list = Array.isArray(arr) ? arr.filter(x => x !== tag) : [];
+    list.push(tag);
+    localStorage.setItem(NOTIFIED_TAGS_KEY, JSON.stringify(list.slice(-100)));
+  } catch (e) {}
+}
+async function hasActivePushSubscription() {
+  try {
+    if (!('serviceWorker' in navigator) || !('PushManager' in window)) return false;
+    const reg = await navigator.serviceWorker.ready;
+    const sub = await reg.pushManager?.getSubscription();
+    return Boolean(sub && sub.endpoint);
+  } catch (e) { return false; }
+}
+async function showLocalNotification(title, body, url = './#/home', tag = '') {
   if (typeof Notification === 'undefined' || Notification.permission !== 'granted') return false;
+  const finalTag = tag || ('cbm-local-' + Date.now());
   try {
     if ('serviceWorker' in navigator) {
       const reg = await navigator.serviceWorker.ready;
@@ -1258,13 +1433,13 @@ async function showLocalNotification(title, body, url = './#/home') {
           badge: './icon-192.png',
           dir: 'auto',
           vibrate: [200, 100, 200],
-          tag: 'cbm-local-' + Date.now(),
+          tag: finalTag,
           data: { url }
         });
         return true;
       }
     }
-    new Notification(title, { body, icon: './icon-192.png' });
+    new Notification(title, { body, icon: './icon-192.png', tag: finalTag });
     return true;
   } catch (e) { return false; }
 }
@@ -1779,6 +1954,16 @@ function load() {
 }
 
 let syncBusy = 0, syncAt = 0;
+async function fetchWithTimeout(url, opts = {}, timeoutMs = 10000) {
+  const ctrl = new AbortController();
+  const timer = setTimeout(() => ctrl.abort(), timeoutMs);
+  try {
+    return await fetch(url, {...opts, signal: ctrl.signal});
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
 async function sync(force, showToast = false) {
   if (syncBusy) return;
   if (!force && (!NET || Date.now() - syncAt < 15e3)) return;
@@ -1786,33 +1971,56 @@ async function sync(force, showToast = false) {
   const btn = $('b-sync');
   if (btn && showToast) btn.classList.add('spinning');
   try {
-    const c = new AbortController(), to = setTimeout(() => c.abort(), 12e3);
-    let r = await fetch('./data/data.json?ts=' + Date.now(), {cache: 'no-store', signal: c.signal}).catch(() => null);
-    if (!r || !r.ok) r = await fetch('./data.json?ts=' + Date.now(), {cache: 'no-store', signal: c.signal});
-    clearTimeout(to);
-    if (!r.ok) throw 0;
+    const reqHeaders = {};
+    if (!force && S.etag) reqHeaders['If-None-Match'] = S.etag;
+    if (!force && S.lastMod) reqHeaders['If-Modified-Since'] = S.lastMod;
+    const r = await fetchWithTimeout('./data/data.json', {cache: 'no-cache', headers: reqHeaders}, 10000);
+    if (r.status === 304) {
+      S.syncFailed = false;
+      S.lastSyncOkAt = Date.now();
+      if (showToast) toast(t('upToDate'));
+      return;
+    }
+    if (!r.ok) throw new Error('HTTP_' + r.status);
+    if (r.headers.get('ETag')) S.etag = r.headers.get('ETag');
+    if (r.headers.get('Last-Modified')) S.lastMod = r.headers.get('Last-Modified');
     const d = await r.json();
+    S.syncFailed = false;
+    S.lastSyncOkAt = Date.now();
     if (!valid(d)) throw 0;
     if (String(d.lastUpdated) !== String(S.data.lastUpdated)) {
-      if (isPushEnabled()) {
-        const oldMap = Object.fromEntries((S.data.matches || []).map(m => [String(m.id), m]));
-        (d.matches || []).forEach(m => {
-          const prev = oldMap[String(m.id)];
-          if (!prev) return;
-          if (prev.status !== 'finished' && m.status === 'finished' && m.score) {
-            showLocalNotification(
-              `${t('round')} ${m.round} · ${nm(club(m.home))} ${m.score.home}-${m.score.away} ${nm(club(m.away))}`,
-              t('notifTestTitle'),
-              './#/matches'
-            );
-          } else if (prev.kickoff !== m.kickoff && m.kickoff) {
-            showLocalNotification(
-              `📅 ${t('next')} · ${t('round')} ${m.round}`,
-              `${nm(club(m.home))} vs ${nm(club(m.away))} — ${fDT(m.kickoff)}`,
-              './#/home'
-            );
-          }
-        });
+      if (isPushEnabled() && String(S.data.lastUpdated) !== '1970-01-01T00:00:00Z') {
+        const webPushActive = await hasActivePushSubscription();
+        if (!webPushActive) {
+          const oldMap = Object.fromEntries((S.data.matches || []).map(m => [String(m.id), m]));
+          (d.matches || []).forEach(m => {
+            const prev = oldMap[String(m.id)];
+            if (!prev) return;
+            if (prev.status !== 'finished' && m.status === 'finished' && m.score) {
+              const resTag = `cbm-res-${m.id}`;
+              if (!wasTagNotified(resTag)) {
+                markTagNotified(resTag);
+                showLocalNotification(
+                  `${t('round')} ${m.round} · ${nm(club(m.home))} ${m.score.home}-${m.score.away} ${nm(club(m.away))}`,
+                  t('notifTestTitle'),
+                  './#/matches',
+                  resTag
+                );
+              }
+            } else if (prev.kickoff !== m.kickoff && m.kickoff) {
+              const koTag = `cbm-ko-${m.id}`;
+              if (!wasTagNotified(koTag)) {
+                markTagNotified(koTag);
+                showLocalNotification(
+                  `📅 ${t('next')} · ${t('round')} ${m.round}`,
+                  `${nm(club(m.home))} vs ${nm(club(m.away))} — ${fDT(m.kickoff)}`,
+                  './#/home',
+                  koTag
+                );
+              }
+            }
+          });
+        }
       }
       S.data = d; save();
       const h = document.documentElement; h.classList.add('nq');
@@ -1822,6 +2030,8 @@ async function sync(force, showToast = false) {
       toast(t('upToDate'));
     }
   } catch (e) {
+    S.syncFailed = true;
+    render();
     if (showToast) toast(t('off'));
   } finally {
     syncBusy = 0;
@@ -1862,7 +2072,22 @@ async function install() {
 }
 async function pwa() {
   if (!NET || !('serviceWorker' in navigator)) return;
-  try { await navigator.serviceWorker.register('./sw.js'); } catch (e) {}
+  try {
+    navigator.serviceWorker.addEventListener('message', e => {
+      if (e.data && e.data.type === 'CBM_SW_UPDATED') {
+        toast(t('swUpdateToast'));
+      }
+    });
+    const hadController = Boolean(navigator.serviceWorker.controller);
+    let refreshingToastShown = false;
+    navigator.serviceWorker.addEventListener('controllerchange', () => {
+      if (hadController && !refreshingToastShown) {
+        refreshingToastShown = true;
+        toast(t('swUpdateToast'));
+      }
+    });
+    await navigator.serviceWorker.register('./sw.js');
+  } catch (e) {}
 }
 
 const NET = /^https?:$/.test(location.protocol) && (!/^(localhost|127\.|0\.0\.0\.0|\[::1\]|.*\.local$)/.test(location.hostname) || /[?&]live=1/.test(location.search));
@@ -1879,7 +2104,20 @@ render();
 pwa();
 sync(false);
 if (isIOS) setTimeout(ibShow, 3e3);
-setInterval(() => { if (!document.hidden) sync(false); }, 3e5);
+function isMatchWindowActive() {
+  const now = Date.now();
+  return (S.data?.matches || []).some(m => {
+    if (m.status === 'live') return true;
+    if (!okD(m.kickoff)) return false;
+    const diff = Math.abs(new Date(m.kickoff).getTime() - now);
+    return diff <= 3 * 3600 * 1000;
+  });
+}
+setInterval(() => {
+  if (document.hidden) return;
+  const interval = isMatchWindowActive() ? 60e3 : 300e3;
+  if (Date.now() - syncAt >= interval - 1000) sync(false);
+}, 30e3);
 addEventListener('online', () => sync(false));
 addEventListener('focus', () => sync(false));
 
