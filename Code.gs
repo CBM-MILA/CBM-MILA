@@ -1,571 +1,613 @@
 /**
- * ============================================================================
- * نادِي شَبَاب بَلَدِيَّة مِيلَة · CBM MILA 1936
- * السجل الرسمي لبطاقات المناصرين وإشعارات الهواتف (Google Apps Script — v3.2)
- * ============================================================================
+ * السجل الرسمي لبطاقات مناصري نادي شباب بلدية ميلة (CBM Mila 1936) — Google Apps Script (v8)
+ * ===========================================================================================
+ * متوافق مع التخطيط الحالي للشيتين (لا حاجة لترحيل أي بيانات):
+ *   Supporters: Timestamp | SupporterId | Name | RequestId | DeviceId | Status | Lang
+ *   PushSubs  : Timestamp | DeviceId | Endpoint | P256dh | Auth | Lang | Status
  *
- * الضمانات الأمنية والمعمارية (v3.2):
- *  1) حماية تامة من حقن الصيغ (Spreadsheet Formula Injection):
- *     تُمرَّر جميع القيم النصية عبر `safeCell_()` التي تضيف بادئة `'` لأي قيمة تبدأ بـ
- *     `=`, `+`, `-`, `@`, `\t`, `\r`, `\n` (حتى بعد المسافات البادئة) قبل `appendRow` أو `setValue`.
- *  2) فصل القراءة عن الكتابة (Read/Write Lock Separation):
- *     عملية التحقق العامة `verify` للقراءة فقط وتعمل بدون `LockService` مع تحديد معدل خفيف
- *     (`VERIFY_MAX_PER_DEV = 30` / 15 دقيقة لكل جهاز و `VERIFY_MAX_GLOBAL = 300` / 15 دقيقة)
- *     لمنع تعداد الأرقام التسلسلية دون تعطيل مسح رموز QR يوم المباراة.
- *  3) حماية `restore` من التخمين ومن هجمات الحرمان من الخدمة (DoS):
- *     - حد صارم لكل بطاقة (`RESTORE_MAX_FAILS_PER_SID = 5` / 15 دقيقة) ولكل جهاز (`RESTORE_MAX_FAILS_PER_DEV = 5`).
- *     - إذا طابق معرّف الجهاز `dev` المعرّف المسجّل عند إصدار البطاقة (`DeviceId`)، يُسمح لصاحبها
- *       باستعادتها فوراً دون أن يتأثر بأي ضغط عام.
- *     - بدلاً من الحظر الشامل القاسي الذي قد يستغله مهاجم لإغلاق الخدمة عن الجميع، يُطبَّق عند
- *       تجاوز العتبة العامة (`RESTORE_SOFT_GLOBAL_THRESHOLD = 30`) تبطيء تدريجي (`Utilities.sleep(1500)`)
- *       وسجل تنبيه أمني (`console.warn`) مع الإبقاء على الحظر الصارم لكل بطاقة ولكل جهاز.
- *     - ملاحظة معمارية: تطبيقات الويب في Google Apps Script لا تكشف عنوان IP الحقيقي للعميل داخل `doPost(e)`,
- *       لذلك نجمع بين حدود البطاقة (`sid`) والجهاز (`dev`) والتبطيء العام الناعم.
- *  4) دعم العائلات على نفس الهاتف في `register`:
- *     - إذا أعاد نفس الجهاز إرسال نفس الاسم (`normName_(r[2]) === targetNorm`)، تُعاد بطاقته الحالية (Idempotent).
- *     - إذا كان الاسم مختلفاً على نفس الجهاز (أفراد عائلة يتشاركون هاتفاً واحداً)، يُسمح بإصدار بطاقة
- *       مستقلة لكل فرد ضمن سقف التسجيل (`REGISTER_MAX_PER_DEV = 3` بطاقات / 15 دقيقة لكل جهاز).
- *  5) التحقق الصارم من نطاقات Web Push (`isAllowedPushEndpoint_`):
- *     لا تُقبل إلا روابط HTTPS التابعة لخدمات الدفع القياسية (`fcm.googleapis.com`,
- *     `updates.push.services.mozilla.com`, `*.push.apple.com`, `*.notify.windows.com`) وبحد أقصى 5000 مشترك.
- *  6) مقارنة زمنية ثابتة (`timingSafeEqual_`) لمفتاح الإدارة `ADMIN_KEY` المخزّن في Script Properties.
+ * ما الجديد في v8:
+ *   1) verify: حد خفيف لكل جهاز (60 / 15 د) وحد عام مرتفع (1500 / 15 د). الطلبات التي لا ترسل dev
+ *      تخضع للحد العام فقط، حتى لا يتشارك الجميع سلة واحدة صغيرة يوم المباراة.
+ *   2) عدّادات المعدّل بنافذة ثابتة (Fixed Window): لا يُمدَّد وقت الانتهاء مع كل طلب، فيتصفّر العدّاد فعلاً بعد 15 دقيقة.
+ *   3) register: لا يُرفض الاسم المكرر (أسماء شائعة). منع التكرار بحسب requestId أو (نفس الجهاز + نفس الاسم) فقط،
+ *      ويُسمح لأفراد العائلة بأسماء مختلفة على نفس الهاتف ضمن حد التسجيل.
+ *   4) restore: حد لكل بطاقة ولكل جهاز، لكن صاحب الجهاز المسجّل للبطاقة لا يتأثر بالحدود.
+ *      لا يوجد حظر عام ولا Utilities.sleep داخل القفل (يُسجَّل تحذير فقط عند ارتفاع الفشل العام).
+ *      مقايضة معروفة: من يعرف رقم بطاقة يستطيع إغلاق استعادتها 15 دقيقة من الأجهزة الأخرى.
+ *   5) باقي الحمايات كما هي: تنظيف الأسماء من بادئات الصيغ، قائمة بيضاء لنطاقات Push، قفل للكتابة فقط.
  */
 
-var SHEET_NAME = 'Supporters';
-var PUSH_SHEET_NAME = 'PushSubs';
-var PROP_ACK_CURSOR = 'LAST_ACK_ROW';
-var PROP_ADMIN_KEY = 'ADMIN_KEY';
+const SHEET_NAME = 'Supporters';
+const PUSH_SHEET_NAME = 'PushSubs';
+const VERSION = 8;
 
-var RATE_WINDOW_SEC = 900;               // 15 minutes
-var RESTORE_MAX_FAILS_PER_DEV = 5;       // Max 5 failed restore attempts per device / 15m
-var RESTORE_MAX_FAILS_PER_SID = 5;       // Max 5 failed restore attempts per supporterId / 15m
-var RESTORE_SOFT_GLOBAL_THRESHOLD = 30;  // Soft tarpit threshold (1500ms sleep + anomaly log, never global DoS)
-var RESTORE_TARPIT_MS = 1500;
-var REGISTER_MAX_PER_DEV = 3;            // Max 3 registrations per device / 15m (allows family members on shared phone)
-var REGISTER_MAX_GLOBAL = 60;            // Max 60 registrations globally / 15m
-var VERIFY_MAX_PER_DEV = 30;             // Max 30 verify lookups per device / 15m (prevents 6-digit ID enumeration)
-var VERIFY_MAX_GLOBAL = 300;             // Max 300 verify lookups globally / 15m
-var MAX_PUSH_SUBSCRIBERS = 5000;
+const RATE_LIMIT_WINDOW_SEC = 900; // 15 دقيقة (نافذة ثابتة)
+const RESTORE_MAX_FAILS_PER_DEV = 5;
+const RESTORE_MAX_FAILS_PER_SID = 5;
+const RESTORE_WARN_GLOBAL = 30;    // تسجيل تحذير فقط، دون حظر
 
-var ALLOWED_PUSH_HOSTS_EXACT = [
+const REGISTER_MAX_PER_DEV = 3;
+const REGISTER_MAX_GLOBAL = 60;
+
+const VERIFY_MAX_PER_DEV = 60;
+const VERIFY_MAX_GLOBAL = 1500;
+
+const MAX_PUSH_SUBS = 5000;
+
+const ALLOWED_PUSH_HOSTS = [
   'fcm.googleapis.com',
   'updates.push.services.mozilla.com'
 ];
-var ALLOWED_PUSH_HOST_SUFFIXES = [
+const ALLOWED_PUSH_SUFFIXES = [
   '.push.apple.com',
   '.notify.windows.com'
 ];
 
-function doGet() {
-  return json_({
-    ok: false,
-    code: 'method_not_allowed',
-    message: 'Use HTTP POST with a JSON body.'
-  });
+const WRITE_ACTIONS = {
+  register: true,
+  ack: true,
+  push_sub: true,
+  push_unsub: true,
+  push_prune: true
+};
+
+// يُضبط ADMIN_KEY في Project Settings > Script Properties باسم ADMIN_KEY
+const DEFAULT_ADMIN_KEY = '';
+
+function getAdminKey_() {
+  try {
+    const propKey = PropertiesService.getScriptProperties().getProperty('ADMIN_KEY');
+    if (propKey) return String(propKey).trim();
+  } catch (e) {}
+  return String(DEFAULT_ADMIN_KEY || '').trim();
+}
+
+// --- Web App Endpoints ---
+function doGet(e) {
+  const p = (e && e.parameter) || {};
+  if (p.q) return run_(p.q, 'GET');
+  let sheetName = '';
+  try { sheetName = ss_().getName(); } catch (err) { sheetName = 'ERROR'; }
+  return out_({ ok: true, v: VERSION, service: 'CBM Mila Official Supporters Registry', sheet: sheetName });
 }
 
 function doPost(e) {
-  var body = {};
+  const raw = (e && e.postData && e.postData.contents) || '{}';
+  return run_(raw, 'POST');
+}
+
+function run_(raw, method) {
+  let payload;
   try {
-    var raw = (e && e.postData && e.postData.contents) ? e.postData.contents : '{}';
-    body = JSON.parse(raw);
+    payload = typeof raw === 'string' ? JSON.parse(raw) : (raw || {});
+    if (!payload || typeof payload !== 'object' || Array.isArray(payload)) {
+      return out_({ ok: false, code: 'bad_json', msg: 'Payload must be a JSON object' });
+    }
   } catch (parseErr) {
-    return json_({ ok: false, code: 'bad_json' });
+    console.error('[CBM Code.gs] JSON parse error:', parseErr);
+    return out_({ ok: false, code: 'bad_json', msg: 'Malformed JSON payload' });
   }
 
-  var action = String(body.a || body.action || '').trim();
+  const action = String(payload.a || 'verify').trim().toLowerCase();
+  const needsLock = method === 'POST' && Boolean(WRITE_ACTIONS[action]);
+  const lock = needsLock ? LockService.getScriptLock() : null;
 
-  // Read-only public verification runs WITHOUT LockService so public QR scans never contend with writes
-  if (action === 'verify') {
+  if (lock) {
     try {
-      return verifySupporter_(body);
-    } catch (verErr) {
-      return json_({ ok: false, code: 'server_error' });
+      lock.waitLock(15000);
+    } catch (lockErr) {
+      console.error('[CBM Code.gs] Lock timeout on action=' + action + ':', lockErr);
+      return out_({ ok: false, code: 'lock_timeout', msg: 'Server busy, please retry' });
     }
-  }
-
-  var lock = LockService.getScriptLock();
-  if (!lock.tryLock(10000)) {
-    return json_({ ok: false, code: 'lock_timeout' });
   }
 
   try {
-    var ss = SpreadsheetApp.getActiveSpreadsheet();
-    var sh = ensureSupportersSheet_(ss);
-
-    if (action === 'register')   return registerSupporter_(sh, body);
-    if (action === 'restore')    return restoreSupporter_(sh, body);
-    if (action === 'list')       return listNewSupporters_(sh, body);
-    if (action === 'ack')        return ackSupporters_(sh, body);
-    if (action === 'push_sub')   return savePushSub_(ss, body);
-    if (action === 'push_unsub') return removePushSub_(ss, body);
-    if (action === 'push_list')  return listPushSubs_(ss, body);
-    if (action === 'push_prune') return prunePushSubs_(ss, body);
-
-    return json_({ ok: false, code: 'unknown_action' });
+    return out_(handle_(payload, method));
   } catch (err) {
-    return json_({ ok: false, code: 'server_error' });
+    console.error('[CBM Code.gs] Unhandled server error on action=' + action + ':', err);
+    return out_({ ok: false, code: 'server_error', msg: 'Internal server error' });
   } finally {
-    lock.releaseLock();
-  }
-}
-
-/* ─────────────────── 1) إصدار واستعادة والتحقق من البطاقات ─────────────────── */
-
-function registerSupporter_(sh, b) {
-  var name = cleanName_(b.name);
-  if (name.length < 2 || name.length > 80) {
-    return json_({ ok: false, code: 'invalid_name' });
-  }
-
-  var devId = cleanToken_(b.dev || 'anon', 64);
-  var requestId = cleanToken_(b.requestId || '', 80);
-  var lang = ['ar', 'fr', 'en'].indexOf(String(b.lang || '')) !== -1 ? String(b.lang) : 'ar';
-
-  var targetNorm = normName_(name);
-  var rows = sh.getDataRange().getValues();
-
-  // 1) Check idempotent retries and duplicate names first
-  for (var i = 1; i < rows.length; i++) {
-    var r = rows[i];
-    if (requestId && String(r[8] || '') === requestId) {
-      return cardRes_(r, true);
-    }
-    if (normName_(r[2]) === targetNorm) {
-      // Same person on the same device retrying -> return their existing card
-      if (devId !== 'anon' && String(r[9] || '') === devId) {
-        return cardRes_(r, true);
-      }
-      return json_({ ok: false, code: 'exists' });
+    if (lock) {
+      try { lock.releaseLock(); } catch (x) {}
     }
   }
-
-  // 2) Enforce registration rate limits (allows up to 3 family members on the same phone / 15m)
-  var cache = CacheService.getScriptCache();
-  var devRegKey = 'rl_reg_dev_' + devId;
-  var globalRegKey = 'rl_reg_global';
-  var devCount = Number(cache.get(devRegKey) || 0);
-  var globalCount = Number(cache.get(globalRegKey) || 0);
-  if ((devId !== 'anon' && devCount >= REGISTER_MAX_PER_DEV) || globalCount >= REGISTER_MAX_GLOBAL) {
-    return json_({ ok: false, code: 'rate_limit' });
-  }
-  cache.put(devRegKey, String(devCount + 1), RATE_WINDOW_SEC);
-  cache.put(globalRegKey, String(globalCount + 1), RATE_WINDOW_SEC);
-
-  var usedIds = {};
-  for (var j = 1; j < rows.length; j++) {
-    usedIds[String(rows[j][1] || '').toUpperCase()] = true;
-  }
-
-  var no = Math.max(1, rows.length);
-  var supporterId = generateUniqueSupporterId_(usedIds);
-  var nowIso = new Date().toISOString();
-
-  sh.appendRow([
-    no,
-    safeCell_(supporterId),
-    safeCell_(name),
-    safeCell_(supporterId),
-    'active',
-    nowIso,
-    safeCell_(lang),
-    'Mila',
-    safeCell_(requestId),
-    safeCell_(devId)
-  ]);
-
-  return json_({
-    ok: true,
-    no: no,
-    supporterId: supporterId,
-    serialNumber: supporterId,
-    name: name,
-    status: 'active',
-    createdAt: nowIso
-  });
 }
 
-function restoreSupporter_(sh, b) {
-  var devId = cleanToken_(b.dev || 'anon', 64);
-  var sid = String(b.supporterId || '').trim().toUpperCase();
-  var name = cleanName_(b.name);
-  if (!/^CBM-\d{6}$/.test(sid) || name.length < 2) {
-    return json_({ ok: false, code: 'not_found' });
-  }
-
-  var cache = CacheService.getScriptCache();
-  var kDev = 'rl_rest_dev_' + devId;
-  var kSid = 'rl_rest_sid_' + sid;
-  var kGlobal = 'rl_rest_global';
-
-  var dFails = Number(cache.get(kDev) || 0);
-  var sFails = Number(cache.get(kSid) || 0);
-  var gFails = Number(cache.get(kGlobal) || 0);
-
-  // Strict per-card and per-device brute-force lockouts
-  if (dFails >= RESTORE_MAX_FAILS_PER_DEV || sFails >= RESTORE_MAX_FAILS_PER_SID) {
-    return json_({ ok: false, code: 'rate_limit' });
-  }
-
-  var targetNorm = normName_(name);
-  var rows = sh.getDataRange().getValues();
-  for (var i = 1; i < rows.length; i++) {
-    var r = rows[i];
-    if (String(r[1] || '').toUpperCase() === sid) {
-      var isRegisteredDevice = (devId !== 'anon' && String(r[9] || '') === devId);
-
-      // Soft global protection: if global failures are elevated and caller is NOT on the registered device,
-      // apply a progressive tarpit delay + log anomaly rather than locking out all legitimate users globally.
-      if (!isRegisteredDevice && gFails >= RESTORE_SOFT_GLOBAL_THRESHOLD) {
-        console.warn('[CBM Security] High global restore failure rate (' + gFails + '); applying tarpit delay for sid=' + sid);
-        Utilities.sleep(RESTORE_TARPIT_MS);
-      }
-
-      if (normName_(r[2]) !== targetNorm) {
-        break;
-      }
-
-      cache.remove(kDev);
-      cache.remove(kSid);
-      var st = String(r[4] || 'active').toLowerCase();
-      if (st === 'revoked') return json_({ ok: false, code: 'revoked' });
-      return cardRes_(r, false);
-    }
-  }
-
-  cache.put(kDev, String(dFails + 1), RATE_WINDOW_SEC);
-  cache.put(kSid, String(sFails + 1), RATE_WINDOW_SEC);
-  cache.put(kGlobal, String(gFails + 1), RATE_WINDOW_SEC);
-  return json_({ ok: false, code: 'not_found' });
+// --- أدوات مساعدة ---
+function num_(v) {
+  return parseInt(String(v == null ? '' : v).replace(/\D/g, ''), 10) || 0;
 }
 
-function verifySupporter_(b) {
-  var sid = String(b.supporterId || '').trim().toUpperCase();
-  if (!/^CBM-\d{6}$/.test(sid)) {
-    return json_({ ok: false, code: 'not_found' });
-  }
-
-  // Light rate limit on public verify to make 6-digit ID enumeration impractical
-  var devId = cleanToken_(b.dev || 'anon', 64);
-  var cache = CacheService.getScriptCache();
-  var kVerDev = 'rl_ver_dev_' + devId;
-  var kVerGlobal = 'rl_ver_global';
-  var vDev = Number(cache.get(kVerDev) || 0);
-  var vGlobal = Number(cache.get(kVerGlobal) || 0);
-  if (vDev >= VERIFY_MAX_PER_DEV || vGlobal >= VERIFY_MAX_GLOBAL) {
-    return json_({ ok: false, code: 'rate_limit' });
-  }
-  cache.put(kVerDev, String(vDev + 1), RATE_WINDOW_SEC);
-  cache.put(kVerGlobal, String(vGlobal + 1), RATE_WINDOW_SEC);
-
-  var ss = SpreadsheetApp.getActiveSpreadsheet();
-  var sh = ss.getSheetByName(SHEET_NAME);
-  if (!sh) return json_({ ok: false, code: 'not_found' });
-
-  var rows = sh.getDataRange().getValues();
-  for (var i = 1; i < rows.length; i++) {
-    var r = rows[i];
-    if (String(r[1] || '').toUpperCase() === sid) {
-      var st = String(r[4] || 'active').toLowerCase();
-      if (st === 'revoked')  return json_({ ok: false, code: 'revoked' });
-      if (st === 'inactive') return json_({ ok: false, code: 'inactive' });
-      return json_({
-        ok: true,
-        supporterId: String(r[1]),
-        serialNumber: String(r[3] || r[1]),
-        maskedName: maskName_(String(r[2] || '')),
-        status: st,
-        createdAt: r[5]
-      });
-    }
-  }
-  return json_({ ok: false, code: 'not_found' });
+function sid_(n) {
+  return 'CBM-' + String(n).padStart(6, '0');
 }
 
-/* ─────────────────── 2) إدارة سجل المناصرين (للمراقب الآلي) ─────────────────── */
-
-function listNewSupporters_(sh, b) {
-  if (!isValidAdminKey_(b.key)) {
-    return json_({ ok: false, code: 'denied' });
-  }
-  var props = PropertiesService.getScriptProperties();
-  var lastRow = Number(props.getProperty(PROP_ACK_CURSOR) || 1);
-  var rows = sh.getDataRange().getValues();
-  var items = [];
-  for (var i = Math.max(1, lastRow); i < rows.length; i++) {
-    var r = rows[i];
-    items.push({
-      row: i + 1,
-      no: r[0],
-      supporterId: String(r[1] || '').replace(/^'+/, ''),
-      name: String(r[2] || '').replace(/^'+/, ''),
-      status: String(r[4] || 'active'),
-      createdAt: r[5]
-    });
-  }
-  return json_({
-    ok: true,
-    total: Math.max(0, rows.length - 1),
-    items: items
-  });
+// --- عدّادات معدّل بنافذة ثابتة (لا يتجدد وقت الانتهاء مع كل طلب) ---
+function rlRead_(cache, key) {
+  const raw = cache.get(key);
+  if (!raw) return { n: 0, t: Date.now() };
+  const p = String(raw).split('|');
+  const n = parseInt(p[0], 10) || 0;
+  const t = parseInt(p[1], 10) || Date.now();
+  if (Date.now() - t >= RATE_LIMIT_WINDOW_SEC * 1000) return { n: 0, t: Date.now() };
+  return { n: n, t: t };
 }
 
-function ackSupporters_(sh, b) {
-  if (!isValidAdminKey_(b.key)) {
-    return json_({ ok: false, code: 'denied' });
-  }
-  var upTo = Number(b.upTo || 0);
-  if (upTo > 0) {
-    PropertiesService.getScriptProperties().setProperty(PROP_ACK_CURSOR, String(upTo));
-  }
-  return json_({ ok: true, upTo: upTo });
+function rlCount_(cache, key) {
+  return rlRead_(cache, key).n;
 }
 
-/* ─────────────────── 3) اشتراكات Web Push ─────────────────── */
-
-function isAllowedPushEndpoint_(endpoint) {
-  var ep = String(endpoint || '').trim();
-  if (ep.indexOf('https://') !== 0 || ep.length > 1200) return false;
-  var m = ep.match(/^https:\/\/([^\/:?#]+)(?:\/|$)/i);
-  if (!m) return false;
-  var host = m[1].toLowerCase();
-  for (var i = 0; i < ALLOWED_PUSH_HOSTS_EXACT.length; i++) {
-    if (host === ALLOWED_PUSH_HOSTS_EXACT[i]) return true;
-  }
-  for (var j = 0; j < ALLOWED_PUSH_HOST_SUFFIXES.length; j++) {
-    var sfx = ALLOWED_PUSH_HOST_SUFFIXES[j];
-    if (host.length > sfx.length && host.slice(host.length - sfx.length) === sfx) {
-      return true;
-    }
-  }
-  return false;
+function rlHit_(cache, key) {
+  const st = rlRead_(cache, key);
+  st.n += 1;
+  const remain = Math.max(1, Math.ceil(RATE_LIMIT_WINDOW_SEC - (Date.now() - st.t) / 1000));
+  cache.put(key, st.n + '|' + st.t, Math.min(remain, 21600));
+  return st.n;
 }
 
-function savePushSub_(ss, b) {
-  var sub = b.sub || {};
-  var ep = String(sub.endpoint || '').trim();
-  var keys = sub.keys || {};
-  var p256dh = String(keys.p256dh || '').trim();
-  var auth = String(keys.auth || '').trim();
-
-  if (!isAllowedPushEndpoint_(ep) || !p256dh || !auth || p256dh.length > 256 || auth.length > 128) {
-    return json_({ ok: false, code: 'invalid_subscription' });
-  }
-
-  var lang = ['ar', 'fr', 'en'].indexOf(String(b.lang || '')) !== -1 ? String(b.lang) : 'ar';
-  var dev = cleanToken_(b.dev || 'anon', 64);
-  var nowIso = new Date().toISOString();
-
-  var sh = ensurePushSheet_(ss);
-  var rows = sh.getDataRange().getValues();
-
-  for (var i = 1; i < rows.length; i++) {
-    var existingEp = String(rows[i][0] || '').replace(/^'+/, '');
-    var existingDev = String(rows[i][3] || '').replace(/^'+/, '');
-    if (existingEp === ep || (dev !== 'anon' && existingDev === dev)) {
-      sh.getRange(i + 1, 1, 1, 5).setValues([[
-        safeCell_(ep),
-        safeCell_(p256dh),
-        safeCell_(auth),
-        safeCell_(dev),
-        safeCell_(lang)
-      ]]);
-      sh.getRange(i + 1, 6).setValue(nowIso);
-      return json_({ ok: true, updated: true });
-    }
-  }
-
-  if (rows.length - 1 >= MAX_PUSH_SUBSCRIBERS) {
-    return json_({ ok: false, code: 'push_capacity_reached' });
-  }
-
-  sh.appendRow([
-    safeCell_(ep),
-    safeCell_(p256dh),
-    safeCell_(auth),
-    safeCell_(dev),
-    safeCell_(lang),
-    nowIso
-  ]);
-  return json_({ ok: true, created: true });
+function sanitizeKeyPart_(s, maxLen) {
+  return String(s == null ? '' : s).replace(/[^a-zA-Z0-9_-]/g, '').slice(0, maxLen || 48) || 'anon';
 }
 
-function removePushSub_(ss, b) {
-  var ep = String(b.endpoint || '').trim();
-  var dev = cleanToken_(b.dev || '', 64);
-  var sh = ss.getSheetByName(PUSH_SHEET_NAME);
-  if (!sh) return json_({ ok: true });
-
-  var rows = sh.getDataRange().getValues();
-  for (var i = rows.length - 1; i >= 1; i--) {
-    var rEp = String(rows[i][0] || '').replace(/^'+/, '');
-    var rDev = String(rows[i][3] || '').replace(/^'+/, '');
-    if ((ep && rEp === ep) || (dev && dev !== 'anon' && rDev === dev)) {
-      sh.deleteRow(i + 1);
-    }
-  }
-  return json_({ ok: true });
-}
-
-function listPushSubs_(ss, b) {
-  if (!isValidAdminKey_(b.key)) {
-    return json_({ ok: false, code: 'denied' });
-  }
-  var sh = ss.getSheetByName(PUSH_SHEET_NAME);
-  if (!sh) return json_({ ok: true, items: [] });
-
-  var rows = sh.getDataRange().getValues();
-  var items = [];
-  for (var i = 1; i < rows.length; i++) {
-    var ep = String(rows[i][0] || '').replace(/^'+/, '');
-    var p256dh = String(rows[i][1] || '').replace(/^'+/, '');
-    var auth = String(rows[i][2] || '').replace(/^'+/, '');
-    var lang = String(rows[i][4] || 'ar').replace(/^'+/, '');
-    if (isAllowedPushEndpoint_(ep) && p256dh && auth) {
-      items.push({
-        endpoint: ep,
-        keys: { p256dh: p256dh, auth: auth },
-        lang: lang
-      });
-    }
-  }
-  return json_({ ok: true, items: items });
-}
-
-function prunePushSubs_(ss, b) {
-  if (!isValidAdminKey_(b.key)) {
-    return json_({ ok: false, code: 'denied' });
-  }
-  var list = Array.isArray(b.endpoints) ? b.endpoints : [];
-  if (!list.length) return json_({ ok: true, pruned: 0 });
-
-  var deadMap = {};
-  for (var k = 0; k < list.length; k++) {
-    deadMap[String(list[k] || '').trim()] = true;
-  }
-
-  var sh = ss.getSheetByName(PUSH_SHEET_NAME);
-  if (!sh) return json_({ ok: true, pruned: 0 });
-
-  var rows = sh.getDataRange().getValues();
-  var pruned = 0;
-  for (var i = rows.length - 1; i >= 1; i--) {
-    var rEp = String(rows[i][0] || '').replace(/^'+/, '');
-    if (deadMap[rEp]) {
-      sh.deleteRow(i + 1);
-      pruned++;
-    }
-  }
-  return json_({ ok: true, pruned: pruned });
-}
-
-/* ─────────────────── 4) دوال الحماية والمساعدة ─────────────────── */
-
-function safeCell_(val) {
-  var s = String(val == null ? '' : val);
-  if (/^[\s]*[=+\-@\t\r\n]/.test(s)) {
-    return "'" + s;
-  }
-  return s;
-}
-
-function cleanName_(raw) {
-  return String(raw || '')
-    .replace(/[\u0000-\u001F\u007F]/g, ' ')
+/**
+ * تطهير الاسم من المسافات الزائدة ومن بادئات حقن المعادلات (= + - @ ' " Tab CR LF)
+ * لمنع Formula Injection في Google Sheets عند استخدام appendRow.
+ */
+function cleanName_(s) {
+  return String(s == null ? '' : s)
+    .replace(/^[\s=+\-@'"\t\r\n]+/, '')
     .replace(/\s+/g, ' ')
     .trim()
     .slice(0, 80);
 }
 
-function cleanToken_(raw, maxLen) {
-  return String(raw || '')
-    .replace(/[^A-Za-z0-9_\-:.]/g, '')
-    .slice(0, maxLen || 64);
-}
-
 function normName_(s) {
-  return String(s || '')
-    .replace(/^'+/, '')
+  return cleanName_(s)
     .replace(/[\u064B-\u065F\u0670]/g, '')
+    .toLowerCase()
     .replace(/[أإآ]/g, 'ا')
     .replace(/ة/g, 'ه')
-    .replace(/ى/g, 'ي')
-    .replace(/\s+/g, ' ')
-    .trim()
-    .toLowerCase();
+    .replace(/ى/g, 'ي');
 }
 
-function maskName_(name) {
-  var clean = String(name || '').replace(/^'+/, '').trim();
-  if (!clean) return '***';
-  var parts = clean.split(/\s+/);
-  var out = [];
-  for (var i = 0; i < parts.length; i++) {
-    if (parts[i]) out.push(parts[i].charAt(0) + '***');
+/**
+ * تقنيع الاسم لحماية الخصوصية عند مسح QR: يظهر أول حرف من كل كلمة متبوعاً بـ ***
+ */
+function maskName_(fullName) {
+  const cleaned = cleanName_(fullName);
+  if (!cleaned) return '***';
+  return cleaned
+    .split(' ')
+    .filter(Boolean)
+    .map(function(word) { return Array.from(word)[0] + '***'; })
+    .join(' ');
+}
+
+/**
+ * التحقق من أن رابط Web Push ينتمي لخدمة إشعارات رسمية معتمدة، وأن مفاتيح التشفير صالحة.
+ */
+function isValidPushSubscription_(endpoint, p256dh, auth) {
+  const ep = String(endpoint || '').trim();
+  if (!/^https:\/\//i.test(ep) || ep.length > 1024) return false;
+
+  const m = ep.match(/^https:\/\/([^/:?#]+)(?:\/.*)?$/i);
+  if (!m) return false;
+  const host = m[1].toLowerCase();
+
+  let hostAllowed = ALLOWED_PUSH_HOSTS.indexOf(host) >= 0;
+  if (!hostAllowed) {
+    for (let i = 0; i < ALLOWED_PUSH_SUFFIXES.length; i++) {
+      const sfx = ALLOWED_PUSH_SUFFIXES[i];
+      if (host.length > sfx.length && host.slice(-sfx.length) === sfx) {
+        hostAllowed = true;
+        break;
+      }
+    }
   }
-  return out.join(' ') || '***';
+  if (!hostAllowed) return false;
+
+  // التحقق من مفاتيح التشفير بصيغة base64url
+  if (!/^[A-Za-z0-9_-]{80,100}={0,2}$/.test(String(p256dh || ''))) return false;
+  if (!/^[A-Za-z0-9_-]{20,32}={0,2}$/.test(String(auth || ''))) return false;
+  return true;
 }
 
-function generateUniqueSupporterId_(usedIds) {
-  for (var attempt = 0; attempt < 50; attempt++) {
-    var num = Math.floor(100000 + Math.random() * 900000);
-    var cand = 'CBM-' + String(num);
-    if (!usedIds[cand]) return cand;
+function generateUniqueRandomNo_(usedSet) {
+  for (let attempt = 0; attempt < 50; attempt++) {
+    const uuid = Utilities.getUuid().replace(/-/g, '');
+    const chunk = parseInt(uuid.slice(0, 8), 16);
+    const rand = Math.floor(Math.random() * 900000);
+    const candidate = 100000 + ((chunk ^ rand) % 900000 + 900000) % 900000;
+    if (!usedSet[candidate]) {
+      return candidate;
+    }
   }
-  return 'CBM-' + String(Date.now()).slice(-6);
+  let fallback = 100000 + Math.floor(Math.random() * 899999);
+  while (usedSet[fallback]) fallback = ((fallback - 99999) % 900000) + 100000;
+  return fallback;
 }
 
-function isValidAdminKey_(providedKey) {
-  var expected = PropertiesService.getScriptProperties().getProperty(PROP_ADMIN_KEY);
-  if (!expected || !providedKey) return false;
-  return timingSafeEqual_(String(providedKey), String(expected));
+function rowStatus_(r) {
+  const raw = String(r[5] || '').trim().toLowerCase();
+  if (raw === 'revoked' || raw === 'ملغاة' || raw === 'ملغى') return 'revoked';
+  if (raw === 'inactive' || raw === 'غير نشط') return 'inactive';
+  return 'active';
 }
 
-function timingSafeEqual_(a, b) {
-  var strA = String(a);
-  var strB = String(b);
-  var len = Math.max(strA.length, strB.length);
-  var diff = strA.length ^ strB.length;
-  for (var i = 0; i < len; i++) {
-    var codeA = i < strA.length ? strA.charCodeAt(i) : 0;
-    var codeB = i < strB.length ? strB.charCodeAt(i) : 0;
-    diff |= (codeA ^ codeB);
+function rowIso_(r) {
+  try {
+    const d = r[0] ? new Date(r[0]) : new Date();
+    return isNaN(d.getTime()) ? new Date().toISOString() : d.toISOString();
+  } catch (e) {
+    return new Date().toISOString();
   }
-  return diff === 0 && strA.length > 0;
 }
 
-function ensureSupportersSheet_(ss) {
-  var sh = ss.getSheetByName(SHEET_NAME);
-  if (!sh) {
-    sh = ss.insertSheet(SHEET_NAME);
-    sh.appendRow(['No', 'SupporterId', 'Name', 'SerialNumber', 'Status', 'CreatedAt', 'Lang', 'City', 'RequestId', 'DeviceId']);
-  }
-  return sh;
-}
-
-function ensurePushSheet_(ss) {
-  var sh = ss.getSheetByName(PUSH_SHEET_NAME);
-  if (!sh) {
-    sh = ss.insertSheet(PUSH_SHEET_NAME);
-    sh.appendRow(['Endpoint', 'P256dh', 'Auth', 'DeviceId', 'Lang', 'UpdatedAt']);
-  }
-  return sh;
-}
-
-function cardRes_(r, deduped) {
-  return json_({
+function fullCardObj_(r) {
+  const no = num_(r[1]);
+  const iso = rowIso_(r);
+  const status = rowStatus_(r);
+  return {
     ok: true,
-    deduped: Boolean(deduped),
-    no: r[0],
-    supporterId: String(r[1] || '').replace(/^'+/, ''),
-    name: String(r[2] || '').replace(/^'+/, ''),
-    serialNumber: String(r[3] || r[1] || '').replace(/^'+/, ''),
-    status: String(r[4] || 'active').toLowerCase(),
-    createdAt: r[5]
-  });
+    no: no,
+    supporterId: sid_(no),
+    serialNumber: sid_(no),
+    name: cleanName_(r[2]),
+    status: status,
+    createdAt: iso
+  };
 }
 
-function json_(obj) {
+function publicVerifyObj_(r) {
+  const no = num_(r[1]);
+  const iso = rowIso_(r);
+  const status = rowStatus_(r);
+  const masked = maskName_(r[2]);
+  if (status !== 'active') {
+    return {
+      ok: false,
+      code: status,
+      supporterId: sid_(no),
+      maskedName: masked,
+      status: status,
+      createdAt: iso
+    };
+  }
+  return {
+    ok: true,
+    supporterId: sid_(no),
+    serialNumber: sid_(no),
+    maskedName: masked,
+    status: 'active',
+    createdAt: iso
+  };
+}
+
+// --- المعالج الرئيسي للطلبات ---
+function handle_(q, method) {
+  const ver = q.v || 2;
+  if (ver !== 1 && ver !== 2) return { ok: false, code: 'bad' };
+
+  const action = String(q.a || 'verify').trim().toLowerCase();
+
+  if (method === 'GET' && (action !== 'verify' || q.key)) {
+    return { ok: false, code: 'method_not_allowed' };
+  }
+
+  const sheet = sheet_();
+  const lastRow = sheet.getLastRow();
+  const n = Math.max(0, lastRow - 1);
+  const rows = n ? sheet.getRange(2, 1, n, 7).getValues() : [];
+
+  // 1) التحقق العام من صلاحية البطاقة (قراءة فقط بدون قفل، يرجع الاسم مقنّعاً فقط)
+  if (action === 'verify') {
+    const targetNo = num_(q.supporterId || q.no || q.n || q.q);
+    if (!targetNo) return { ok: false, code: 'not_found' };
+
+    const vCache = CacheService.getScriptCache();
+    const vDev = sanitizeKeyPart_(q.dev || 'anon', 48);
+    const vDevKey = 'RL_VERIFY_DEV_' + vDev;
+    if (
+      rlCount_(vCache, 'RL_VERIFY_GLOBAL') >= VERIFY_MAX_GLOBAL ||
+      (vDev !== 'anon' && rlCount_(vCache, vDevKey) >= VERIFY_MAX_PER_DEV)
+    ) {
+      return { ok: false, code: 'rate_limit', retryAfterMinutes: 15 };
+    }
+    rlHit_(vCache, 'RL_VERIFY_GLOBAL');
+    if (vDev !== 'anon') rlHit_(vCache, vDevKey);
+
+    const r = rows.find(function(x) { return num_(x[1]) === targetNo; });
+    if (!r) return { ok: false, code: 'not_found' };
+    return publicVerifyObj_(r);
+  }
+
+  if (method !== 'POST') {
+    return { ok: false, code: 'method_not_allowed' };
+  }
+
+  // 2) تسجيل بطاقة مناصر جديدة بمعرّف عشوائي CBM-XXXXXX
+  if (action === 'register') {
+    const name = cleanName_(q.name);
+    if (name.length < 2 || name.length > 80) {
+      return { ok: false, code: 'invalid_name' };
+    }
+    const targetNorm = normName_(name);
+    const reqId = sanitizeKeyPart_(q.requestId || '', 64);
+    const devId = sanitizeKeyPart_(q.dev || 'anon', 48);
+    const cache = CacheService.getScriptCache();
+    const regDevKey = 'RL_REG_DEV_' + devId;
+    const regGlobalKey = 'RL_REG_GLOBAL';
+
+    // (أ) إعادة المحاولة نفسها ترجع البطاقة الموجودة ولا تُحتسب ضمن الحد.
+    //     لا يُرفض الاسم المكرر: الأسماء الشائعة مسموحة، وكل بطاقة لها رقم فريد.
+    const usedNumbers = {};
+    for (let i = 0; i < rows.length; i++) {
+      const r = rows[i];
+      const rNo = num_(r[1]);
+      if (rNo > 0) usedNumbers[rNo] = true;
+      const rReq = String(r[3] || '').trim();
+      const rDev = String(r[4] || '').trim();
+      if (reqId && reqId !== 'anon' && rReq === reqId) {
+        return fullCardObj_(r);
+      }
+      if (devId !== 'anon' && rDev === devId && normName_(r[2]) === targetNorm) {
+        return fullCardObj_(r);
+      }
+    }
+
+    // (ب) حدود التسجيل (بطاقات جديدة فقط)
+    if (
+      (devId !== 'anon' && rlCount_(cache, regDevKey) >= REGISTER_MAX_PER_DEV) ||
+      rlCount_(cache, regGlobalKey) >= REGISTER_MAX_GLOBAL
+    ) {
+      return { ok: false, code: 'rate_limit', retryAfterMinutes: 15 };
+    }
+    rlHit_(cache, regDevKey);
+    rlHit_(cache, regGlobalKey);
+
+    const randomNo = generateUniqueRandomNo_(usedNumbers);
+    const nowIso = new Date().toISOString();
+    const lang = ['ar', 'fr', 'en'].indexOf(q.lang) >= 0 ? q.lang : 'ar';
+    const newRow = [nowIso, sid_(randomNo), name, reqId, devId, 'active', lang];
+    sheet.appendRow(newRow);
+    return fullCardObj_(newRow);
+  }
+
+  // 3) استعادة بطاقة مناصر: حد لكل بطاقة ولكل جهاز، وصاحب الجهاز المسجّل لا يتأثر بالحدود
+  if (action === 'restore') {
+    const devKey = sanitizeKeyPart_(q.dev || 'anon', 48);
+    const targetNo = num_(q.supporterId || q.no);
+    const targetNorm = normName_(q.name);
+
+    const cache = CacheService.getScriptCache();
+    const rateDevKey = 'RL_RESTORE_DEV_' + devKey;
+    const rateSidKey = 'RL_RESTORE_SID_' + String(targetNo || '0');
+    const rateGlobalKey = 'RL_RESTORE_GLOBAL';
+
+    const row = targetNo ? rows.find(function(x) { return num_(x[1]) === targetNo; }) : null;
+    const isOwnerDevice = !!(row && devKey !== 'anon' && String(row[4] || '').trim() === devKey);
+
+    if (!isOwnerDevice) {
+      if (
+        rlCount_(cache, rateDevKey) >= RESTORE_MAX_FAILS_PER_DEV ||
+        (targetNo && rlCount_(cache, rateSidKey) >= RESTORE_MAX_FAILS_PER_SID)
+      ) {
+        return { ok: false, code: 'rate_limit', retryAfterMinutes: 15 };
+      }
+    }
+
+    const matched = !!(row && targetNorm && normName_(row[2]) === targetNorm);
+    if (!matched) {
+      const dFails = rlHit_(cache, rateDevKey);
+      const sFails = targetNo ? rlHit_(cache, rateSidKey) : 0;
+      const gFails = rlHit_(cache, rateGlobalKey);
+      if (gFails === RESTORE_WARN_GLOBAL) {
+        console.warn('[CBM Security] ارتفاع فشل الاستعادة العام: ' + gFails + ' خلال النافذة الحالية');
+      }
+      if (!isOwnerDevice && (dFails >= RESTORE_MAX_FAILS_PER_DEV || sFails >= RESTORE_MAX_FAILS_PER_SID)) {
+        return { ok: false, code: 'rate_limit', retryAfterMinutes: 15 };
+      }
+      return { ok: false, code: 'not_found' };
+    }
+
+    cache.remove(rateDevKey);
+    cache.remove(rateSidKey);
+    if (rowStatus_(row) === 'revoked') return { ok: false, code: 'revoked' };
+    return fullCardObj_(row);
+  }
+
+  // 4) إجراء إداري: جلب المناصرين الجدد (POST + ADMIN_KEY)
+  if (action === 'list') {
+    const adminKey = getAdminKey_();
+    if (!adminKey || String(q.key || '').trim() !== adminKey) {
+      return { ok: false, code: 'denied' };
+    }
+    const props = PropertiesService.getScriptProperties();
+    const lastAckRow = num_(props.getProperty('LAST_ACK_ROW') || 0);
+    const items = [];
+    for (let i = 0; i < rows.length; i++) {
+      const rowNumber = i + 2;
+      const r = rows[i];
+      const rNo = num_(r[1]);
+      if (rowNumber > lastAckRow && rNo > 0 && rowStatus_(r) !== 'revoked') {
+        items.push({
+          row: rowNumber,
+          no: rNo,
+          supporterId: sid_(rNo),
+          name: cleanName_(r[2]),
+          createdAt: rowIso_(r)
+        });
+      }
+    }
+    return { ok: true, total: rows.length, lastAck: lastAckRow, items: items };
+  }
+
+  // 5) إجراء إداري: تأكيد استلام قائمة المناصرين الجدد (POST + ADMIN_KEY)
+  if (action === 'ack') {
+    const adminKey = getAdminKey_();
+    if (!adminKey || String(q.key || '').trim() !== adminKey) {
+      return { ok: false, code: 'denied' };
+    }
+    const upTo = num_(q.upTo);
+    const props = PropertiesService.getScriptProperties();
+    const currentAck = num_(props.getProperty('LAST_ACK_ROW') || 0);
+    const nextAck = Math.max(currentAck, upTo);
+    props.setProperty('LAST_ACK_ROW', String(nextAck));
+    return { ok: true, upTo: nextAck };
+  }
+
+  // 6) اشتراك إشعارات الهاتف الفورية (Web Push Subscribe - مع فحص النطاق والمفاتيح وسقف الجدول)
+  if (action === 'push_sub') {
+    const sub = q.sub || {};
+    const endpoint = String(sub.endpoint || '').trim();
+    const keys = sub.keys || {};
+    const p256dh = String(keys.p256dh || '').trim();
+    const auth = String(keys.auth || '').trim();
+    const devId = sanitizeKeyPart_(q.dev || 'anon', 64);
+    const lang = ['ar', 'fr', 'en'].indexOf(q.lang) >= 0 ? q.lang : 'ar';
+
+    if (!isValidPushSubscription_(endpoint, p256dh, auth)) {
+      return { ok: false, code: 'invalid_subscription' };
+    }
+
+    const ps = pushSheet_();
+    const pLast = ps.getLastRow();
+    const pCount = Math.max(0, pLast - 1);
+    const pRows = pCount ? ps.getRange(2, 1, pCount, 7).getValues() : [];
+    const nowIso = new Date().toISOString();
+
+    let reusableRowIndex = -1;
+    let activeCount = 0;
+
+    for (let i = 0; i < pRows.length; i++) {
+      const rowEp = String(pRows[i][2] || '');
+      const rowDev = String(pRows[i][1] || '');
+      const rowState = String(pRows[i][6] || 'active').trim().toLowerCase();
+      if (rowState === 'active') activeCount++;
+      else if (reusableRowIndex < 0) reusableRowIndex = i + 2;
+
+      if (rowEp === endpoint || (devId && devId !== 'anon' && rowDev === devId)) {
+        ps.getRange(i + 2, 1, 1, 7).setValues([[nowIso, devId, endpoint, p256dh, auth, lang, 'active']]);
+        return { ok: true, subscribed: true };
+      }
+    }
+
+    if (reusableRowIndex > 0) {
+      ps.getRange(reusableRowIndex, 1, 1, 7).setValues([[nowIso, devId, endpoint, p256dh, auth, lang, 'active']]);
+      return { ok: true, subscribed: true };
+    }
+
+    if (activeCount >= MAX_PUSH_SUBS) {
+      return { ok: false, code: 'cap_reached' };
+    }
+
+    ps.appendRow([nowIso, devId, endpoint, p256dh, auth, lang, 'active']);
+    return { ok: true, subscribed: true };
+  }
+
+  // 7) إلغاء اشتراك إشعارات الهاتف الفورية (Web Push Unsubscribe)
+  if (action === 'push_unsub') {
+    const endpoint = String((q.sub && q.sub.endpoint) || q.endpoint || '').trim();
+    const devId = sanitizeKeyPart_(q.dev || '', 64);
+    const ps = pushSheet_();
+    const pLast = ps.getLastRow();
+    const pCount = Math.max(0, pLast - 1);
+    const pRows = pCount ? ps.getRange(2, 1, pCount, 7).getValues() : [];
+    for (let i = 0; i < pRows.length; i++) {
+      if ((endpoint && String(pRows[i][2]) === endpoint) || (devId && devId !== 'anon' && String(pRows[i][1]) === devId)) {
+        ps.getRange(i + 2, 7).setValue('unsubscribed');
+      }
+    }
+    return { ok: true, subscribed: false };
+  }
+
+  // 8) إجراء إداري: جلب اشتراكات الإشعارات النشطة (POST + ADMIN_KEY)
+  if (action === 'push_list') {
+    const adminKey = getAdminKey_();
+    if (!adminKey || String(q.key || '').trim() !== adminKey) {
+      return { ok: false, code: 'denied' };
+    }
+    const ps = pushSheet_();
+    const pLast = ps.getLastRow();
+    const pCount = Math.max(0, pLast - 1);
+    const pRows = pCount ? ps.getRange(2, 1, pCount, 7).getValues() : [];
+    const subs = [];
+    for (let i = 0; i < pRows.length; i++) {
+      const r = pRows[i];
+      const ep = String(r[2] || '').trim();
+      const kP256 = String(r[3] || '').trim();
+      const kAuth = String(r[4] || '').trim();
+      if (
+        String(r[6] || 'active').trim().toLowerCase() === 'active' &&
+        isValidPushSubscription_(ep, kP256, kAuth)
+      ) {
+        subs.push({
+          endpoint: ep,
+          keys: { p256dh: kP256, auth: kAuth },
+          lang: String(r[5] || 'ar').trim()
+        });
+      }
+    }
+    return { ok: true, total: subs.length, items: subs };
+  }
+
+  // 9) إجراء إداري: تعطيل الاشتراكات المنتهية الصلاحية 404/410 (POST + ADMIN_KEY)
+  if (action === 'push_prune') {
+    const adminKey = getAdminKey_();
+    if (!adminKey || String(q.key || '').trim() !== adminKey) {
+      return { ok: false, code: 'denied' };
+    }
+    const dead = q.endpoints || [];
+    const deadMap = {};
+    for (let i = 0; i < dead.length; i++) deadMap[String(dead[i])] = true;
+    const ps = pushSheet_();
+    const pLast = ps.getLastRow();
+    const pCount = Math.max(0, pLast - 1);
+    const pRows = pCount ? ps.getRange(2, 1, pCount, 7).getValues() : [];
+    let pruned = 0;
+    for (let i = 0; i < pRows.length; i++) {
+      if (deadMap[String(pRows[i][2])]) {
+        ps.getRange(i + 2, 7).setValue('expired');
+        pruned++;
+      }
+    }
+    return { ok: true, pruned: pruned };
+  }
+
+  return { ok: false, code: 'bad' };
+}
+
+function sheet_() {
+  const ss = ss_();
+  let sheet = ss.getSheetByName(SHEET_NAME);
+  const expectedHeaders = ['Timestamp', 'SupporterId', 'Name', 'RequestId', 'DeviceId', 'Status', 'Lang'];
+  if (!sheet) {
+    sheet = ss.insertSheet(SHEET_NAME);
+    sheet.appendRow(expectedHeaders);
+  } else if (sheet.getLastRow() >= 1) {
+    const hdr = sheet.getRange(1, 1, 1, 7).getValues()[0];
+    if (String(hdr[3]).indexOf('NIN') >= 0 || String(hdr[4]).indexOf('Phone') >= 0) {
+      sheet.getRange(1, 1, 1, 7).setValues([expectedHeaders]);
+    }
+  }
+  return sheet;
+}
+
+function pushSheet_() {
+  const ss = ss_();
+  let sheet = ss.getSheetByName(PUSH_SHEET_NAME);
+  if (!sheet) {
+    sheet = ss.insertSheet(PUSH_SHEET_NAME);
+    sheet.appendRow(['Timestamp', 'DeviceId', 'Endpoint', 'P256dh', 'Auth', 'Lang', 'Status']);
+  }
+  return sheet;
+}
+
+function ss_() {
+  return SpreadsheetApp.getActiveSpreadsheet();
+}
+
+function out_(obj) {
   return ContentService
     .createTextOutput(JSON.stringify(obj))
     .setMimeType(ContentService.MimeType.JSON);

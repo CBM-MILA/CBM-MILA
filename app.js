@@ -1173,7 +1173,7 @@ function vVerify() {
     const el = $('verify-result');
     if (!el) return;
     try {
-      const r = await regCall({v: 2, a: 'verify', supporterId: id});
+      const r = await regCall({v: 2, a: 'verify', supporterId: id, dev: devId()});
       el.replaceChildren();
       if (r?.ok) {
         const masked = r.maskedName || maskNameClient(r.name);

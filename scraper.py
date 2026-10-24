@@ -3025,6 +3025,194 @@ def send_web_push_notifications(
 
 
 # ════════════════════════ 12. CLI Entrypoint ════════════════════════
+# ════════════════════════ 11b. Notification Queue (exactly-once-ish delivery) ════════════════════════
+# Problem solved: notifications used to be sent BEFORE the data commit reached GitHub. If the commit/push
+# failed, the next run re-detected the same change and sent every notification again.
+# Now (with --defer-notifications) the scrape step only QUEUES events inside data/status.json, which is
+# committed together with data/data.json. A separate step (--notify-queued) delivers them AFTER the push
+# succeeded; per-channel "sent" markers make delivery idempotent, and the queue is cleared afterwards.
+NOTIFY_MAX_ATTEMPTS = 3
+
+
+def _json_safe(obj: Any) -> Any:
+    """Round-trip through JSON so tuples/datetimes become plain JSON values."""
+    return json.loads(json.dumps(obj, ensure_ascii=False, default=str))
+
+
+def _telegram_configured() -> bool:
+    return bool(TELEGRAM_TOKEN and TELEGRAM_CHAT_ID)
+
+
+def _webpush_configured() -> bool:
+    return bool(VAPID_PRIVATE_KEY and ADMIN_KEY and registry_url())
+
+
+def _message_key(message: str) -> str:
+    return hashlib.sha256(message.encode("utf-8")).hexdigest()[:16]
+
+
+def dedupe_events(events: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Return events de-duplicated by their stable eventKey (last one wins)."""
+    unique: dict[str, dict[str, Any]] = {}
+    for ev in events:
+        key = ev.get("eventKey") or build_event_key(ev)
+        ev["eventKey"] = key
+        unique[key] = ev
+    return list(unique.values())
+
+
+def queue_notifications(
+    status_obj: dict[str, Any],
+    events: list[dict[str, Any]],
+    extra_messages: list[dict[str, str]],
+    status_path: str = STATUS_PATH,
+    dry_run: bool = False,
+) -> int:
+    """Store events in `status.json` (committed with the data) instead of sending them now."""
+    queue = status_obj.setdefault("queuedNotifications", {"events": [], "telegram": []})
+    queue.setdefault("events", [])
+    queue.setdefault("telegram", [])
+    queued_keys = {e.get("eventKey") for e in queue["events"]}
+    queued_msgs = {_message_key(m.get("message", "")) for m in queue["telegram"]}
+    added = 0
+    for ev in events:
+        key = ev.get("eventKey") or build_event_key(ev)
+        ev["eventKey"] = key
+        if key not in queued_keys:
+            queue["events"].append(_json_safe(ev))
+            queued_keys.add(key)
+            added += 1
+    for m in extra_messages:
+        mk = _message_key(m.get("message", ""))
+        if mk not in queued_msgs:
+            queue["telegram"].append({"message": m["message"]})
+            queued_msgs.add(mk)
+            added += 1
+    if added:
+        log.info("تمت إضافة %d إشعار إلى طابور الإرسال (يُرسل بعد نجاح رفع البيانات)", added)
+        persist_status_file(status_obj, status_path=status_path, dry_run=dry_run)
+    return added
+
+
+def deliver_notifications(
+    data: dict[str, Any],
+    events: list[dict[str, Any]],
+    extra_messages: list[dict[str, str]],
+    problems: list[str],
+    notes: list[str],
+    status_obj: dict[str, Any],
+    status_path: str = STATUS_PATH,
+    dry_run: bool = False,
+) -> None:
+    """Send Telegram + Web Push for `events` (idempotent thanks to per-channel sent markers)."""
+    for m in extra_messages:
+        send_telegram_alert(m["message"], dry_run=dry_run, status_obj=status_obj, status_path=status_path)
+
+    for ev in events:
+        ek = ev.get("eventKey") or build_event_key(ev)
+        match_obj = next(
+            (m for m in data.get("matches", []) if str(m.get("id")) == str(ev.get("matchId"))),
+            None,
+        )
+        if not match_obj:
+            continue
+        if ev.get("kind") == "result" and ev.get("score"):
+            send_telegram_alert(
+                result_alert(data, match_obj, tuple(ev["score"])),
+                dry_run=dry_run,
+                status_obj=status_obj,
+                event_key=ek,
+                status_path=status_path,
+            )
+        elif ev.get("kind") == "kickoff" and ev.get("kickoff"):
+            ko_dt = parse_iso_kickoff(ev["kickoff"])
+            if ko_dt:
+                send_telegram_alert(
+                    kickoff_alert(data, match_obj, ko_dt),
+                    dry_run=dry_run,
+                    status_obj=status_obj,
+                    event_key=ek,
+                    status_path=status_path,
+                )
+
+    if events:
+        try:
+            send_web_push_notifications(
+                events,
+                problems,
+                notes,
+                dry_run=dry_run,
+                status_obj=status_obj,
+                status_path=status_path,
+            )
+        except Exception as e:
+            log.error("خطأ في إرسال إشعارات الهواتف: %s", type(e).__name__)
+
+
+def flush_queued_notifications(
+    data_path: str = DATA_PATH,
+    status_path: str = STATUS_PATH,
+    dry_run: bool = False,
+) -> int:
+    """Deliver queued notifications (run AFTER the data commit was pushed). Returns 0 on success."""
+    if not os.path.exists(status_path):
+        log.info("لا يوجد ملف حالة؛ لا إشعارات في الطابور.")
+        return 0
+    try:
+        with open(status_path, "r", encoding="utf-8") as f:
+            status_obj = json.load(f)
+    except Exception:
+        log.error("تعذّرت قراءة %s", status_path)
+        return 1
+    if not isinstance(status_obj, dict):
+        return 1
+
+    queue = status_obj.get("queuedNotifications") or {}
+    events = list(queue.get("events") or [])
+    extras = list(queue.get("telegram") or [])
+    if not events and not extras:
+        log.info("طابور الإشعارات فارغ.")
+        return 0
+
+    data = load_data(data_path)
+    if not data:
+        log.error("تعذّر تحميل %s لإرسال الإشعارات", data_path)
+        return 1
+
+    problems: list[str] = []
+    notes: list[str] = []
+    status_obj.setdefault("alertedHashes", [])
+    status_obj.setdefault("sentEvents", [])
+    status_obj.setdefault("notificationEvents", {})
+
+    deliver_notifications(data, events, extras, problems, notes, status_obj, status_path, dry_run)
+
+    tg_on, push_on = _telegram_configured(), _webpush_configured()
+    keep_events: list[dict[str, Any]] = []
+    for ev in events:
+        key = ev.get("eventKey") or build_event_key(ev)
+        done = (not tg_on or is_event_channel_sent(status_obj, key, "telegram")) and (
+            not push_on or is_event_channel_sent(status_obj, key, "webpush")
+        )
+        ev["_attempts"] = int(ev.get("_attempts") or 0) + 1
+        if not done and ev["_attempts"] < NOTIFY_MAX_ATTEMPTS:
+            keep_events.append(ev)
+    keep_msgs: list[dict[str, str]] = []
+    for m in extras:
+        key = _message_key(m.get("message", ""))
+        done = (not tg_on) or is_event_channel_sent(status_obj, key, "telegram")
+        m["_attempts"] = int(m.get("_attempts") or 0) + 1
+        if not done and m["_attempts"] < NOTIFY_MAX_ATTEMPTS:
+            keep_msgs.append(m)
+
+    status_obj["queuedNotifications"] = {"events": keep_events, "telegram": keep_msgs}
+    persist_status_file(status_obj, status_path=status_path, dry_run=dry_run)
+    for n in notes:
+        log.info(n)
+    log.info("اكتمل إرسال الطابور؛ المتبقي للمحاولة لاحقاً: %d", len(keep_events) + len(keep_msgs))
+    return 0
+
+
 def run_scraper(
     data_path: str = DATA_PATH,
     schema_path: str = SCHEMA_PATH,
@@ -3033,6 +3221,7 @@ def run_scraper(
     verbose: bool = False,
     accept_regression: bool = False,
     fetch_fn: Optional[Callable[[str, list[str]], Optional[BeautifulSoup]]] = None,
+    defer_notifications: bool = False,
 ) -> int:
     """Execute one full scrape-validate-write cycle. Returns 0 on success, non-zero on failure."""
     if verbose:
@@ -3157,65 +3346,29 @@ def run_scraper(
     health_state = "degraded" if problems else "ok"
     status_obj = update_health_status(health_state, problems, status_path, dry_run)
 
-    # Item 6: Send loud Telegram alert if `--accept-regression` accepted a decrease in `played`
+    # Item 6: loud Telegram alert if `--accept-regression` accepted a decrease in `played`
+    extra_messages: list[dict[str, str]] = []
     if accept_regression and regression_clubs:
-        reg_msg = (
-            "⚠️ <b>تنبيه تصحيح رسمي (--accept-regression)</b>\n"
-            "تم قبول تراجع في عدد المباريات الملعوبة بقرار يدوي:\n"
-            + "\n".join("• " + html.escape(c) for c in regression_clubs)
-        )
-        send_telegram_alert(
-            reg_msg,
-            dry_run=dry_run,
-            status_obj=status_obj,
-            status_path=status_path,
-        )
-
-    # Deduplicate push_events by eventKey before dispatching
-    unique_events: dict[str, dict[str, Any]] = {}
-    for ev in push_events:
-        ek = ev.get("eventKey") or build_event_key(ev)
-        ev["eventKey"] = ek
-        unique_events[ek] = ev
-
-    for ek, ev in unique_events.items():
-        match_obj = next(
-            (m for m in working_data.get("matches", []) if str(m.get("id")) == str(ev.get("matchId"))),
-            None,
-        )
-        if not match_obj:
-            continue
-        if ev.get("kind") == "result" and ev.get("score"):
-            send_telegram_alert(
-                result_alert(working_data, match_obj, ev["score"]),
-                dry_run=dry_run,
-                status_obj=status_obj,
-                event_key=ek,
-                status_path=status_path,
-            )
-        elif ev.get("kind") == "kickoff" and ev.get("kickoff"):
-            ko_dt = parse_iso_kickoff(ev["kickoff"])
-            if ko_dt:
-                send_telegram_alert(
-                    kickoff_alert(working_data, match_obj, ko_dt),
-                    dry_run=dry_run,
-                    status_obj=status_obj,
-                    event_key=ek,
-                    status_path=status_path,
+        extra_messages.append(
+            {
+                "message": (
+                    "⚠️ <b>تنبيه تصحيح رسمي (--accept-regression)</b>\n"
+                    "تم قبول تراجع في عدد المباريات الملعوبة بقرار يدوي:\n"
+                    + "\n".join("• " + html.escape(c) for c in regression_clubs)
                 )
+            }
+        )
 
-    if unique_events:
-        try:
-            send_web_push_notifications(
-                list(unique_events.values()),
-                problems,
-                notes,
-                dry_run=dry_run,
-                status_obj=status_obj,
-                status_path=status_path,
-            )
-        except Exception as e:
-            log.error("خطأ في إرسال إشعارات الهواتف: %s", type(e).__name__)
+    unique_events = dedupe_events(push_events)
+
+    if defer_notifications:
+        # Queue inside status.json: it is committed together with data.json and delivered afterwards
+        queue_notifications(status_obj, unique_events, extra_messages, status_path=status_path, dry_run=dry_run)
+    else:
+        deliver_notifications(
+            working_data, unique_events, extra_messages, problems, notes,
+            status_obj=status_obj, status_path=status_path, dry_run=dry_run,
+        )
 
     try:
         report_new_supporters(problems, notes, dry_run=dry_run)
@@ -3243,6 +3396,16 @@ def main() -> None:
         "--accept-regression",
         action="store_true",
         help="السماح لمرة واحدة بتراجع عدد المباريات الملعوبة (played) عند تصحيح رسمي من الرابطة",
+    )
+    parser.add_argument(
+        "--defer-notifications",
+        action="store_true",
+        help="وضع الطابور: لا يُرسل أي إشعار الآن، بل يُخزَّن في data/status.json ليُرسل بعد نجاح رفع البيانات",
+    )
+    parser.add_argument(
+        "--notify-queued",
+        action="store_true",
+        help="إرسال الإشعارات المخزّنة في الطابور فقط (يُشغَّل بعد نجاح الـ push) ثم الخروج",
     )
     parser.add_argument(
         "--fixture-dir",
@@ -3282,11 +3445,18 @@ def main() -> None:
 
         fixture_fetcher = _local_fetch
 
+    if args.notify_queued:
+        if verbose:
+            log.setLevel(logging.DEBUG)
+        sys.exit(flush_queued_notifications(dry_run=dry_run))
+
+    defer = args.defer_notifications or os.getenv("DEFER_NOTIFICATIONS", "").lower() in ("1", "true", "yes")
     rc = run_scraper(
         dry_run=dry_run,
         verbose=verbose,
         accept_regression=accept_regression,
         fetch_fn=fixture_fetcher,
+        defer_notifications=defer,
     )
     sys.exit(rc)
 
