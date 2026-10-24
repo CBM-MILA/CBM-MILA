@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "lastUpdated": "2026-10-24T11:31:44+01:00",
+  "lastUpdated": "2026-10-24T12:31:43+01:00",
   "sourceUrls": {
     "club": "https://www.lirf.dz/ar/club/733",
     "ranking": "https://www.lirf.dz/ar/ranking",
@@ -2108,8 +2108,8 @@
     {
       "id": "226431",
       "round": 5,
-      "kickoff": "2026-10-23T15:00:00+01:00",
-      "venue": null,
+      "kickoff": "2026-10-31T15:00:00+01:00",
+      "venue": "سدراتة أفروخ الطاهر",
       "home": "891",
       "away": "733",
       "status": "scheduled",
@@ -2130,7 +2130,8 @@
       },
       "detailFetchedAt": null,
       "lastDetailCheck": null,
-      "closedDoors": false
+      "closedDoors": false,
+      "rescheduledFrom": "2026-10-23T15:00:00+01:00"
     },
     {
       "id": "226438",
