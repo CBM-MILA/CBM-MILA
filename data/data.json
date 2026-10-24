@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "lastUpdated": "2026-10-24T20:29:19+01:00",
+  "lastUpdated": "2026-10-24T23:28:46+01:00",
   "sourceUrls": {
     "club": "https://www.lirf.dz/ar/club/733",
     "ranking": "https://www.lirf.dz/ar/ranking",
@@ -3772,6 +3772,19 @@
     },
     {
       "playerId": null,
+      "clubId": "728",
+      "shirt": 10,
+      "goals": 1,
+      "matches": null,
+      "name": {
+        "ar": "OUSSAMA RIAH",
+        "latin": "Oussama Riah",
+        "en": "Oussama Riah"
+      },
+      "rank": 55
+    },
+    {
+      "playerId": null,
       "clubId": "729",
       "shirt": 7,
       "goals": 1,
@@ -3781,7 +3794,7 @@
         "latin": "Mohammed Bouleghalegh",
         "en": "Mohammed Bouleghalegh"
       },
-      "rank": 55
+      "rank": 56
     },
     {
       "playerId": null,
@@ -3794,7 +3807,7 @@
         "latin": "Amine Atchoum",
         "en": "Amine Atchoum"
       },
-      "rank": 56
+      "rank": 57
     },
     {
       "playerId": "51990",
@@ -3807,7 +3820,7 @@
         "latin": "Salah Eddine Khabia",
         "en": "Salah Eddine Khabia"
       },
-      "rank": 57
+      "rank": 58
     },
     {
       "playerId": null,
@@ -3820,7 +3833,20 @@
         "latin": "Foued Bouaita",
         "en": "Foued Bouaita"
       },
-      "rank": 58
+      "rank": 59
+    },
+    {
+      "playerId": null,
+      "clubId": "997",
+      "shirt": 18,
+      "goals": 1,
+      "matches": null,
+      "name": {
+        "ar": "MOHAMMED BOUTEBIBA",
+        "latin": "Mohammed Boutebiba",
+        "en": "Mohammed Boutebiba"
+      },
+      "rank": 60
     }
   ],
   "roundResults": [
