@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "lastUpdated": "2026-10-24T23:28:46+01:00",
+  "lastUpdated": "2026-10-25T01:40:02+01:00",
   "sourceUrls": {
     "club": "https://www.lirf.dz/ar/club/733",
     "ranking": "https://www.lirf.dz/ar/ranking",
@@ -3253,6 +3253,19 @@
     {
       "rank": 15,
       "playerId": null,
+      "clubId": "727",
+      "shirt": 18,
+      "goals": 3,
+      "matches": 3,
+      "name": {
+        "ar": "بولقرارة عبد المالك",
+        "latin": "Abdelmalek Boulkerara",
+        "en": "Abdelmalek Boulkerara"
+      }
+    },
+    {
+      "rank": 16,
+      "playerId": null,
       "clubId": "736",
       "shirt": 17,
       "goals": 3,
@@ -3274,7 +3287,7 @@
         "latin": "بن لمخربش أحمد",
         "en": "بن لمخربش أحمد"
       },
-      "rank": 16
+      "rank": 17
     },
     {
       "playerId": null,
@@ -3287,10 +3300,10 @@
         "latin": "عرض الكل",
         "en": "عرض الكل"
       },
-      "rank": 17
+      "rank": 18
     },
     {
-      "rank": 18,
+      "rank": 19,
       "playerId": null,
       "clubId": "1036",
       "shirt": 21,
@@ -3303,7 +3316,7 @@
       }
     },
     {
-      "rank": 19,
+      "rank": 20,
       "playerId": null,
       "clubId": "1036",
       "shirt": 24,
@@ -3313,19 +3326,6 @@
         "ar": "زوقار إدريس",
         "latin": "Idris Zouggar",
         "en": "Idris Zouggar"
-      }
-    },
-    {
-      "rank": 20,
-      "playerId": null,
-      "clubId": "727",
-      "shirt": 18,
-      "goals": 2,
-      "matches": 3,
-      "name": {
-        "ar": "بولقرارة عبد المالك",
-        "latin": "Abdelmalek Boulkerara",
-        "en": "Abdelmalek Boulkerara"
       }
     },
     {
