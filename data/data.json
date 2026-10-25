@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "lastUpdated": "2026-10-25T04:33:42+01:00",
+  "lastUpdated": "2026-10-25T17:51:55+01:00",
   "sourceUrls": {
     "club": "https://www.lirf.dz/ar/club/733",
     "ranking": "https://www.lirf.dz/ar/ranking",
@@ -2130,8 +2130,7 @@
       },
       "detailFetchedAt": null,
       "lastDetailCheck": null,
-      "closedDoors": false,
-      "rescheduledFrom": "2026-10-23T15:00:00+01:00"
+      "closedDoors": false
     },
     {
       "id": "226438",
@@ -3213,7 +3212,7 @@
     },
     {
       "playerId": null,
-      "clubId": "732",
+      "clubId": "727",
       "shirt": null,
       "goals": 4,
       "matches": null,
@@ -3231,15 +3230,15 @@
       "goals": 4,
       "matches": null,
       "name": {
-        "ar": "ضربات الجزاء",
-        "latin": "ضربات الجزاء",
-        "en": "ضربات الجزاء"
+        "ar": "عرض الكل",
+        "latin": "عرض الكل",
+        "en": "عرض الكل"
       },
       "rank": 13
     },
     {
       "playerId": null,
-      "clubId": "736",
+      "clubId": "732",
       "shirt": null,
       "goals": 4,
       "matches": null,
@@ -3257,14 +3256,27 @@
       "goals": 4,
       "matches": null,
       "name": {
-        "ar": "عرض الكل",
-        "latin": "عرض الكل",
-        "en": "عرض الكل"
+        "ar": "ضربات الجزاء",
+        "latin": "ضربات الجزاء",
+        "en": "ضربات الجزاء"
       },
       "rank": 15
     },
     {
-      "rank": 16,
+      "playerId": null,
+      "clubId": "736",
+      "shirt": null,
+      "goals": 4,
+      "matches": null,
+      "name": {
+        "ar": "عرض الكل",
+        "latin": "عرض الكل",
+        "en": "عرض الكل"
+      },
+      "rank": 16
+    },
+    {
+      "rank": 17,
       "playerId": null,
       "clubId": "727",
       "shirt": 18,
@@ -3277,7 +3289,7 @@
       }
     },
     {
-      "rank": 17,
+      "rank": 18,
       "playerId": null,
       "clubId": "736",
       "shirt": 17,
@@ -3299,19 +3311,6 @@
         "ar": "بن لمخربش أحمد",
         "latin": "بن لمخربش أحمد",
         "en": "بن لمخربش أحمد"
-      },
-      "rank": 18
-    },
-    {
-      "playerId": null,
-      "clubId": "727",
-      "shirt": null,
-      "goals": 3,
-      "matches": null,
-      "name": {
-        "ar": "عرض الكل",
-        "latin": "عرض الكل",
-        "en": "عرض الكل"
       },
       "rank": 19
     },
