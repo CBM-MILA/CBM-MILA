@@ -867,7 +867,18 @@ def extract_subrow_fixtures(container: Tag, data: dict[str, Any]) -> list[Fixtur
         if not m_id:
             continue
         match_id = m_id.group(1)
-        card_node = a_tag.parent if isinstance(a_tag.parent, Tag) else a_tag
+        # IMPORTANT: read the text of THIS link only. The "previous" and "next" match links usually share one
+        # parent element; using the parent's text mixed both cards together, so the next match inherited the
+        # PREVIOUS match's date (the cause of the 23-Oct / 31-Oct flip-flopping notifications).
+        card_node: Tag = a_tag
+        anchor_text = normalize_digits(a_tag.get_text(" ", strip=True))
+        if (
+            "المباراة السابقة" not in anchor_text
+            and "المباراة التالية" not in anchor_text
+            and isinstance(a_tag.parent, Tag)
+            and len(a_tag.parent.find_all("a", href=re.compile(r"/match/\d+"))) == 1
+        ):
+            card_node = a_tag.parent  # label lives outside the link, but the card holds a single match
         card_text = normalize_digits(card_node.get_text(" ", strip=True))
         is_prev = "المباراة السابقة" in card_text
         is_next = "المباراة التالية" in card_text
@@ -1601,11 +1612,22 @@ def apply_fixture_hints(
     matches: list[dict[str, Any]] = data.setdefault("matches", [])
     updated = False
 
+    # If several sources disagree about the kickoff of the same fixture, trust none of them here
+    # (the dedicated /ar/match/{id} page, parsed later, is the authority). This prevents flip-flopping.
+    kickoffs_by_pair: dict[tuple[str, str], set[str]] = {}
+    for h in hints:
+        if h.home_id and h.away_id and h.kickoff:
+            kickoffs_by_pair.setdefault((str(h.home_id), str(h.away_id)), set()).add(h.kickoff)
+    ambiguous_pairs = {p for p, ks in kickoffs_by_pair.items() if len(ks) > 1}
+    for p in ambiguous_pairs:
+        log.warning("مصادر متضاربة لموعد المباراة %s ضد %s؛ تم تجاهل الموعد من الملخصات", p[0], p[1])
+
     for hint in hints:
         if not hint.home_id or not hint.away_id:
             continue
         if cbm_id not in (str(hint.home_id), str(hint.away_id)):
             continue
+        hint_ko = None if (str(hint.home_id), str(hint.away_id)) in ambiguous_pairs else hint.kickoff
 
         target: Optional[dict[str, Any]] = None
         for m in matches:
@@ -1644,12 +1666,12 @@ def apply_fixture_hints(
             continue
 
         is_cbm_home = str(target.get("home")) == cbm_id
-        if hint.kickoff and target.get("kickoff") != hint.kickoff:
+        if hint_ko and target.get("kickoff") != hint_ko:
             old_ko = target.get("kickoff")
             if old_ko:
                 target["rescheduledFrom"] = old_ko
-            target["kickoff"] = hint.kickoff
-            ko_dt = parse_iso_kickoff(hint.kickoff)
+            target["kickoff"] = hint_ko
+            ko_dt = parse_iso_kickoff(hint_ko)
             if ko_dt:
                 notes.append(f"الجولة {target.get('round')}: موعد جديد {ko_dt:%Y-%m-%d %H:%M}")
                 push_events.append(build_kickoff_push(data, target, ko_dt))
@@ -1732,6 +1754,75 @@ def apply_fixture_hints(
         data["roundResults"] = round_results
 
     return updated
+
+
+def clear_impossible_reschedule_markers(data: dict[str, Any], notes: Optional[list[str]] = None) -> bool:
+    """
+    A `rescheduledFrom` date that coincides with ANOTHER match of the same club is impossible
+    (a club cannot play two matches at the same time) → it is stale/bogus data, so clear it.
+    """
+    changed = False
+    matches = data.get("matches", [])
+    for m in matches:
+        old = m.get("rescheduledFrom")
+        if not old:
+            continue
+        clash = any(
+            o is not m and o.get("kickoff") == old for o in matches
+        )
+        if clash:
+            m.pop("rescheduledFrom", None)
+            changed = True
+            if notes is not None:
+                notes.append(f"الجولة {m.get('round')}: إزالة علامة «مؤجلة» غير منطقية")
+    return changed
+
+
+def reconcile_with_baseline(
+    original: dict[str, Any],
+    final: dict[str, Any],
+    events: list[dict[str, Any]],
+) -> list[dict[str, Any]]:
+    """
+    Keep only notifications describing a REAL (net) change between the committed data (`original`)
+    and the data at the end of this run (`final`).
+    If two sources disagree and the value flips A -> B during one run, the intermediate events are dropped
+    and a flip that ends where it started produces nothing at all (no message, no `rescheduledFrom` noise).
+    """
+    orig_by_id = {str(m.get("id")): m for m in original.get("matches", [])}
+    final_by_id = {str(m.get("id")): m for m in final.get("matches", [])}
+
+    for mid, fm in final_by_id.items():
+        om = orig_by_id.get(mid)
+        if om is not None and fm.get("kickoff") == om.get("kickoff"):
+            if "rescheduledFrom" in om:
+                fm["rescheduledFrom"] = om["rescheduledFrom"]
+            else:
+                fm.pop("rescheduledFrom", None)
+    clear_impossible_reschedule_markers(final)
+
+    kept: list[dict[str, Any]] = []
+    for ev in events:
+        mid = str(ev.get("matchId"))
+        fm = final_by_id.get(mid)
+        om = orig_by_id.get(mid)
+        if fm is None:
+            continue
+        kind = ev.get("kind")
+        if kind == "kickoff":
+            if not ev.get("kickoff") or ev["kickoff"] != fm.get("kickoff"):
+                continue  # superseded by a later value in the same run
+            if om is not None and om.get("kickoff") == fm.get("kickoff"):
+                continue  # no net change compared with the committed data
+        elif kind == "result":
+            sc = ev.get("score")
+            fs = fm.get("score") or {}
+            if fm.get("status") != "finished" or not sc or (fs.get("home"), fs.get("away")) != (sc[0], sc[1]):
+                continue
+            if om is not None and om.get("status") == "finished" and om.get("score") == fm.get("score"):
+                continue
+        kept.append(ev)
+    return kept
 
 
 def update_matches(
@@ -3269,6 +3360,9 @@ def run_scraper(
     update_statistics(working_data, problems, notes, fetch_fn=fetch_fn, home_soup=home_soup)
     enrich_metadata_and_players(working_data)
     notes.append("الترتيب: " + ("تم تحديثه" if s_updated else "بلا تغيير"))
+
+    # Only notify about NET changes versus the committed data (kills flip-flop notifications)
+    push_events = reconcile_with_baseline(original_data, working_data, push_events)
 
     # Detect if any club's `played` decreased so we can alert loudly when `--accept-regression` is active
     regression_clubs: list[str] = []
