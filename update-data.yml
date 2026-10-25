@@ -18,6 +18,14 @@ on:
         options:
           - "false"
           - "true"
+      always_report:
+        description: "Send a Telegram report even if nothing changed (friendly 'no news' message)"
+        required: false
+        default: "true"
+        type: choice
+        options:
+          - "true"
+          - "false"
       accept_regression:
         description: "Allow a one-time decrease in played matches (--accept-regression) for official league corrections"
         required: false
@@ -90,6 +98,10 @@ jobs:
           VAPID_PRIVATE_KEY: ${{ secrets.VAPID_PRIVATE_KEY }}
           DRY_RUN: ${{ inputs.dry_run || 'false' }}
           ACCEPT_REGRESSION: ${{ inputs.accept_regression || 'false' }}
+          # "No news" message at most every N hours (repository variable NO_NEWS_EVERY_HOURS; 0 = every run, -1 = never)
+          NO_NEWS_EVERY_HOURS: ${{ vars.NO_NEWS_EVERY_HOURS || '6' }}
+          # Manual runs always answer with either the change digest or the "no news" message
+          FORCE_REPORT: ${{ github.event_name == 'workflow_dispatch' && inputs.always_report == 'true' }}
         run: python scraper.py --verbose --defer-notifications
 
       - name: Check if HTTP conditional cache changed

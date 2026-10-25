@@ -2742,9 +2742,10 @@ def send_telegram_alert(
     status_obj: Optional[dict[str, Any]] = None,
     event_key: Optional[str] = None,
     status_path: str = STATUS_PATH,
+    buttons: Optional[list[list[dict[str, str]]]] = None,
 ) -> bool:
     """
-    Send a deduplicated, HTML-formatted Telegram notification.
+    Send a deduplicated, HTML-formatted Telegram notification (optionally with inline URL buttons).
     Persists `pending` state before sending and marks `sent` only after HTTP 200.
     """
     msg_hash = event_key or hashlib.sha256(message.encode("utf-8")).hexdigest()[:16]
@@ -2776,16 +2777,15 @@ def send_telegram_alert(
         if idx > 0:
             time.sleep(0.5)
         try:
-            r = FETCHER.session.post(
-                url,
-                json={
-                    "chat_id": TELEGRAM_CHAT_ID,
-                    "text": chunk,
-                    "parse_mode": "HTML",
-                    "disable_web_page_preview": True,
-                },
-                timeout=15,
-            )
+            payload: dict[str, Any] = {
+                "chat_id": TELEGRAM_CHAT_ID,
+                "text": chunk,
+                "parse_mode": "HTML",
+                "disable_web_page_preview": True,
+            }
+            if buttons and idx == len(chunks) - 1:
+                payload["reply_markup"] = {"inline_keyboard": buttons}
+            r = FETCHER.session.post(url, json=payload, timeout=15)
             if r.status_code != 200:
                 log.error("فشل إرسال تليغرام (كود %s)", r.status_code)
                 all_ok = False
@@ -3116,6 +3116,382 @@ def send_web_push_notifications(
 
 
 # ════════════════════════ 12. CLI Entrypoint ════════════════════════
+# ════════════════════════ 11a. Rich Telegram Digest ════════════════════════
+SITE_URL = "https://cbm-mila.github.io/CBM-MILA/"
+TELEGRAM_BUTTONS: list[list[dict[str, str]]] = [
+    [{"text": "🌐 افتح المنصة", "url": SITE_URL}, {"text": "📊 الترتيب", "url": SITE_URL + "#/table"}],
+    [{"text": "⚽ المباريات", "url": SITE_URL + "#/matches"}, {"text": "👕 التشكيلة", "url": SITE_URL + "#/squad"}],
+]
+AR_DAYS = ["الاثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت", "الأحد"]
+AR_MONTHS = [
+    "يناير", "فبراير", "مارس", "أبريل", "مايو", "يونيو",
+    "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر",
+]
+DIGEST_SEPARATOR = "\n\n━━━━━━━━━━━━━━\n\n"
+DIGEST_MAX_CHARS = 3800
+
+
+def _e(value: Any) -> str:
+    return html.escape(str(value if value is not None else ""))
+
+
+def _fmt_date_ar(dt: datetime) -> str:
+    return f"{AR_DAYS[dt.weekday()]} {dt.day} {AR_MONTHS[dt.month - 1]} {dt.year}"
+
+
+def _plural_ar(n: int, one: str, two: str, few: str, many: str) -> str:
+    """Arabic number agreement: 1 → one, 2 → two, 3-10 → few (plural), 11+ → many (singular accusative)."""
+    a = abs(int(n))
+    if a == 1:
+        return one
+    if a == 2:
+        return two
+    if 3 <= a <= 10:
+        return f"{n} {few}"
+    return f"{n} {many}"
+
+
+def _pts_ar(n: int) -> str:
+    return _plural_ar(n, "نقطة واحدة", "نقطتان", "نقاط", "نقطة")
+
+
+def _countdown_ar(delta: timedelta) -> str:
+    secs = int(delta.total_seconds())
+    if secs <= 0:
+        return "الآن"
+    days, rem = divmod(secs, 86400)
+    hours, rem = divmod(rem, 3600)
+    minutes = rem // 60
+    d = _plural_ar(days, "يوم", "يومين", "أيام", "يوماً")
+    h = _plural_ar(hours, "ساعة", "ساعتين", "ساعات", "ساعة")
+    m = _plural_ar(minutes, "دقيقة", "دقيقتين", "دقائق", "دقيقة")
+    if days:
+        return f"بعد {d}" + (f" و{h}" if hours else "")
+    if hours:
+        return f"بعد {h}" + (f" و{m}" if minutes else "")
+    return f"بعد {m}"
+
+
+def _cbm_id_of(data: dict[str, Any]) -> str:
+    return str(data.get("club", {}).get("id") or DEFAULT_CLUB_ID)
+
+
+def _cname(data: dict[str, Any], cid: Any) -> str:
+    return _e(get_club_name(data, cid))
+
+
+def _event_player_name(data: dict[str, Any], ev: dict[str, Any]) -> str:
+    pid = ev.get("playerId")
+    if pid:
+        for p in data.get("players", []):
+            if str(p.get("id")) == str(pid):
+                return _e((p.get("name") or {}).get("ar") or (p.get("name") or {}).get("latin") or "")
+    return _e(ev.get("playerName") or "")
+
+
+def _digest_cbm_matches(orig: dict[str, Any], final: dict[str, Any], now: datetime) -> list[str]:
+    cbm_id = _cbm_id_of(final)
+    orig_by_id = {str(m.get("id")): m for m in orig.get("matches", [])}
+    blocks: list[str] = []
+
+    for fm in final.get("matches", []):
+        if cbm_id not in (str(fm.get("home")), str(fm.get("away"))):
+            continue
+        om = orig_by_id.get(str(fm.get("id")))
+        rnd = _e(fm.get("round", "؟"))
+        h, a = _cname(final, fm.get("home")), _cname(final, fm.get("away"))
+        at_home = str(fm.get("home")) == cbm_id
+        lines: list[str] = []
+
+        status, score = fm.get("status"), fm.get("score") or {}
+        o_status, o_score = (om or {}).get("status"), (om or {}).get("score")
+
+        if status == "finished" and score and not (om and o_status == "finished" and o_score == fm.get("score")):
+            hs, as_ = score.get("home"), score.get("away")
+            mine, theirs = (hs, as_) if at_home else (as_, hs)
+            if mine > theirs:
+                verdict = "🟢 فوووز لشباب ميلة! 🎉🔥💪"
+            elif mine == theirs:
+                verdict = "🟡 تعادل 🤝"
+            else:
+                verdict = "🔴 خسارة 💔 نعوّضها في المباراة القادمة 💪"
+            lines += [
+                f"🏁 <b>نهاية المباراة — الجولة {rnd}</b>",
+                f"🏟 {h}  <b>{hs} - {as_}</b>  {a}",
+                verdict,
+                f"📍 {'داخل الديار 🏠' if at_home else 'خارج الديار ✈️'}",
+            ]
+            goals = [e for e in fm.get("events", []) if e.get("type") == "goal"]
+            goals.sort(key=lambda e: str(e.get("minute") or ""))
+            for g in goals[:8]:
+                who = _event_player_name(final, g)
+                lines.append(f"⚽ {_e(g.get('minute'))}′ {who}".rstrip())
+        elif status == "live" and (o_status != "live" or o_score != fm.get("score")):
+            sc = f"{score.get('home')} - {score.get('away')}" if score else "0 - 0"
+            lines += [f"🔴 <b>مباشر الآن — الجولة {rnd}</b>", f"🏟 {h}  <b>{sc}</b>  {a}"]
+        elif status in ("postponed", "forfeit") and o_status != status:
+            icon, txt = ("⏸", "تأجلت المباراة") if status == "postponed" else ("⚖️", "انسحاب / خسارة على البساط")
+            lines += [f"{icon} <b>{txt} — الجولة {rnd}</b>", f"🏟 {h} ⚔️ {a}"]
+
+        ko_new = parse_iso_kickoff(fm.get("kickoff"))
+        ko_old = parse_iso_kickoff((om or {}).get("kickoff"))
+        if status != "finished" and (fm.get("kickoff") != (om or {}).get("kickoff")) and (ko_new or ko_old):
+            venue = _e(fm.get("venue") or "يُحدّد لاحقاً")
+            closed = "\n🚫 بدون جمهور" if fm.get("closedDoors") else ""
+            if ko_new and not ko_old:
+                lines += [
+                    f"🆕 <b>تحدّد موعد مباراة الجولة {rnd}!</b> 📅",
+                    f"⚽ {h} ⚔️ {a}",
+                    f"🗓 {_fmt_date_ar(ko_new)}",
+                    f"⏰ {ko_new:%H:%M} (توقيت الجزائر)",
+                    f"⏳ {_countdown_ar(ko_new - now)}",
+                    f"📍 {venue}{closed}",
+                ]
+            elif ko_new and ko_old:
+                lines += [
+                    f"🔁 <b>تغيّر موعد مباراة الجولة {rnd}!</b> ⚠️",
+                    f"⚽ {h} ⚔️ {a}",
+                    f"❌ كان: {_fmt_date_ar(ko_old)} · {ko_old:%H:%M}",
+                    f"✅ الآن: <b>{_fmt_date_ar(ko_new)} · {ko_new:%H:%M}</b>",
+                    f"⏳ {_countdown_ar(ko_new - now)}",
+                    f"📍 {venue}{closed}",
+                ]
+            else:
+                lines += [f"❓ <b>أُلغي تحديد موعد مباراة الجولة {rnd}</b>", f"⚽ {h} ⚔️ {a}"]
+        elif status != "finished" and om and fm.get("venue") and fm.get("venue") != om.get("venue"):
+            lines += [
+                f"📍 <b>تغيّر ملعب مباراة الجولة {rnd}</b>",
+                f"⚽ {h} ⚔️ {a}",
+                f"🏟 {_e(om.get('venue') or '—')} ⬅️ <b>{_e(fm.get('venue'))}</b>",
+            ]
+
+        if fm.get("closedDoors") and not (om or {}).get("closedDoors") and status != "finished":
+            lines.append("🚫 <b>ستُلعب المباراة بدون جمهور</b>")
+
+        def _starters(m: Optional[dict[str, Any]]) -> int:
+            lu = (m or {}).get("lineups") or {}
+            return len((lu.get("home") or {}).get("starters") or []) + len((lu.get("away") or {}).get("starters") or [])
+
+        if _starters(fm) and not _starters(om):
+            lines.append("📋 <b>نُشرت التشكيلة الأساسية للمباراة</b>")
+        if (fm.get("referees") or []) and not ((om or {}).get("referees") or []):
+            lines.append("🧑‍⚖️ تم تعيين طاقم التحكيم")
+        cards_new = len([e for e in fm.get("events", []) if e.get("type") in ("yellow", "red")])
+        cards_old = len([e for e in (om or {}).get("events", []) if e.get("type") in ("yellow", "red")])
+        if cards_new > cards_old and status == "finished":
+            lines.append(f"🟨 بطاقات في المباراة: {cards_new}")
+
+        if lines:
+            blocks.append("\n".join(lines))
+    return blocks
+
+
+def _digest_standings(orig: dict[str, Any], final: dict[str, Any]) -> list[str]:
+    cbm_id = _cbm_id_of(final)
+    o_map = {str(r.get("clubId")): r for r in orig.get("standings", [])}
+    f_rows = sorted(final.get("standings", []), key=lambda r: r.get("position") or 99)
+    changed_rows = [
+        r for r in f_rows
+        if (o_map.get(str(r.get("clubId"))) or {}).get("position") != r.get("position")
+        or (o_map.get(str(r.get("clubId"))) or {}).get("adjustedPoints") != r.get("adjustedPoints")
+        or (o_map.get(str(r.get("clubId"))) or {}).get("played") != r.get("played")
+    ]
+    if not changed_rows or not f_rows:
+        return []
+
+    lines = ["📊 <b>تحديث جدول الترتيب</b>"]
+    cbm = next((r for r in f_rows if str(r.get("clubId")) == cbm_id), None)
+    if cbm:
+        o = o_map.get(cbm_id) or {}
+        op, np_ = o.get("position"), cbm.get("position")
+        arrow = "⬆️" if (op and np_ < op) else "⬇️" if (op and np_ > op) else "➡️"
+        move = f"#{op} ← #{np_}" if (op and op != np_) else f"#{np_} (مركزه لم يتغير)"
+        d_pts = cbm.get("adjustedPoints", 0) - (o.get("adjustedPoints", cbm.get("adjustedPoints", 0)) if o else 0)
+        d_txt = f" ({d_pts:+d})" if o and d_pts else ""
+        lines.append(
+            f"⭐ <b>شباب ميلة</b> {arrow} {move}\n"
+            f"   🎯 {_pts_ar(cbm.get('adjustedPoints'))}{d_txt} · لعب {cbm.get('played')} · "
+            f"✅{cbm.get('wins')} 🤝{cbm.get('draws')} ❌{cbm.get('losses')} · الفارق {cbm.get('goalDifference'):+d}"
+        )
+    leader = f_rows[0]
+    o_leader = min(orig.get("standings", []) or [leader], key=lambda r: r.get("position") or 99)
+    if str(o_leader.get("clubId")) != str(leader.get("clubId")):
+        lines.append(f"👑 <b>صدارة جديدة:</b> {_cname(final, leader.get('clubId'))} ({_pts_ar(leader.get('adjustedPoints'))}) 🎊")
+    else:
+        lines.append(f"👑 المتصدر: {_cname(final, leader.get('clubId'))} ({_pts_ar(leader.get('adjustedPoints'))})")
+
+    movers = []
+    for r in f_rows:
+        if str(r.get("clubId")) == cbm_id:
+            continue
+        o = o_map.get(str(r.get("clubId"))) or {}
+        if o.get("position") and o["position"] != r.get("position"):
+            ico = "⬆️" if r["position"] < o["position"] else "⬇️"
+            movers.append(f"{ico} {_cname(final, r.get('clubId'))}: #{o['position']} ← #{r['position']}")
+    if movers:
+        lines.append("🔀 <b>تغيّرات المراكز:</b>\n" + "\n".join(movers[:6]) + (f"\n… و{len(movers) - 6} أندية أخرى" if len(movers) > 6 else ""))
+
+    for r in f_rows:
+        o = o_map.get(str(r.get("clubId"))) or {}
+        if (r.get("pointsPenalty") or 0) != (o.get("pointsPenalty") or 0) and r.get("pointsPenalty"):
+            lines.append(f"⚠️ خصم نقاط على {_cname(final, r.get('clubId'))}: <b>-{r.get('pointsPenalty')}</b>")
+
+    medals = ["🥇", "🥈", "🥉"]
+    top3 = "  ".join(f"{medals[i]} {_cname(final, r.get('clubId'))} ({r.get('adjustedPoints')})" for i, r in enumerate(f_rows[:3]))
+    lines.append(top3)
+    return ["\n".join(lines)]
+
+
+def _digest_round_results(orig: dict[str, Any], final: dict[str, Any]) -> list[str]:
+    cbm_id = _cbm_id_of(final)
+    cbm_ids = {str(m.get("id")) for m in final.get("matches", [])}
+    o_map = {(str(r.get("home")), str(r.get("away")), r.get("round")): r for r in orig.get("roundResults", [])}
+    new_rows = []
+    for r in final.get("roundResults", []):
+        if str(r.get("id")) in cbm_ids or cbm_id in (str(r.get("home")), str(r.get("away"))):
+            continue
+        sc = r.get("score")
+        if r.get("status") != "finished" or not sc:
+            continue
+        o = o_map.get((str(r.get("home")), str(r.get("away")), r.get("round")))
+        if o and o.get("status") == "finished" and o.get("score") == sc:
+            continue
+        new_rows.append(r)
+    if not new_rows:
+        return []
+    rnd = _e(new_rows[0].get("round", "؟"))
+    lines = [f"🧾 <b>نتائج أخرى في الجولة {rnd}</b>"]
+    for r in new_rows[:8]:
+        lines.append(f"🏁 {_cname(final, r.get('home'))} <b>{r['score']['home']} - {r['score']['away']}</b> {_cname(final, r.get('away'))}")
+    if len(new_rows) > 8:
+        lines.append(f"… و{len(new_rows) - 8} نتائج أخرى")
+    return ["\n".join(lines)]
+
+
+def _scorers_map(data: dict[str, Any]) -> dict[tuple[str, str], dict[str, Any]]:
+    out: dict[tuple[str, str], dict[str, Any]] = {}
+    for t in data.get("topScorers", []) or []:
+        key = (str(t.get("clubId")), str((t.get("name") or {}).get("ar") or ""))
+        if key not in out or (t.get("goals") or 0) > (out[key].get("goals") or 0):
+            out[key] = t
+    return out
+
+
+def _digest_scorers(orig: dict[str, Any], final: dict[str, Any]) -> list[str]:
+    o_map, f_map = _scorers_map(orig), _scorers_map(final)
+    ups = []
+    for key, t in f_map.items():
+        old = (o_map.get(key) or {}).get("goals")
+        if old is None or (t.get("goals") or 0) > old:
+            ups.append((t, old))
+    if not ups:
+        return []
+    ups.sort(key=lambda x: -(x[0].get("goals") or 0))
+    lines = ["🥇 <b>الهدّافون</b>"]
+    for t, old in ups[:6]:
+        tag = "🆕" if old is None else f"⬆️ +{(t.get('goals') or 0) - old}"
+        lines.append(f"⚽ {_e((t.get('name') or {}).get('ar'))} ({_cname(final, t.get('clubId'))}) — <b>{t.get('goals')}</b> {tag}")
+    return ["\n".join(lines)]
+
+
+def _digest_squad(orig: dict[str, Any], final: dict[str, Any]) -> list[str]:
+    o_ids = {str(p.get("id")): p for p in orig.get("players", [])}
+    f_ids = {str(p.get("id")): p for p in final.get("players", [])}
+    lines = []
+    for pid, p in f_ids.items():
+        if pid not in o_ids:
+            lines.append(f"🆕 انضم: {_e((p.get('name') or {}).get('ar'))} (#{_e(p.get('shirt') or '—')})")
+    for pid, p in o_ids.items():
+        if pid not in f_ids:
+            lines.append(f"👋 غادر: {_e((p.get('name') or {}).get('ar'))}")
+    if [s.get("name", {}).get("ar") for s in orig.get("staff", [])] != [s.get("name", {}).get("ar") for s in final.get("staff", [])]:
+        lines.append("🧑‍🏫 تغيير في الجهاز الفني")
+    if not lines:
+        return []
+    return ["👕 <b>التشكيلة</b>\n" + "\n".join(lines[:8])]
+
+
+def build_change_digest(original: dict[str, Any], final: dict[str, Any], now: Optional[datetime] = None) -> Optional[str]:
+    """One rich, emoji-heavy Telegram message describing every user-visible change since the committed data."""
+    now = now or datetime.now(TZ)
+    parts: list[str] = []
+    for fn in (
+        lambda: _digest_cbm_matches(original, final, now),
+        lambda: _digest_standings(original, final),
+        lambda: _digest_round_results(original, final),
+        lambda: _digest_scorers(original, final),
+        lambda: _digest_squad(original, final),
+    ):
+        try:
+            blocks = fn()
+        except Exception as exc:  # a formatting bug must never block the notification pipeline
+            log.warning("تعذّر بناء قسم من الملخص: %s", type(exc).__name__)
+            continue
+        if blocks:
+            parts.append("\n\n".join(blocks))
+    if not parts:
+        return None
+
+    header = f"📣 <b>جديد على موقع الرابطة!</b> 🔔\n🕒 {now:%Y-%m-%d %H:%M} (توقيت الجزائر)"
+    footer = "🔥 هيا شباب ميلة! 🔴⚪ تابع التفاصيل من الأزرار 👇"
+    while True:
+        text = header + DIGEST_SEPARATOR + DIGEST_SEPARATOR.join(parts) + "\n\n" + footer
+        if len(text) <= DIGEST_MAX_CHARS or len(parts) <= 1:
+            return text
+        parts.pop()  # drop the lowest-priority section (whole sections only → HTML stays valid)
+        footer = "🔥 هناك تحديثات أخرى على المنصة 🌐 — افتحها من الأزرار 👇"
+
+
+def build_no_news_message(
+    final: dict[str, Any], now: Optional[datetime] = None, problems: Optional[list[str]] = None
+) -> str:
+    """Friendly 'nothing new' message with the CBM rank and a countdown to the next match."""
+    now = now or datetime.now(TZ)
+    cbm_id = _cbm_id_of(final)
+    lines = [
+        "😴 <b>لا جديد حالياً</b> 🙌",
+        f"✅ فحصتُ موقع الرابطة الساعة {now:%H:%M} ولا توجد أي تغييرات 🔍",
+    ]
+    cbm = next((r for r in final.get("standings", []) if str(r.get("clubId")) == cbm_id), None)
+    if cbm:
+        lines.append(f"📊 ترتيب شباب ميلة: <b>#{cbm.get('position')}</b> · {_pts_ar(cbm.get('adjustedPoints'))} 🎯")
+    upcoming = []
+    for m in final.get("matches", []):
+        if m.get("status") not in ("scheduled", "rescheduled", "live"):
+            continue
+        ko = parse_iso_kickoff(m.get("kickoff"))
+        if ko and ko > now:
+            upcoming.append((ko, m))
+    if upcoming:
+        ko, m = min(upcoming, key=lambda x: x[0])
+        lines.append(
+            f"⏳ المباراة القادمة: {_cname(final, m.get('home'))} ⚔️ {_cname(final, m.get('away'))}\n"
+            f"   🗓 {_fmt_date_ar(ko)} · ⏰ {ko:%H:%M} — {_countdown_ar(ko - now)}"
+        )
+    else:
+        lines.append("⏳ المباراة القادمة: الموعد لم يُحدَّد بعد 🤞")
+    if problems:
+        lines.append(f"⚠️ ملاحظة: تعذّرت قراءة {len(problems)} صفحة من الموقع، وسأعيد المحاولة 🔄")
+    lines.append("🔔 سأخبرك فور حدوث أي تحديث! 🚀")
+    return "\n".join(lines)
+
+
+def should_send_no_news(status_obj: dict[str, Any], now: datetime, every_hours: float, force: bool = False) -> bool:
+    """Rate-limit the 'nothing new' message (every_hours < 0 disables, 0 = every run, `force` ignores the limit)."""
+    if force:
+        return True
+    if every_hours < 0:
+        return False
+    last = status_obj.get("lastNoNewsAt")
+    if not last or every_hours == 0:
+        return True
+    try:
+        last_dt = datetime.fromisoformat(str(last))
+    except ValueError:
+        return True
+    return (now - last_dt) >= timedelta(hours=every_hours)
+
+
 # ════════════════════════ 11b. Notification Queue (exactly-once-ish delivery) ════════════════════════
 # Problem solved: notifications used to be sent BEFORE the data commit reached GitHub. If the commit/push
 # failed, the next run re-detected the same change and sent every notification again.
@@ -3132,6 +3508,10 @@ def _json_safe(obj: Any) -> Any:
 
 def _telegram_configured() -> bool:
     return bool(TELEGRAM_TOKEN and TELEGRAM_CHAT_ID)
+
+
+def _telegram_events_mode() -> bool:
+    return os.getenv("TELEGRAM_MODE", "digest").strip().lower() == "events"
 
 
 def _webpush_configured() -> bool:
@@ -3176,7 +3556,7 @@ def queue_notifications(
     for m in extra_messages:
         mk = _message_key(m.get("message", ""))
         if mk not in queued_msgs:
-            queue["telegram"].append({"message": m["message"]})
+            queue["telegram"].append({k: m[k] for k in ("message", "buttons") if k in m})
             queued_msgs.add(mk)
             added += 1
     if added:
@@ -3197,9 +3577,15 @@ def deliver_notifications(
 ) -> None:
     """Send Telegram + Web Push for `events` (idempotent thanks to per-channel sent markers)."""
     for m in extra_messages:
-        send_telegram_alert(m["message"], dry_run=dry_run, status_obj=status_obj, status_path=status_path)
+        send_telegram_alert(
+            m["message"], dry_run=dry_run, status_obj=status_obj, status_path=status_path,
+            buttons=m.get("buttons"),
+        )
 
-    for ev in events:
+    # Default mode = "digest": ONE rich message per run (built from the net diff) replaces per-event Telegram messages.
+    # Set TELEGRAM_MODE=events to get the legacy one-message-per-event behaviour.
+    telegram_events = _telegram_events_mode()
+    for ev in events if telegram_events else []:
         ek = ev.get("eventKey") or build_event_key(ev)
         match_obj = next(
             (m for m in data.get("matches", []) if str(m.get("id")) == str(ev.get("matchId"))),
@@ -3282,7 +3668,7 @@ def flush_queued_notifications(
     keep_events: list[dict[str, Any]] = []
     for ev in events:
         key = ev.get("eventKey") or build_event_key(ev)
-        done = (not tg_on or is_event_channel_sent(status_obj, key, "telegram")) and (
+        done = (not tg_on or not _telegram_events_mode() or is_event_channel_sent(status_obj, key, "telegram")) and (
             not push_on or is_event_channel_sent(status_obj, key, "webpush")
         )
         ev["_attempts"] = int(ev.get("_attempts") or 0) + 1
@@ -3313,6 +3699,7 @@ def run_scraper(
     accept_regression: bool = False,
     fetch_fn: Optional[Callable[[str, list[str]], Optional[BeautifulSoup]]] = None,
     defer_notifications: bool = False,
+    force_report_flag: bool = False,
 ) -> int:
     """Execute one full scrape-validate-write cycle. Returns 0 on success, non-zero on failure."""
     if verbose:
@@ -3455,6 +3842,23 @@ def run_scraper(
 
     unique_events = dedupe_events(push_events)
 
+    # Rich Telegram digest of every net change, or a friendly (rate-limited) "nothing new" message
+    now_dt = datetime.now(TZ)
+    digest_text = build_change_digest(original_data, working_data, now=now_dt)
+    if digest_text:
+        extra_messages.append({"message": digest_text, "buttons": TELEGRAM_BUTTONS})
+    else:
+        try:
+            every_hours = float(os.getenv("NO_NEWS_EVERY_HOURS", "6"))
+        except ValueError:
+            every_hours = 6.0
+        force_report = force_report_flag or os.getenv("FORCE_REPORT", "").strip().lower() in ("1", "true", "yes")
+        if should_send_no_news(status_obj, now_dt, every_hours, force=force_report):
+            extra_messages.append(
+                {"message": build_no_news_message(working_data, now_dt, problems), "buttons": TELEGRAM_BUTTONS}
+            )
+            status_obj["lastNoNewsAt"] = now_dt.isoformat(timespec="seconds")
+
     if defer_notifications:
         # Queue inside status.json: it is committed together with data.json and delivered afterwards
         queue_notifications(status_obj, unique_events, extra_messages, status_path=status_path, dry_run=dry_run)
@@ -3495,6 +3899,11 @@ def main() -> None:
         "--defer-notifications",
         action="store_true",
         help="وضع الطابور: لا يُرسل أي إشعار الآن، بل يُخزَّن في data/status.json ليُرسل بعد نجاح رفع البيانات",
+    )
+    parser.add_argument(
+        "--force-report",
+        action="store_true",
+        help="أرسل رسالة تليغرام حتى لو لم يكن هناك جديد (تقرير «لا جديد»)",
     )
     parser.add_argument(
         "--notify-queued",
@@ -3551,6 +3960,7 @@ def main() -> None:
         accept_regression=accept_regression,
         fetch_fn=fixture_fetcher,
         defer_notifications=defer,
+        force_report_flag=args.force_report,
     )
     sys.exit(rc)
 

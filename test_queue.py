@@ -19,13 +19,14 @@ def setup(tmp):
 
 def patch(mp, tg_ok=True, push_ok=True):
     sent = {"tg": [], "push": []}
+    mp.setenv("TELEGRAM_MODE", "events")  # legacy per-event Telegram messages (digest mode is covered in test_digest.py)
     mp.setattr(scraper, "TELEGRAM_TOKEN", "x")
     mp.setattr(scraper, "TELEGRAM_CHAT_ID", "y")
     mp.setattr(scraper, "VAPID_PRIVATE_KEY", "v")
     mp.setattr(scraper, "ADMIN_KEY", "a")
     mp.setattr(scraper, "registry_url", lambda: "https://script.google.com/macros/s/x/exec")
 
-    def fake_tg(message, dry_run=False, status_obj=None, event_key=None, status_path=scraper.STATUS_PATH):
+    def fake_tg(message, dry_run=False, status_obj=None, event_key=None, status_path=scraper.STATUS_PATH, **kw):
         key = event_key or scraper._message_key(message)
         if scraper.is_event_channel_sent(status_obj, key, "telegram"):
             return True

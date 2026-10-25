@@ -185,3 +185,13 @@ If step 2 fails, nothing was sent and the next run simply re-detects the change.
 ## Styling
 
 `style-additions.css` contains only the new rules (sync bar, status badges, noscript banner; dark + light). Append it to the end of your existing `style.css`; do not replace the file.
+
+## Telegram Messages
+
+Default mode (`TELEGRAM_MODE=digest`): **one rich message per run** describing every net change since the committed data
+(CBM result + scorers, new/changed kickoff & venue, closed doors, standings moves, other results of the round, top scorers, squad),
+with inline buttons (platform / table / matches / squad). Set `TELEGRAM_MODE=events` for the legacy one-message-per-event mode.
+
+When nothing changed, a friendly "😴 لا جديد حالياً" message (CBM rank + countdown to the next match) is sent at most every
+`NO_NEWS_EVERY_HOURS` hours (default `6`; `0` = every run, `-1` = never). Set it as a repository **variable**
+(`Settings → Secrets and variables → Actions → Variables`). Manual runs (**Run workflow**, `always_report=true`) always reply.
