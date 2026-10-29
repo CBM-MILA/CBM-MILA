@@ -2582,6 +2582,33 @@ def load_data(path: str = DATA_PATH) -> Optional[dict[str, Any]]:
         return None
 
 
+def heartbeat_due(data: dict[str, Any], now: Optional[datetime] = None, every_hours: Optional[float] = None) -> bool:
+    """True when `lastUpdated` is older than HEARTBEAT_HOURS, so the app never shows a false "outdated data" banner.
+
+    A heartbeat is a successful, problem-free check where nothing changed: we only refresh `lastUpdated`
+    (a tiny commit at most every few hours) so the site reflects that the data was verified recently.
+    `HEARTBEAT_HOURS=0` (or negative) disables it.
+    """
+    if every_hours is None:
+        try:
+            every_hours = float(os.getenv("HEARTBEAT_HOURS", "6"))
+        except ValueError:
+            every_hours = 6.0
+    if every_hours <= 0:
+        return False
+    now = now or datetime.now(TZ)
+    raw = data.get("lastUpdated")
+    if not raw:
+        return True
+    try:
+        last = datetime.fromisoformat(str(raw))
+        if last.tzinfo is None:
+            last = last.replace(tzinfo=TZ)
+    except ValueError:
+        return True
+    return (now - last) >= timedelta(hours=every_hours)
+
+
 def save_data(data: dict[str, Any], path: str = DATA_PATH, dry_run: bool = False) -> None:
     """Atomically write `data` to `data/data.json` via a temporary file and `os.replace`."""
     data["lastUpdated"] = datetime.now(TZ).isoformat(timespec="seconds")
@@ -3821,6 +3848,10 @@ def run_scraper(
         log.info("لا توجد تغييرات جوهرية في البيانات.")
 
     if changed:
+        save_data(working_data, path=data_path, dry_run=dry_run)
+    elif not problems and heartbeat_due(original_data):
+        # Nothing changed but the check succeeded: refresh `lastUpdated` so the site doesn't look stale
+        log.info("نبضة تحديث: لا تغييرات، لكن آخر تحديث قديم؛ سيتم تجديد lastUpdated.")
         save_data(working_data, path=data_path, dry_run=dry_run)
 
     FETCHER.save_cache(dry_run=dry_run)
